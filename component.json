@@ -1,0 +1,5 @@
+{
+  "name": "pluralize",
+  "main": ["./index.js"],
+  "dependencies": {}
+}

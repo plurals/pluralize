@@ -163,7 +163,7 @@ pluralize.addSingularRule(/([^f])ves$/i, '$1fe');
 pluralize.addSingularRule(/([aolr])ves$/i, '$1f');
 pluralize.addSingularRule(/(hive|tive|drive)s$/i, '$1');
 pluralize.addSingularRule(/([^aeiouy]|qu)ies$/i, '$1y');
-pluralize.addSingularRule(/^([pl]ie)s$/i, '$1');
+pluralize.addSingularRule(/(^[pl]ie|tie|zombie)s$/i, '$1');
 pluralize.addSingularRule(/(x|ch|ss|sh|zz)es$/i, '$1');
 pluralize.addSingularRule(/^(m|l)ice$/i, '$1ouse');
 pluralize.addSingularRule(/(bus|alias|[mpst]us|atlas|gas)(es)?$/i, '$1');

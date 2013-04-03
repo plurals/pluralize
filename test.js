@@ -195,7 +195,9 @@ tests = [
   ['harp', 'harps'],
   ['corpse', 'corpses'],
   ['dye', 'dyes'],
-  ['move', 'moves']
+  ['move', 'moves'],
+  ['zombie', 'zombies'],
+  ['tie', 'ties']
 ];
 
 describe('pluralize', function () {

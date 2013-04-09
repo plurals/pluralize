@@ -231,6 +231,21 @@ describe('pluralize', function () {
     });
   });
 
+  it('should work with capitalized words', function () {
+    tests.forEach(function (word) {
+      assert.equal(plural(word[0].toUpperCase()), word[1].toUpperCase());
+    });
+  });
+
+  it('should work with title-cased words', function () {
+    tests.forEach(function (word) {
+      assert.equal(
+        plural(word[0][0].toUpperCase() + word[0].substr(1)), // Title-case
+        word[1][0].toUpperCase() + word[1].substr(1)
+      );
+    });
+  });
+
   it('should allow new uncountable rules', function () {
     assert.equal(plural('paper'), 'papers');
     plural.addUncountableRule('paper');

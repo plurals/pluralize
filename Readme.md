@@ -6,6 +6,7 @@ Return a pluralized or singularized word based on the input string.
 
 ```javascript
 npm install pluralize --save
+bower install pluralize
 ```
 
 ## API

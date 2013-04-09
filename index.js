@@ -1,8 +1,10 @@
 var singularRules  = [],
     pluralizeRules = [],
-    uncountables   = [],
+    // Using objects for fast lookups
+    uncountables   = {},
     irregular      = {},
     sanitizeWord, sanitizeRule,
+    restoreCase,
     pluralize,
     plural, singular;
 
@@ -13,11 +15,31 @@ sanitizeRule = function (rule) {
   return rule;
 };
 
+restoreCase = function (token) {
+  // All capital letters
+  if (token === token.toUpperCase()) {
+    return function (word) {
+      return word.toUpperCase();
+    };
+  }
+  // Title cased word
+  if (token[0] === token[0].toUpperCase()) {
+    return function (word) {
+      return word[0].toUpperCase() + word.substr(1);
+    };
+  }
+
+  return function (word) {
+    return word.toLowerCase();
+  };
+};
+
+// Conveniently, the word will always lowercased when passes in here
 sanitizeWord = function (word, collection) {
-  if (word.length < 2) { return word; } // Empty string or no word
+  if (word.length < 2) { return word; } // Empty string or no word to fix
 
   var found, match;
-  if (!~uncountables.indexOf(word)) {
+  if (typeof uncountables[word] === 'undefined') {
     found = collection.some(function (rule) {
       match = rule;
       return word.match(rule[0]);
@@ -36,31 +58,37 @@ pluralize = module.exports = function (word, count, inclusive) {
 };
 
 plural = pluralize.plural = function (word) {
-  if (irregular[word.toLowerCase()]) { return irregular[word]; }
+  var restoreWord = restoreCase(word);
+  word            = word.trim().toLowerCase();
+
+  if (irregular[word]) { return restoreWord(irregular[word]); }
 
   var found;
   Object.keys(irregular).some(function (singular) {
-    if (irregular[singular] === word.toLowerCase()) {
+    if (irregular[singular] === word) {
       return found = word;
     }
   });
-  if (found) { return found; }
+  if (found) { return restoreWord(found); }
 
-  return sanitizeWord(word, pluralizeRules);
+  return restoreWord(sanitizeWord(word, pluralizeRules));
 };
 
 singular = pluralize.singular = function (word) {
-  if (irregular[word.toLowerCase()]) { return word; }
+  var restoreWord = restoreCase(word);
+  word            = word.trim().toLowerCase();
+
+  if (irregular[word]) { return restoreWord(word); }
 
   var found;
   Object.keys(irregular).some(function (singular) {
-    if (irregular[singular] === word.toLowerCase()) {
+    if (irregular[singular] === word) {
       return found = singular;
     }
   });
-  if (found) { return found; }
+  if (found) { return restoreWord(found); }
 
-  return sanitizeWord(word, singularRules);
+  return restoreWord(sanitizeWord(word, singularRules));
 };
 
 pluralize.addPluralRule = function (rule, replacement) {
@@ -72,7 +100,7 @@ pluralize.addSingularRule = function (rule, replacement) {
 };
 
 pluralize.addUncountableRule = function (word) {
-  uncountables.push(word);
+  uncountables[word.toLowerCase()] = true;
 };
 
 pluralize.addIrregularRule = function (singular, plural) {
@@ -132,52 +160,52 @@ pluralize.addIrregularRule('genus', 'genera');
 pluralize.addIrregularRule('viscus', 'viscera');
 
 pluralize.addPluralRule(/$/, 's');
-pluralize.addPluralRule(/s$/i, 's');
-pluralize.addPluralRule(/(ese)$/i, '$1');
-pluralize.addPluralRule(/^(ax|test)is$/i, '$1es');
-pluralize.addPluralRule(/([au]s)$/i, '$1es');
-pluralize.addPluralRule(/([^l]ias|[aeiou]las|[emjzr]as)$/i, '$1');
-pluralize.addPluralRule(/(octop|vir|radi|nucle|fung|cact|stimul)(us|i)$/i, '$1i');
-pluralize.addPluralRule(/^(alumn|alg|vertebr)(a|ae)$/i, '$1ae');
-pluralize.addPluralRule(/(bu)s$/i, '$1ses');
-pluralize.addPluralRule(/([^aeiou])o$/i, '$1oes');
-pluralize.addPluralRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi)(a|um)$/i, '$1a');
-pluralize.addPluralRule(/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)(a|on)$/i, '$1a');
-pluralize.addPluralRule(/sis$/i, 'ses');
-pluralize.addPluralRule(/(?:([^f])fe|([aolr])f)$/i, '$1$2ves');
-pluralize.addPluralRule(/([^aeiouy]|qu)y$/i, '$1ies');
-pluralize.addPluralRule(/(x|ch|ss|sh|zz)$/i, '$1es');
-pluralize.addPluralRule(/(matr|cod|mur|sil|vert|ind)(ix|ex)$/i, '$1ices');
-pluralize.addPluralRule(/^(m|l)(ice|ouse)$/i, '$1ice');
-pluralize.addPluralRule(/(pe)(rson|ople)$/i, '$1ople');
-pluralize.addPluralRule(/(child)(ren)?$/i, '$1ren');
-pluralize.addPluralRule(/(eau)x?$/i, '$1x');
-pluralize.addPluralRule(/m(a|e)n$/i, 'men');
+pluralize.addPluralRule(/s$/, 's');
+pluralize.addPluralRule(/(ese)$/, '$1');
+pluralize.addPluralRule(/^(ax|test)is$/, '$1es');
+pluralize.addPluralRule(/([au]s)$/, '$1es');
+pluralize.addPluralRule(/([^l]ias|[aeiou]las|[emjzr]as)$/, '$1');
+pluralize.addPluralRule(/(octop|vir|radi|nucle|fung|cact|stimul)(us|i)$/, '$1i');
+pluralize.addPluralRule(/^(alumn|alg|vertebr)(a|ae)$/, '$1ae');
+pluralize.addPluralRule(/(bu)s$/, '$1ses');
+pluralize.addPluralRule(/([^aeiou])o$/, '$1oes');
+pluralize.addPluralRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi)(a|um)$/, '$1a');
+pluralize.addPluralRule(/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)(a|on)$/, '$1a');
+pluralize.addPluralRule(/sis$/, 'ses');
+pluralize.addPluralRule(/(?:([^f])fe|([aolr])f)$/, '$1$2ves');
+pluralize.addPluralRule(/([^aeiouy]|qu)y$/, '$1ies');
+pluralize.addPluralRule(/(x|ch|ss|sh|zz)$/, '$1es');
+pluralize.addPluralRule(/(matr|cod|mur|sil|vert|ind)(ix|ex)$/, '$1ices');
+pluralize.addPluralRule(/^(m|l)(ice|ouse)$/, '$1ice');
+pluralize.addPluralRule(/(pe)(rson|ople)$/, '$1ople');
+pluralize.addPluralRule(/(child)(ren)?$/, '$1ren');
+pluralize.addPluralRule(/(eau)x?$/, '$1x');
+pluralize.addPluralRule(/m(a|e)n$/, 'men');
 
-pluralize.addSingularRule(/s$/i, '');
-pluralize.addSingularRule(/(ss)$/i, '$1');
-pluralize.addSingularRule(/(n)ews$/i, '$1ews');
-pluralize.addSingularRule(/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(sis|ses)$/i, '$1sis');
-pluralize.addSingularRule(/(^analy)(sis|ses)$/i, '$1sis');
-pluralize.addSingularRule(/([^f])ves$/i, '$1fe');
-pluralize.addSingularRule(/([aolr])ves$/i, '$1f');
-pluralize.addSingularRule(/(hive|tive|drive)s$/i, '$1');
-pluralize.addSingularRule(/([^aeiouy]|qu)ies$/i, '$1y');
-pluralize.addSingularRule(/(^[pl]ie|tie|zombie)s$/i, '$1');
-pluralize.addSingularRule(/(x|ch|ss|sh|zz)es$/i, '$1');
-pluralize.addSingularRule(/^(m|l)ice$/i, '$1ouse');
-pluralize.addSingularRule(/(bus|alias|[mpst]us|atlas|gas)(es)?$/i, '$1');
-pluralize.addSingularRule(/(o)es$/i, '$1');
-pluralize.addSingularRule(/^(canoe)s$/i, '$1');
-pluralize.addSingularRule(/(shoe|movie|move)s$/i, '$1');
-pluralize.addSingularRule(/(cris|test|diagnos)(is|es)$/i, '$1is');
-pluralize.addSingularRule(/(octop|vir|radi|nucle|fung|cact|stimul)(us|i)$/i, '$1us');
-pluralize.addSingularRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi)a$/i, '$1um');
-pluralize.addSingularRule(/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)a$/i, '$1on');
-pluralize.addSingularRule(/^(alumn|alg|vertebr)ae$/i, '$1a');
-pluralize.addSingularRule(/(cod|mur|sil|vert|ind)ices$/i, '$1ex');
-pluralize.addSingularRule(/(matr)ices$/i, '$1ix');
-pluralize.addSingularRule(/(pe)(rson|ople)$/i, '$1rson');
-pluralize.addSingularRule(/(child)ren$/i, '$1');
-pluralize.addSingularRule(/(eau)x$/i, '$1');
-pluralize.addSingularRule(/men$/i, 'man');
+pluralize.addSingularRule(/s$/, '');
+pluralize.addSingularRule(/(ss)$/, '$1');
+pluralize.addSingularRule(/(n)ews$/, '$1ews');
+pluralize.addSingularRule(/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(sis|ses)$/, '$1sis');
+pluralize.addSingularRule(/(^analy)(sis|ses)$/, '$1sis');
+pluralize.addSingularRule(/([^f])ves$/, '$1fe');
+pluralize.addSingularRule(/([aolr])ves$/, '$1f');
+pluralize.addSingularRule(/(hive|tive|drive)s$/, '$1');
+pluralize.addSingularRule(/([^aeiouy]|qu)ies$/, '$1y');
+pluralize.addSingularRule(/(^[pl]ie|tie|zombie)s$/, '$1');
+pluralize.addSingularRule(/(x|ch|ss|sh|zz)es$/, '$1');
+pluralize.addSingularRule(/^(m|l)ice$/, '$1ouse');
+pluralize.addSingularRule(/(bus|alias|[mpst]us|atlas|gas)(es)?$/, '$1');
+pluralize.addSingularRule(/(o)es$/, '$1');
+pluralize.addSingularRule(/^(canoe)s$/, '$1');
+pluralize.addSingularRule(/(shoe|movie|move)s$/, '$1');
+pluralize.addSingularRule(/(cris|test|diagnos)(is|es)$/, '$1is');
+pluralize.addSingularRule(/(octop|vir|radi|nucle|fung|cact|stimul)(us|i)$/, '$1us');
+pluralize.addSingularRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi)a$/, '$1um');
+pluralize.addSingularRule(/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)a$/, '$1on');
+pluralize.addSingularRule(/^(alumn|alg|vertebr)ae$/, '$1a');
+pluralize.addSingularRule(/(cod|mur|sil|vert|ind)ices$/, '$1ex');
+pluralize.addSingularRule(/(matr)ices$/, '$1ix');
+pluralize.addSingularRule(/(pe)(rson|ople)$/, '$1rson');
+pluralize.addSingularRule(/(child)ren$/, '$1');
+pluralize.addSingularRule(/(eau)x$/, '$1');
+pluralize.addSingularRule(/men$/, 'man');

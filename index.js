@@ -100,25 +100,18 @@ pluralize.addSingularRule = function (rule, replacement) {
 };
 
 pluralize.addUncountableRule = function (word) {
-  uncountables[word.toLowerCase()] = true;
+  if (typeof word === 'string') {
+    return uncountables[word.toLowerCase()] = true;
+  }
+
+  // Set singular and plural references for the word
+  pluralize.addPluralRule(word, '$&');
+  pluralize.addSingularRule(word, '$&');
 };
 
 pluralize.addIrregularRule = function (singular, plural) {
-  irregular[singular] = plural; // Hashed pattern
+  irregular[singular] = plural; // Hashed pattern for faster lookup
 };
-
-// http://en.wikipedia.org/wiki/English_plural#Singulars_without_plurals
-[
-'advice', 'agenda', 'bison', 'bream', 'buffalo', 'carp', 'chassis',
-'cod', 'cooperation', 'corps', 'digestion', 'debris', 'deer', 'diabetes',
-'energy', 'equipment', 'elk', 'excretion', 'expertise', 'fish', 'flounder',
-'gallows', 'graffiti', 'headquarters', 'health', 'herpes', 'highjinks',
-'homework', 'information', 'jeans', 'justice', 'labour', 'machinery',
-'mackerel', 'media', 'mews', 'money', 'moose', 'news', 'pike', 'plankton',
-'pliers', 'pollution', 'rain', 'rice', 'salmon', 'scissors', 'series',
-'sewage', 'sheep', 'shrimp', 'species', 'staff', 'swine', 'trout',
-'tuna', 'whiting', 'wildebeest'
-].forEach(pluralize.addUncountableRule);
 
 // Pronouns
 pluralize.addIrregularRule('i', 'we');
@@ -142,37 +135,39 @@ pluralize.addIrregularRule('portico', 'porticos');
 pluralize.addIrregularRule('pro', 'pros');
 pluralize.addIrregularRule('quarto', 'quartos');
 pluralize.addIrregularRule('kimono', 'kimonos');
-// Everything else
+// Anything else
 pluralize.addIrregularRule('ox', 'oxen');
 pluralize.addIrregularRule('die', 'dice');
 pluralize.addIrregularRule('foot', 'feet');
-pluralize.addIrregularRule('turf', 'turfs');
 pluralize.addIrregularRule('goose', 'geese');
 pluralize.addIrregularRule('quiz', 'quizzes');
 pluralize.addIrregularRule('human', 'humans');
 pluralize.addIrregularRule('proof', 'proofs');
+pluralize.addIrregularRule('carve', 'carves');
+pluralize.addIrregularRule('valve', 'valves');
 pluralize.addIrregularRule('thief', 'thieves');
+pluralize.addIrregularRule('groove', 'grooves');
 pluralize.addIrregularRule('stigma', 'stigmata');
 // Ends with `us`
-pluralize.addIrregularRule('alumnus', 'alumni');
-pluralize.addIrregularRule('syllabus', 'syllabi');
 pluralize.addIrregularRule('genus', 'genera');
 pluralize.addIrregularRule('viscus', 'viscera');
+pluralize.addIrregularRule('syllabus', 'syllabi');
 
 pluralize.addPluralRule(/$/, 's');
 pluralize.addPluralRule(/s$/, 's');
 pluralize.addPluralRule(/(ese)$/, '$1');
 pluralize.addPluralRule(/^(ax|test)is$/, '$1es');
 pluralize.addPluralRule(/([au]s)$/, '$1es');
+pluralize.addPluralRule(/(e[mn]u)s?$/, '$1s');
 pluralize.addPluralRule(/([^l]ias|[aeiou]las|[emjzr]as)$/, '$1');
-pluralize.addPluralRule(/(octop|vir|radi|nucle|fung|cact|stimul)(us|i)$/, '$1i');
+pluralize.addPluralRule(/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc)(us|i)$/, '$1i');
 pluralize.addPluralRule(/^(alumn|alg|vertebr)(a|ae)$/, '$1ae');
 pluralize.addPluralRule(/(bu)s$/, '$1ses');
 pluralize.addPluralRule(/([^aeiou])o$/, '$1oes');
 pluralize.addPluralRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi)(a|um)$/, '$1a');
 pluralize.addPluralRule(/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)(a|on)$/, '$1a');
 pluralize.addPluralRule(/sis$/, 'ses');
-pluralize.addPluralRule(/(?:([^f])fe|([aolr])f)$/, '$1$2ves');
+pluralize.addPluralRule(/(?:([^f])fe|(ar|l|[eo][ao])f)$/, '$1$2ves');
 pluralize.addPluralRule(/([^aeiouy]|qu)y$/, '$1ies');
 pluralize.addPluralRule(/(x|ch|ss|sh|zz)$/, '$1es');
 pluralize.addPluralRule(/(matr|cod|mur|sil|vert|ind)(ix|ex)$/, '$1ices');
@@ -184,22 +179,22 @@ pluralize.addPluralRule(/m(a|e)n$/, 'men');
 
 pluralize.addSingularRule(/s$/, '');
 pluralize.addSingularRule(/(ss)$/, '$1');
-pluralize.addSingularRule(/(n)ews$/, '$1ews');
 pluralize.addSingularRule(/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(sis|ses)$/, '$1sis');
 pluralize.addSingularRule(/(^analy)(sis|ses)$/, '$1sis');
-pluralize.addSingularRule(/([^f])ves$/, '$1fe');
-pluralize.addSingularRule(/([aolr])ves$/, '$1f');
-pluralize.addSingularRule(/(hive|tive|drive)s$/, '$1');
+pluralize.addSingularRule(/([^afor])ves$/, '$1fe');
+pluralize.addSingularRule(/(hive|tive|dr?ive)s$/, '$1');
+pluralize.addSingularRule(/(ar|l|[eo][ao])ves$/, '$1f');
 pluralize.addSingularRule(/([^aeiouy]|qu)ies$/, '$1y');
 pluralize.addSingularRule(/(^[pl]ie|tie|zombie)s$/, '$1');
 pluralize.addSingularRule(/(x|ch|ss|sh|zz)es$/, '$1');
 pluralize.addSingularRule(/^(m|l)ice$/, '$1ouse');
 pluralize.addSingularRule(/(bus|alias|[mpst]us|atlas|gas)(es)?$/, '$1');
+pluralize.addSingularRule(/(e[mn]u)s?$/, '$1');
 pluralize.addSingularRule(/(o)es$/, '$1');
 pluralize.addSingularRule(/^(canoe)s$/, '$1');
 pluralize.addSingularRule(/(shoe|movie|move)s$/, '$1');
 pluralize.addSingularRule(/(cris|test|diagnos)(is|es)$/, '$1is');
-pluralize.addSingularRule(/(octop|vir|radi|nucle|fung|cact|stimul)(us|i)$/, '$1us');
+pluralize.addSingularRule(/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc)(us|i)$/, '$1us');
 pluralize.addSingularRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi)a$/, '$1um');
 pluralize.addSingularRule(/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)a$/, '$1on');
 pluralize.addSingularRule(/^(alumn|alg|vertebr)ae$/, '$1a');
@@ -209,3 +204,25 @@ pluralize.addSingularRule(/(pe)(rson|ople)$/, '$1rson');
 pluralize.addSingularRule(/(child)ren$/, '$1');
 pluralize.addSingularRule(/(eau)x$/, '$1');
 pluralize.addSingularRule(/men$/, 'man');
+
+// http://en.wikipedia.org/wiki/English_plural#Singulars_without_plurals
+[
+'advice', 'agenda', 'bison', 'bream', 'buffalo', 'carp', 'chassis',
+'cod', 'cooperation', 'corps', 'digestion', 'debris', 'diabetes',
+'energy', 'equipment', 'elk', 'excretion', 'expertise', 'flounder',
+'gallows', 'graffiti', 'headquarters', 'health', 'herpes', 'highjinks',
+'homework', 'information', 'jeans', 'justice', 'labour', 'machinery',
+'mackerel', 'media', 'mews', 'money', 'moose', 'news', 'pike', 'plankton',
+'pliers', 'pollution', 'rain', 'rice', 'salmon', 'scissors', 'series',
+'sewage', 'shrimp', 'species', 'staff', 'swine', 'trout', 'tuna',
+'whiting', 'wildebeest'
+].forEach(pluralize.addUncountableRule);
+
+// Uncountable regexes
+pluralize.addUncountableRule(/pox$/);
+pluralize.addUncountableRule(/ois$/);
+pluralize.addUncountableRule(/deer$/);
+pluralize.addUncountableRule(/fish$/);
+pluralize.addUncountableRule(/sheep$/);
+pluralize.addUncountableRule(/measles$/);
+pluralize.addUncountableRule(/[nrlm]ese$/);

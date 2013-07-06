@@ -1,14 +1,15 @@
 {
   "name": "pluralize",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Pluralize and singularize words with ease",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test.js"
   },
-  "repository": "https://github.com/blakeembrey/pluralize.git",
+  "repository": "https://github.com/blakeembrey/node-pluralize.git",
   "keywords": [
     "plural",
+    "plurals",
     "pluralize",
     "singular",
     "singularize"

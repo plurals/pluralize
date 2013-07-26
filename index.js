@@ -141,6 +141,7 @@ pluralize.addIrregularRule('die', 'dice');
 pluralize.addIrregularRule('foot', 'feet');
 pluralize.addIrregularRule('goose', 'geese');
 pluralize.addIrregularRule('quiz', 'quizzes');
+pluralize.addIrregularRule('person', 'people');
 pluralize.addIrregularRule('human', 'humans');
 pluralize.addIrregularRule('proof', 'proofs');
 pluralize.addIrregularRule('carve', 'carves');

@@ -147,11 +147,29 @@ pluralize.addIrregularRule('carve', 'carves');
 pluralize.addIrregularRule('valve', 'valves');
 pluralize.addIrregularRule('thief', 'thieves');
 pluralize.addIrregularRule('groove', 'grooves');
+// Greek-Originated -mata words
 pluralize.addIrregularRule('stigma', 'stigmata');
+pluralize.addIrregularRule('stoma', 'stomata');
+pluralize.addIrregularRule('dogma', 'dogmata');
+pluralize.addIrregularRule('lemma', 'lemmata');
+pluralize.addIrregularRule('schema', 'schemata'); // Technically Correct
+pluralize.addIrregularRule('anathema', 'anathemata');
 // Ends with `us`
 pluralize.addIrregularRule('genus', 'genera');
 pluralize.addIrregularRule('viscus', 'viscera');
 pluralize.addIrregularRule('syllabus', 'syllabi');
+pluralize.addIrregularRule('uterus', 'uteri'); 
+// Latin 2nd Declension Neuter-Originated English Words
+pluralize.addIrregularRule('referendum', 'referenda');
+pluralize.addIrregularRule('datum', 'data');
+pluralize.addIrregularRule('bacterium', 'bacteria');
+pluralize.addIrregularRule('curriculum', 'curricula');
+pluralize.addIrregularRule('ovum', 'ova');
+pluralize.addIrregularRule('automatum', 'automata');
+// Latin 3rd Decelnsion Neuter-Originated English Words
+pluralize.addIrregularRule('phenomenon', 'phenomena');
+pluralize.addIrregularRule('criterion', 'criteria');
+pluralize.addIrregularRule('polyhedron', 'polyhedra');
 
 pluralize.addPluralRule(/$/, 's');
 pluralize.addPluralRule(/s$/, 's');

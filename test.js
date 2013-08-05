@@ -69,7 +69,7 @@ tests = [
   ['medium', 'mediums'],
   ['census', 'censuses'],
   ['genus', 'genera'],
-  ['dogma', 'dogmas'],
+  ['dogma', 'dogmata'],
   ['life', 'lives'],
   ['hive', 'hives'],
   ['kiss', 'kisses'],
@@ -92,7 +92,7 @@ tests = [
   ['kangaroo', 'kangaroos'],
   ['atlas', 'atlases'],
   ['stigma', 'stigmata'],
-  ['schema', 'schemas'],
+  ['schema', 'schemata'],
   ['phenomenon', 'phenomena'],
   ['diagnosis', 'diagnoses'],
   ['mongoose', 'mongooses'],
@@ -233,7 +233,14 @@ tests = [
   ['fax', 'faxes'],
   ['nut', 'nuts'],
   ['crust', 'crusts'],
-  ['chickenpox', 'chickenpox']
+  ['chickenpox', 'chickenpox'],
+  ['stigma', 'stigmata'],
+  ['lemma', 'lemmata'],
+  ['anathema', 'anathemata'],
+  ['locus', 'loci'],
+  ['automatum', 'automata'],
+  ['curriculum', 'curricula'],
+  ['quorum', 'quora']
 ];
 
 describe('pluralize', function () {

@@ -239,7 +239,8 @@ tests = [
   ['anathema', 'anathemata'],
   ['locus', 'loci'],
   ['automatum', 'automata'],
-  ['curriculum', 'curricula']
+  ['curriculum', 'curricula'],
+  ['quorum', 'quora']
 ];
 
 describe('pluralize', function () {

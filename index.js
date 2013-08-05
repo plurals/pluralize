@@ -163,6 +163,7 @@ pluralize.addIrregularRule('uterus', 'uteri');
 // Ends with `um`
 pluralize.addIrregularRule('curriculum', 'curricula');
 pluralize.addIrregularRule('automatum', 'automata');
+pluralize.addIrregularRule('quorum', 'quora');
 
 pluralize.addPluralRule(/$/, 's');
 pluralize.addPluralRule(/s$/, 's');

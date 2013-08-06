@@ -16,10 +16,14 @@ tests = [
   ['news', 'news'],
   ['reindeer', 'reindeer'],
   ['starfish', 'starfish'],
+  ['chickenpox', 'chickenpox'],
   // Pluralization
   ['man', 'men'],
+  ['superman', 'supermen'],
   ['ox', 'oxen'],
   ['bus', 'buses'],
+  ['airbus', 'airbuses'],
+  ['railbus', 'railbuses'],
   ['wife', 'wives'],
   ['guest', 'guests'],
   ['thing', 'things'],
@@ -233,14 +237,25 @@ tests = [
   ['fax', 'faxes'],
   ['nut', 'nuts'],
   ['crust', 'crusts'],
-  ['chickenpox', 'chickenpox'],
   ['stigma', 'stigmata'],
   ['lemma', 'lemmata'],
   ['anathema', 'anathemata'],
   ['locus', 'loci'],
+  ['uterus', 'uteri'],
   ['automatum', 'automata'],
   ['curriculum', 'curricula'],
-  ['quorum', 'quora']
+  ['quorum', 'quora'],
+  ['genie', 'genies'],
+  ['genius', 'geniuses'],
+  ['flower', 'flowers'],
+  ['crash', 'crashes'],
+  ['soul', 'souls'],
+  ['career', 'careers'],
+  ['planet', 'planets'],
+  ['son', 'sons'],
+  ['sun', 'suns'],
+  ['drink', 'drinks'],
+  ['diploma', 'diplomas']
 ];
 
 describe('pluralize', function () {

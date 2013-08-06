@@ -110,61 +110,56 @@ pluralize.addUncountableRule = function (word) {
 };
 
 pluralize.addIrregularRule = function (singular, plural) {
-  irregular[singular] = plural; // Hashed pattern for faster lookup
+  irregular[singular.toLowerCase()] = plural.toLowerCase();
 };
 
 // Pronouns
-pluralize.addIrregularRule('i', 'we');
-pluralize.addIrregularRule('me', 'us');
-pluralize.addIrregularRule('he', 'they');
-pluralize.addIrregularRule('she', 'they');
-pluralize.addIrregularRule('them', 'them');
-pluralize.addIrregularRule('myself', 'ourselves');
+pluralize.addIrregularRule('I',        'we');
+pluralize.addIrregularRule('me',       'us');
+pluralize.addIrregularRule('he',       'they');
+pluralize.addIrregularRule('she',      'they');
+pluralize.addIrregularRule('them',     'them');
+pluralize.addIrregularRule('myself',   'ourselves');
 pluralize.addIrregularRule('yourself', 'yourselves');
-pluralize.addIrregularRule('itself', 'themselves');
-pluralize.addIrregularRule('herself', 'themselves');
-pluralize.addIrregularRule('himself', 'themselves');
+pluralize.addIrregularRule('itself',   'themselves');
+pluralize.addIrregularRule('herself',  'themselves');
+pluralize.addIrregularRule('himself',  'themselves');
 pluralize.addIrregularRule('themself', 'themselves');
 // Words ending in with a consonant and `o`
-pluralize.addIrregularRule('canto', 'cantos');
-pluralize.addIrregularRule('hetero', 'heteros');
-pluralize.addIrregularRule('photo', 'photos');
-pluralize.addIrregularRule('zero', 'zeros');
-pluralize.addIrregularRule('piano', 'pianos');
+pluralize.addIrregularRule('canto',   'cantos');
+pluralize.addIrregularRule('hetero',  'heteros');
+pluralize.addIrregularRule('photo',   'photos');
+pluralize.addIrregularRule('zero',    'zeros');
+pluralize.addIrregularRule('piano',   'pianos');
 pluralize.addIrregularRule('portico', 'porticos');
-pluralize.addIrregularRule('pro', 'pros');
-pluralize.addIrregularRule('quarto', 'quartos');
-pluralize.addIrregularRule('kimono', 'kimonos');
+pluralize.addIrregularRule('pro',     'pros');
+pluralize.addIrregularRule('quarto',  'quartos');
+pluralize.addIrregularRule('kimono',  'kimonos');
 // Anything else
-pluralize.addIrregularRule('ox', 'oxen');
-pluralize.addIrregularRule('die', 'dice');
-pluralize.addIrregularRule('foot', 'feet');
-pluralize.addIrregularRule('goose', 'geese');
-pluralize.addIrregularRule('quiz', 'quizzes');
-pluralize.addIrregularRule('human', 'humans');
-pluralize.addIrregularRule('proof', 'proofs');
-pluralize.addIrregularRule('carve', 'carves');
-pluralize.addIrregularRule('valve', 'valves');
-pluralize.addIrregularRule('thief', 'thieves');
+pluralize.addIrregularRule('ox',     'oxen');
+pluralize.addIrregularRule('die',    'dice');
+pluralize.addIrregularRule('foot',   'feet');
+pluralize.addIrregularRule('goose',  'geese');
+pluralize.addIrregularRule('quiz',   'quizzes');
+pluralize.addIrregularRule('human',  'humans');
+pluralize.addIrregularRule('proof',  'proofs');
+pluralize.addIrregularRule('carve',  'carves');
+pluralize.addIrregularRule('valve',  'valves');
+pluralize.addIrregularRule('thief',  'thieves');
+pluralize.addIrregularRule('genie',  'genies');
 pluralize.addIrregularRule('groove', 'grooves');
-// Ends with `ma`
-pluralize.addIrregularRule('stigma', 'stigmata');
-pluralize.addIrregularRule('stoma', 'stomata');
-pluralize.addIrregularRule('dogma', 'dogmata');
-pluralize.addIrregularRule('lemma', 'lemmata');
-pluralize.addIrregularRule('schema', 'schemata'); // Technically Correct
-pluralize.addIrregularRule('anathema', 'anathemata');
 // Ends with `us`
-pluralize.addIrregularRule('genus', 'genera');
+pluralize.addIrregularRule('genus',  'genera');
 pluralize.addIrregularRule('viscus', 'viscera');
-pluralize.addIrregularRule('syllabus', 'syllabi'); 
-pluralize.addIrregularRule('locus', 'loci');
-pluralize.addIrregularRule('uterus', 'uteri');
-// Ends with `um`
-pluralize.addIrregularRule('curriculum', 'curricula');
-pluralize.addIrregularRule('automatum', 'automata');
-pluralize.addIrregularRule('quorum', 'quora');
+// Ends with `ma`
+pluralize.addIrregularRule('stigma',   'stigmata');
+pluralize.addIrregularRule('stoma',    'stomata');
+pluralize.addIrregularRule('dogma',    'dogmata');
+pluralize.addIrregularRule('lemma',    'lemmata');
+pluralize.addIrregularRule('schema',   'schemata');
+pluralize.addIrregularRule('anathema', 'anathemata');
 
+// Pluralization regular expressions
 pluralize.addPluralRule(/$/, 's');
 pluralize.addPluralRule(/s$/, 's');
 pluralize.addPluralRule(/(ese)$/, '$1');
@@ -172,27 +167,28 @@ pluralize.addPluralRule(/^(ax|test)is$/, '$1es');
 pluralize.addPluralRule(/([au]s)$/, '$1es');
 pluralize.addPluralRule(/(e[mn]u)s?$/, '$1s');
 pluralize.addPluralRule(/([^l]ias|[aeiou]las|[emjzr]as)$/, '$1');
-pluralize.addPluralRule(/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc)(us|i)$/, '$1i');
-pluralize.addPluralRule(/^(alumn|alg|vertebr)(a|ae)$/, '$1ae');
 pluralize.addPluralRule(/(bu)s$/, '$1ses');
+pluralize.addPluralRule(/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc)(?:us|i)$/, '$1i');
+pluralize.addPluralRule(/^(alumn|alg|vertebr)(?:a|ae)$/, '$1ae');
 pluralize.addPluralRule(/([^aeiou])o$/, '$1oes');
-pluralize.addPluralRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi)(a|um)$/, '$1a');
-pluralize.addPluralRule(/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)(a|on)$/, '$1a');
+pluralize.addPluralRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)(?:a|um)$/, '$1a');
+pluralize.addPluralRule(/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)(?:a|on)$/, '$1a');
 pluralize.addPluralRule(/sis$/, 'ses');
 pluralize.addPluralRule(/(?:([^f])fe|(ar|l|[eo][ao])f)$/, '$1$2ves');
 pluralize.addPluralRule(/([^aeiouy]|qu)y$/, '$1ies');
 pluralize.addPluralRule(/(x|ch|ss|sh|zz)$/, '$1es');
-pluralize.addPluralRule(/(matr|cod|mur|sil|vert|ind)(ix|ex)$/, '$1ices');
+pluralize.addPluralRule(/(matr|cod|mur|sil|vert|ind)(?:ix|ex)$/, '$1ices');
 pluralize.addPluralRule(/^(m|l)(ice|ouse)$/, '$1ice');
 pluralize.addPluralRule(/(pe)(rson|ople)$/, '$1ople');
 pluralize.addPluralRule(/(child)(ren)?$/, '$1ren');
 pluralize.addPluralRule(/(eau)x?$/, '$1x');
 pluralize.addPluralRule(/m(a|e)n$/, 'men');
 
+// Singularization regular expressions
 pluralize.addSingularRule(/s$/, '');
 pluralize.addSingularRule(/(ss)$/, '$1');
-pluralize.addSingularRule(/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(sis|ses)$/, '$1sis');
-pluralize.addSingularRule(/(^analy)(sis|ses)$/, '$1sis');
+pluralize.addSingularRule(/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(?:sis|ses)$/, '$1sis');
+pluralize.addSingularRule(/(^analy)(?:sis|ses)$/, '$1sis');
 pluralize.addSingularRule(/([^afor])ves$/, '$1fe');
 pluralize.addSingularRule(/(hive|tive|dr?ive)s$/, '$1');
 pluralize.addSingularRule(/(ar|l|[eo][ao])ves$/, '$1f');
@@ -200,14 +196,14 @@ pluralize.addSingularRule(/([^aeiouy]|qu)ies$/, '$1y');
 pluralize.addSingularRule(/(^[pl]ie|tie|zombie)s$/, '$1');
 pluralize.addSingularRule(/(x|ch|ss|sh|zz)es$/, '$1');
 pluralize.addSingularRule(/^(m|l)ice$/, '$1ouse');
-pluralize.addSingularRule(/(bus|alias|[mpst]us|atlas|gas)(es)?$/, '$1');
+pluralize.addSingularRule(/(bus|alias|[impst]us|atlas|gas)(?:es)?$/, '$1');
 pluralize.addSingularRule(/(e[mn]u)s?$/, '$1');
 pluralize.addSingularRule(/(o)es$/, '$1');
 pluralize.addSingularRule(/^(canoe)s$/, '$1');
 pluralize.addSingularRule(/(shoe|movie|move)s$/, '$1');
-pluralize.addSingularRule(/(cris|test|diagnos)(is|es)$/, '$1is');
-pluralize.addSingularRule(/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc)(us|i)$/, '$1us');
-pluralize.addSingularRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi)a$/, '$1um');
+pluralize.addSingularRule(/(cris|test|diagnos)(?:is|es)$/, '$1is');
+pluralize.addSingularRule(/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc)(?:us|i)$/, '$1us');
+pluralize.addSingularRule(/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)a$/, '$1um');
 pluralize.addSingularRule(/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)a$/, '$1on');
 pluralize.addSingularRule(/^(alumn|alg|vertebr)ae$/, '$1a');
 pluralize.addSingularRule(/(cod|mur|sil|vert|ind)ices$/, '$1ex');

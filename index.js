@@ -147,11 +147,23 @@ pluralize.addIrregularRule('carve', 'carves');
 pluralize.addIrregularRule('valve', 'valves');
 pluralize.addIrregularRule('thief', 'thieves');
 pluralize.addIrregularRule('groove', 'grooves');
+// Ends with `ma`
 pluralize.addIrregularRule('stigma', 'stigmata');
+pluralize.addIrregularRule('stoma', 'stomata');
+pluralize.addIrregularRule('dogma', 'dogmata');
+pluralize.addIrregularRule('lemma', 'lemmata');
+pluralize.addIrregularRule('schema', 'schemata'); // Technically Correct
+pluralize.addIrregularRule('anathema', 'anathemata');
 // Ends with `us`
 pluralize.addIrregularRule('genus', 'genera');
 pluralize.addIrregularRule('viscus', 'viscera');
-pluralize.addIrregularRule('syllabus', 'syllabi');
+pluralize.addIrregularRule('syllabus', 'syllabi'); 
+pluralize.addIrregularRule('locus', 'loci');
+pluralize.addIrregularRule('uterus', 'uteri');
+// Ends with `um`
+pluralize.addIrregularRule('curriculum', 'curricula');
+pluralize.addIrregularRule('automatum', 'automata');
+pluralize.addIrregularRule('quorum', 'quora');
 
 pluralize.addPluralRule(/$/, 's');
 pluralize.addPluralRule(/s$/, 's');

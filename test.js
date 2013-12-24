@@ -1,10 +1,9 @@
-/*global describe,it*/
-var assert = require('assert'),
-    plural = require('./'),
-    tests;
+/* global describe, it */
+var assert    = require('assert');
+var pluralize = require('./');
 
-tests = [
-  // Uncountables
+var tests = [
+  // Uncountables.
   ['fish', 'fish'],
   ['media', 'media'],
   ['moose', 'moose'],
@@ -17,7 +16,7 @@ tests = [
   ['reindeer', 'reindeer'],
   ['starfish', 'starfish'],
   ['chickenpox', 'chickenpox'],
-  // Pluralization
+  // Pluralization.
   ['man', 'men'],
   ['superman', 'supermen'],
   ['ox', 'oxen'],
@@ -58,15 +57,15 @@ tests = [
   ['woman', 'women'],
   ['formula', 'formulas'],
   ['polyhedron', 'polyhedra'],
-  ['index', 'indices'], // Maybe `indexes`
+  ['index', 'indices'], // Maybe `indexes`.
   ['matrix', 'matrices'],
   ['vertex', 'vertices'],
   ['ax', 'axes'], // How to go back to `axis` v `axe`, or is it `ax`?
   ['crisis', 'crises'],
-  ['criterion', 'criteria'], // Should this just go one way, no one says `criterion`
+  ['criterion', 'criteria'],
   ['phenomenon', 'phenomena'],
   ['addendum', 'addenda'],
-  ['datum', 'data'], // Another which really only goes one way
+  ['datum', 'data'],
   ['forum', 'forums'],
   ['millennium', 'millennia'],
   ['alumnus', 'alumni'],
@@ -91,7 +90,7 @@ tests = [
   ['viscus', 'viscera'],
   ['cactus', 'cacti'],
   ['hippopotamus', 'hippopotamuses'],
-  ['octopus', 'octopi'], // `octopuses`, `octopodes`
+  ['octopus', 'octopi'],
   ['platypus', 'platypuses'],
   ['kangaroo', 'kangaroos'],
   ['atlas', 'atlases'],
@@ -137,7 +136,7 @@ tests = [
   ['penny', 'pennies'],
   ['campus', 'campuses'],
   ['platypus', 'platypuses'],
-  ['virus', 'viri'], // `viruses`
+  ['virus', 'viri'],
   ['bureau', 'bureaux'],
   ['kiwi', 'kiwis'],
   ['wiki', 'wikis'],
@@ -261,70 +260,82 @@ tests = [
 describe('pluralize', function () {
   it('should pluralize words', function () {
     tests.forEach(function (word) {
-      assert.equal(plural.plural(word[0]), word[1]);
+      assert.equal(pluralize.plural(word[0]), word[1]);
     });
   });
 
   it('should singilarize words', function () {
     tests.forEach(function (word) {
-      assert.equal(plural.singular(word[1]), word[0]);
+      assert.equal(pluralize.singular(word[1]), word[0]);
     });
   });
 
   it('should change depending on count', function () {
     tests.forEach(function (word) {
-      assert.equal(plural(word[0], 1), word[0]);
-      assert.equal(plural(word[0], 5), word[1]);
-      assert.equal(plural(word[1], 1), word[0]);
-      assert.equal(plural(word[1], 5), word[1]);
+      assert.equal(pluralize(word[0], 1), word[0]);
+      assert.equal(pluralize(word[0], 5), word[1]);
+      assert.equal(pluralize(word[1], 1), word[0]);
+      assert.equal(pluralize(word[1], 5), word[1]);
     });
   });
 
   it('should prepend the count to the word', function () {
     tests.forEach(function (word) {
-      assert.equal(plural(word[0], 1, true), '1 ' + word[0]);
-      assert.equal(plural(word[0], 5, true), '5 ' + word[1]);
-      assert.equal(plural(word[1], 1, true), '1 ' + word[0]);
-      assert.equal(plural(word[1], 5, true), '5 ' + word[1]);
+      assert.equal(pluralize(word[0], 1, true), '1 ' + word[0]);
+      assert.equal(pluralize(word[0], 5, true), '5 ' + word[1]);
+      assert.equal(pluralize(word[1], 1, true), '1 ' + word[0]);
+      assert.equal(pluralize(word[1], 5, true), '5 ' + word[1]);
     });
   });
 
   it('should work with capitalized words', function () {
     tests.forEach(function (word) {
-      assert.equal(plural(word[0].toUpperCase()), word[1].toUpperCase());
+      assert.equal(pluralize(word[0].toUpperCase()), word[1].toUpperCase());
     });
   });
 
   it('should work with title-cased words', function () {
     tests.forEach(function (word) {
       assert.equal(
-        plural(word[0][0].toUpperCase() + word[0].substr(1)), // Title-case
+        pluralize(word[0][0].toUpperCase() + word[0].substr(1)),
         word[1][0].toUpperCase() + word[1].substr(1)
       );
     });
   });
 
   it('should allow new uncountable rules', function () {
-    assert.equal(plural('paper'), 'papers');
-    plural.addUncountableRule('paper');
-    assert.equal(plural('paper'), 'paper');
+    assert.equal(pluralize('paper'), 'papers');
+    pluralize.addUncountableRule('paper');
+    assert.equal(pluralize('paper'), 'paper');
   });
 
   it('should allow new irregular words', function () {
-    assert.equal(plural('irregular'), 'irregulars');
-    plural.addIrregularRule('irregular', 'regular');
-    assert.equal(plural('irregular'), 'regular');
+    assert.equal(pluralize('irregular'), 'irregulars');
+    pluralize.addIrregularRule('irregular', 'regular');
+    assert.equal(pluralize('irregular'), 'regular');
   });
 
   it('should allow new plural matching rules', function () {
-    assert.equal(plural('regex'), 'regexes');
-    plural.addPluralRule(/gex$/i, 'gexii');
-    assert.equal(plural('regex'), 'regexii');
+    assert.equal(pluralize.plural('regex'), 'regexes');
+    pluralize.addPluralRule(/gex$/i, 'gexii');
+    assert.equal(pluralize.plural('regex'), 'regexii');
   });
 
   it('should allow new singular matching rules', function () {
-    assert.equal(plural.singular('singles'), 'single');
-    plural.addSingularRule(/singles$/, 'singular');
-    assert.equal(plural.singular('singles'), 'singular');
+    assert.equal(pluralize.singular('singles'), 'single');
+    pluralize.addSingularRule(/singles$/, 'singular');
+    assert.equal(pluralize.singular('singles'), 'singular');
+  });
+
+  it('should allow new plural matching rules to be strings', function () {
+    assert.equal(pluralize.plural('person'), 'people');
+    pluralize.addPluralRule('person', 'peeps');
+    assert.equal(pluralize.plural('person'), 'peeps');
+  });
+
+  it('should allow new singular matching rules to be strings', function () {
+    assert.equal(pluralize.singular('mornings'), 'morning');
+    pluralize.addSingularRule('mornings', 'suck');
+    assert.equal(pluralize.singular('mornings'), 'suck');
   });
 });

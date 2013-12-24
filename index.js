@@ -1,119 +1,186 @@
-var singularRules  = [],
-    pluralizeRules = [],
-    // Using objects for fast lookups
-    uncountables   = {},
-    irregular      = {},
-    sanitizeWord, sanitizeRule,
-    restoreCase,
-    pluralize,
-    plural, singular;
+var singularRules  = [];
+var pluralizeRules = [];
 
-sanitizeRule = function (rule) {
+// Use objects for simpler lookups.
+var uncountables     = {};
+var irregularPlurals = {};
+var irregularSingles = {};
+
+/**
+ * Sanitize a pluralization rule to a usable regular expression.
+ *
+ * @param  {*}      rule
+ * @return {RegExp}
+ */
+var sanitizeRule = function (rule) {
   if (typeof rule === 'string') {
-    return new RegExp('^' + rule + '$', 'i');
+    return new RegExp('^' + rule + '$');
   }
+
   return rule;
 };
 
-restoreCase = function (token) {
-  // All capital letters
+/**
+ * Pass in a word token to produce a function that can replicate the case on
+ * another word.
+ *
+ * @param  {String}   token
+ * @return {Function}
+ */
+var restoreCase = function (token) {
+  // Capitalized word.
   if (token === token.toUpperCase()) {
     return function (word) {
       return word.toUpperCase();
     };
   }
-  // Title cased word
+  // Title-cased word.
   if (token[0] === token[0].toUpperCase()) {
     return function (word) {
       return word[0].toUpperCase() + word.substr(1);
     };
   }
 
+  // Regular lower-cased word.
   return function (word) {
     return word.toLowerCase();
   };
 };
 
-// Conveniently, the word will always lowercased when passes in here
-sanitizeWord = function (word, collection) {
-  if (word.length < 2) { return word; } // Empty string or no word to fix
+/**
+ * Sanitize a word by passing in the word and sanitization rules.
+ *
+ * @param  {String}   word
+ * @param  {Array}    collection
+ * @return {String}
+ */
+var sanitizeWord = function (word, collection) {
+  // Empty string or doesn't need fixing.
+  if (!word.length || uncountables[word]) {
+    return word;
+  }
 
-  var found, match;
-  if (typeof uncountables[word] === 'undefined') {
-    found = collection.some(function (rule) {
-      match = rule;
-      return word.match(rule[0]);
-    });
-    if (found) {
-      return word.replace(match[0], match[1]);
+  // Iterate over the sanitization rules and attempt to use ones that match.
+  for (var i = 0; i < collection.length; i++) {
+    var rule = collection[i];
+
+    // If the rule matches the word, return the replacement.
+    if (rule[0].test(word)) {
+      return word.replace(rule[0], rule[1]);
     }
   }
+
   return word;
 };
 
-pluralize = module.exports = function (word, count, inclusive) {
-  count = +count || 0; // If the numbered count is falsy, use `0`
+/**
+ * Replace a word with the updated word.
+ *
+ * @param  {Object}   replaceMap
+ * @param  {Object}   keepMap
+ * @param  {Array}    collection
+ * @return {Function}
+ */
+var replaceWord = function (replaceMap, keepMap, collection) {
+  return function (word) {
+    var token   = ('' + word).trim().toLowerCase();
+    var restore = restoreCase(word);
 
-  return (inclusive ? count + ' ' : '') + (count === 1 ? singular(word) : plural(word));
-};
-
-plural = pluralize.plural = function (word) {
-  var restoreWord = restoreCase(word);
-  word            = word.trim().toLowerCase();
-
-  if (irregular[word]) { return restoreWord(irregular[word]); }
-
-  var found;
-  Object.keys(irregular).some(function (singular) {
-    if (irregular[singular] === word) {
-      return found = word;
+    // Check against the keep object map.
+    if (keepMap[token]) {
+      return restore(token);
     }
-  });
-  if (found) { return restoreWord(found); }
 
-  return restoreWord(sanitizeWord(word, pluralizeRules));
-};
-
-singular = pluralize.singular = function (word) {
-  var restoreWord = restoreCase(word);
-  word            = word.trim().toLowerCase();
-
-  if (irregular[word]) { return restoreWord(word); }
-
-  var found;
-  Object.keys(irregular).some(function (singular) {
-    if (irregular[singular] === word) {
-      return found = singular;
+    // Check against the replacement map for a direct word replacement.
+    if (replaceMap[token]) {
+      return restore(replaceMap[token]);
     }
-  });
-  if (found) { return restoreWord(found); }
 
-  return restoreWord(sanitizeWord(word, singularRules));
+    return restore(sanitizeWord(token, collection));
+  };
 };
 
+/**
+ * Pluralize or singularize a word based on the passed in count.
+ *
+ * @param  {String}  word
+ * @param  {Number}  count
+ * @param  {Boolean} inclusive
+ * @return {String}
+ */
+var pluralize = module.exports = function (word, count, inclusive) {
+  var pluralized = count === 1 ? singular(word) : plural(word);
+
+  return (inclusive ? (count|0) + ' ' : '') + pluralized;
+};
+
+/**
+ * Pluralize a single word.
+ *
+ * @type {Function}
+ */
+var plural = pluralize.plural = replaceWord(
+  irregularSingles, irregularPlurals, pluralizeRules
+);
+
+/**
+ * Singularize a single word.
+ *
+ * @type {Function}
+ */
+var singular = pluralize.singular = replaceWord(
+  irregularPlurals, irregularSingles, singularRules
+);
+
+/**
+ * Add a pluralization rule to the collection.
+ *
+ * @param {RegExp} rule
+ * @param {String} replacement
+ */
 pluralize.addPluralRule = function (rule, replacement) {
-  pluralizeRules.unshift([ sanitizeRule(rule), replacement ]);
+  pluralizeRules.unshift([sanitizeRule(rule), replacement]);
 };
 
+/**
+ * Add a singularization rule to the collection.
+ *
+ * @param {RegExp} rule
+ * @param {String} replacement
+ */
 pluralize.addSingularRule = function (rule, replacement) {
-  singularRules.unshift([ sanitizeRule(rule), replacement ]);
+  singularRules.unshift([sanitizeRule(rule), replacement]);
 };
 
+/**
+ * Add an uncountable word rule.
+ *
+ * @param {(String|RegExp)} word
+ */
 pluralize.addUncountableRule = function (word) {
   if (typeof word === 'string') {
     return uncountables[word.toLowerCase()] = true;
   }
 
-  // Set singular and plural references for the word
+  // Set singular and plural references for the word.
   pluralize.addPluralRule(word, '$&');
   pluralize.addSingularRule(word, '$&');
 };
 
+/**
+ * Add an irregular word definition.
+ *
+ * @param {String} singular
+ * @param {String} plural
+ */
 pluralize.addIrregularRule = function (singular, plural) {
-  irregular[singular.toLowerCase()] = plural.toLowerCase();
+  irregularPlurals[plural.toLowerCase()]   = singular.toLowerCase();
+  irregularSingles[singular.toLowerCase()] = plural.toLowerCase();
 };
 
-// Pronouns
+/**
+ * Pronouns.
+ */
 pluralize.addIrregularRule('I',        'we');
 pluralize.addIrregularRule('me',       'us');
 pluralize.addIrregularRule('he',       'they');
@@ -125,7 +192,10 @@ pluralize.addIrregularRule('itself',   'themselves');
 pluralize.addIrregularRule('herself',  'themselves');
 pluralize.addIrregularRule('himself',  'themselves');
 pluralize.addIrregularRule('themself', 'themselves');
-// Words ending in with a consonant and `o`
+
+/**
+ * Words ending in with a consonant and `o`.
+ */
 pluralize.addIrregularRule('canto',   'cantos');
 pluralize.addIrregularRule('hetero',  'heteros');
 pluralize.addIrregularRule('photo',   'photos');
@@ -135,7 +205,26 @@ pluralize.addIrregularRule('portico', 'porticos');
 pluralize.addIrregularRule('pro',     'pros');
 pluralize.addIrregularRule('quarto',  'quartos');
 pluralize.addIrregularRule('kimono',  'kimonos');
-// Anything else
+
+/**
+ * Ends with `us`.
+ */
+pluralize.addIrregularRule('genus',  'genera');
+pluralize.addIrregularRule('viscus', 'viscera');
+
+/**
+ * Ends with `ma`.
+ */
+pluralize.addIrregularRule('stigma',   'stigmata');
+pluralize.addIrregularRule('stoma',    'stomata');
+pluralize.addIrregularRule('dogma',    'dogmata');
+pluralize.addIrregularRule('lemma',    'lemmata');
+pluralize.addIrregularRule('schema',   'schemata');
+pluralize.addIrregularRule('anathema', 'anathemata');
+
+/**
+ * Other irregular rules.
+ */
 pluralize.addIrregularRule('ox',     'oxen');
 pluralize.addIrregularRule('die',    'dice');
 pluralize.addIrregularRule('foot',   'feet');
@@ -148,18 +237,10 @@ pluralize.addIrregularRule('valve',  'valves');
 pluralize.addIrregularRule('thief',  'thieves');
 pluralize.addIrregularRule('genie',  'genies');
 pluralize.addIrregularRule('groove', 'grooves');
-// Ends with `us`
-pluralize.addIrregularRule('genus',  'genera');
-pluralize.addIrregularRule('viscus', 'viscera');
-// Ends with `ma`
-pluralize.addIrregularRule('stigma',   'stigmata');
-pluralize.addIrregularRule('stoma',    'stomata');
-pluralize.addIrregularRule('dogma',    'dogmata');
-pluralize.addIrregularRule('lemma',    'lemmata');
-pluralize.addIrregularRule('schema',   'schemata');
-pluralize.addIrregularRule('anathema', 'anathemata');
 
-// Pluralization regular expressions
+/**
+ * Pluralization regular expressions.
+ */
 pluralize.addPluralRule(/$/, 's');
 pluralize.addPluralRule(/s$/, 's');
 pluralize.addPluralRule(/(ese)$/, '$1');
@@ -184,7 +265,9 @@ pluralize.addPluralRule(/(child)(ren)?$/, '$1ren');
 pluralize.addPluralRule(/(eau)x?$/, '$1x');
 pluralize.addPluralRule(/m(a|e)n$/, 'men');
 
-// Singularization regular expressions
+/**
+ * Singularization regular expressions.
+ */
 pluralize.addSingularRule(/s$/, '');
 pluralize.addSingularRule(/(ss)$/, '$1');
 pluralize.addSingularRule(/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(?:sis|ses)$/, '$1sis');
@@ -213,20 +296,26 @@ pluralize.addSingularRule(/(child)ren$/, '$1');
 pluralize.addSingularRule(/(eau)x$/, '$1');
 pluralize.addSingularRule(/men$/, 'man');
 
-// http://en.wikipedia.org/wiki/English_plural#Singulars_without_plurals
+/**
+ * Singular words with no plurals.
+ *
+ * http://en.wikipedia.org/wiki/English_plural#Singulars_without_plurals
+ */
 [
-'advice', 'agenda', 'bison', 'bream', 'buffalo', 'carp', 'chassis',
-'cod', 'cooperation', 'corps', 'digestion', 'debris', 'diabetes',
-'energy', 'equipment', 'elk', 'excretion', 'expertise', 'flounder',
-'gallows', 'graffiti', 'headquarters', 'health', 'herpes', 'highjinks',
-'homework', 'information', 'jeans', 'justice', 'labour', 'machinery',
-'mackerel', 'media', 'mews', 'money', 'moose', 'news', 'pike', 'plankton',
-'pliers', 'pollution', 'rain', 'rice', 'salmon', 'scissors', 'series',
-'sewage', 'shrimp', 'species', 'staff', 'swine', 'trout', 'tuna',
-'whiting', 'wildebeest'
+  'advice', 'agenda', 'bison', 'bream', 'buffalo', 'carp', 'chassis',
+  'cod', 'cooperation', 'corps', 'digestion', 'debris', 'diabetes',
+  'energy', 'equipment', 'elk', 'excretion', 'expertise', 'flounder',
+  'gallows', 'graffiti', 'headquarters', 'health', 'herpes', 'highjinks',
+  'homework', 'information', 'jeans', 'justice', 'labour', 'machinery',
+  'mackerel', 'media', 'mews', 'money', 'moose', 'news', 'pike', 'plankton',
+  'pliers', 'pollution', 'rain', 'rice', 'salmon', 'scissors', 'series',
+  'sewage', 'shrimp', 'species', 'staff', 'swine', 'trout', 'tuna',
+  'whiting', 'wildebeest'
 ].forEach(pluralize.addUncountableRule);
 
-// Uncountable regexes
+/**
+ * Uncountable word regexes.
+ */
 pluralize.addUncountableRule(/pox$/);
 pluralize.addUncountableRule(/ois$/);
 pluralize.addUncountableRule(/deer$/);

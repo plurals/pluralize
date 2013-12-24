@@ -34,6 +34,7 @@ var restoreCase = function (token) {
       return word.toUpperCase();
     };
   }
+
   // Title-cased word.
   if (token[0] === token[0].toUpperCase()) {
     return function (word) {

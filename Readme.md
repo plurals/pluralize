@@ -6,7 +6,7 @@ Return a pluralized or singularized word based on the input string.
 
 ```javascript
 npm install pluralize --save
-bower install pluralize
+bower install pluralize --save
 ```
 
 ## API
@@ -24,27 +24,29 @@ var pluralize = require('pluralize');
 * `pluralize.addIrregularRule(singular, plural)`
 
 ```javascript
-pluralize('test') // tests
-pluralize('test', 1) // test
-pluralize('test', 5) // tests
-pluralize('test', 1, true) // 1 test
-pluralize('test', 5, true) // 5 tests
+pluralize('test') // "tests"
+pluralize('test', 1) // "test"
+pluralize('test', 5) // "tests"
+pluralize('test', 1, true) // "1 test"
+pluralize('test', 5, true) // "5 tests"
 
-// pluralize.plural() and pluralize.singular() are pretty self explanatory
-
-plural('regex') // regexes
+plural('regex') // "regexes"
 pluralize.addPluralRule(/gex$/i, 'gexii')
-plural('regex') // regexii
+plural('regex') // "regexii"
 
-plural('singles', 1) // single
+plural('singles', 1) // "single"
 pluralize.addSingularRule(/singles$/i, 'singular')
-plural('singles', 1) // singular
+plural('singles', 1) // "singular"
 
-plural('irregular') // irregulars
+plural('irregular') // "irregulars"
 plural.addIrregularRule('irregular', 'regular')
-plural('irregular') // regular
+plural('irregular') // "regular"
 
-plural('paper') // papers
+plural('paper') // "papers"
 plural.addUncountableRule('paper');
-plural('paper') // paper
+plural('paper') // "paper"
 ```
+
+## License
+
+MIT

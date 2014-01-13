@@ -1,6 +1,6 @@
 {
   "name": "pluralize",
   "version": "0.0.4",
-  "main": ["./index.js"],
+  "main": ["./pluralize.js"],
   "dependencies": {}
 }

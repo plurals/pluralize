@@ -9,7 +9,7 @@ npm install pluralize --save
 bower install pluralize --save
 ```
 
-## API
+## Usage
 
 ```javascript
 var pluralize = require('pluralize');

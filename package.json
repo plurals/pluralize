@@ -1,12 +1,12 @@
 {
   "name": "pluralize",
   "version": "0.0.6",
-  "description": "Pluralize and singularize words with ease",
+  "description": "Pluralize and singularize any word",
   "main": "pluralize.js",
   "scripts": {
     "test": "istanbul cover _mocha -- -R spec"
   },
-  "repository": "https://github.com/blakeembrey/node-pluralize.git",
+  "repository": "https://github.com/blakeembrey/pluralize.git",
   "keywords": [
     "plural",
     "plurals",

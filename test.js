@@ -254,7 +254,12 @@ var tests = [
   ['son', 'sons'],
   ['sun', 'suns'],
   ['drink', 'drinks'],
-  ['diploma', 'diplomas']
+  ['diploma', 'diplomas'],
+  ['no', 'nos'],
+  ['yes', 'yeses'],
+  ['employ', 'employs'],
+  ['employee', 'employees'],
+  ['dye', 'dyes']
 ];
 
 describe('pluralize', function () {

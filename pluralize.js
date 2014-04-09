@@ -79,12 +79,12 @@ var sanitizeWord = function (word, collection) {
  *
  * @param  {Object}   replaceMap
  * @param  {Object}   keepMap
- * @param  {Array}    collection
+ * @param  {Array}    rules
  * @return {Function}
  */
-var replaceWord = function (replaceMap, keepMap, collection) {
+var replaceWord = function (replaceMap, keepMap, rules) {
   return function (word) {
-    var token   = ('' + word).trim().toLowerCase();
+    var token   = word.toString().trim().toLowerCase();
     var restore = restoreCase(word);
 
     // Check against the keep object map.
@@ -97,7 +97,7 @@ var replaceWord = function (replaceMap, keepMap, collection) {
       return restore(replaceMap[token]);
     }
 
-    return restore(sanitizeWord(token, collection));
+    return restore(sanitizeWord(token, rules));
   };
 };
 
@@ -226,8 +226,10 @@ pluralize.addIrregularRule('anathema', 'anathemata');
 /**
  * Other irregular rules.
  */
+pluralize.addIrregularRule('no',     'nos');
 pluralize.addIrregularRule('ox',     'oxen');
 pluralize.addIrregularRule('die',    'dice');
+pluralize.addIrregularRule('yes',    'yeses');
 pluralize.addIrregularRule('foot',   'feet');
 pluralize.addIrregularRule('goose',  'geese');
 pluralize.addIrregularRule('quiz',   'quizzes');
@@ -237,6 +239,7 @@ pluralize.addIrregularRule('carve',  'carves');
 pluralize.addIrregularRule('valve',  'valves');
 pluralize.addIrregularRule('thief',  'thieves');
 pluralize.addIrregularRule('genie',  'genies');
+pluralize.addIrregularRule('canoe',  'canoes');
 pluralize.addIrregularRule('groove', 'grooves');
 
 /**
@@ -283,7 +286,6 @@ pluralize.addSingularRule(/^(m|l)ice$/, '$1ouse');
 pluralize.addSingularRule(/(bus|alias|[impst]us|atlas|gas)(?:es)?$/, '$1');
 pluralize.addSingularRule(/(e[mn]u)s?$/, '$1');
 pluralize.addSingularRule(/(o)es$/, '$1');
-pluralize.addSingularRule(/^(canoe)s$/, '$1');
 pluralize.addSingularRule(/(shoe|movie|move)s$/, '$1');
 pluralize.addSingularRule(/(cris|test|diagnos)(?:is|es)$/, '$1is');
 pluralize.addSingularRule(/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc)(?:us|i)$/, '$1us');

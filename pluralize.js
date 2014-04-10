@@ -258,7 +258,7 @@ pluralize.addPluralRule(/([^aeiou]ese)$/, '$1');
 pluralize.addPluralRule(/^(ax|test)is$/, '$1es');
 pluralize.addPluralRule(/(alias|[bcimnpst]us|tlas|gas)$/, '$1es');
 pluralize.addPluralRule(/(e[mn]u)s?$/, '$1s');
-pluralize.addPluralRule(/([^l]ias|[aeiou]las|[emjzr]as)$/, '$1');
+pluralize.addPluralRule(/([^l]ias|[aeiou]las|[emjzr]as|[iu]am)$/, '$1');
 pluralize.addPluralRule(/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc)(?:us|i)$/, '$1i');
 pluralize.addPluralRule(/^(alumn|alg|vertebr)(?:a|ae)$/, '$1ae');
 pluralize.addPluralRule(/([^aeiou])o$/, '$1oes');

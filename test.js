@@ -15,6 +15,8 @@ var tests = [
   ['reindeer', 'reindeer'],
   ['starfish', 'starfish'],
   ['chickenpox', 'chickenpox'],
+  // Latin.
+  ['veniam', 'veniam'],
   // Pluralization.
   ['man', 'men'],
   ['superman', 'supermen'],
@@ -375,7 +377,10 @@ var tests = [
   ['revolve', 'revolves'],
   ['twelve', 'twelves'],
   ['sleeve', 'sleeves'],
-  ['subjective', 'subjectives']
+  ['subjective', 'subjectives'],
+  ['stream', 'streams'],
+  ['beam', 'beams'],
+  ['foam', 'foams']
 ];
 
 describe('pluralize', function () {

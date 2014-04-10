@@ -1,6 +1,6 @@
 {
   "name": "pluralize",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Pluralize and singularize any word",
   "main": "pluralize.js",
   "scripts": {

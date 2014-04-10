@@ -7,7 +7,6 @@ var tests = [
   ['fish', 'fish'],
   ['media', 'media'],
   ['moose', 'moose'],
-  ['money', 'money'],
   ['sheep', 'sheep'],
   ['series', 'series'],
   ['species', 'species'],
@@ -49,18 +48,17 @@ var tests = [
   ['lady', 'ladies'],
   ['bath', 'baths'],
   ['professional', 'professionals'],
-  ['dwarf', 'dwarves'], // `dwarfs`
-  ['plural', 'plurals'],
+  ['dwarf', 'dwarves'], // Proper spelling is "dwarfs".
   ['encyclopedia', 'encyclopedias'],
   ['louse', 'lice'],
   ['roof', 'rooves'],
   ['woman', 'women'],
   ['formula', 'formulas'],
   ['polyhedron', 'polyhedra'],
-  ['index', 'indices'], // Maybe `indexes`.
+  ['index', 'indices'], // Maybe "indexes".
   ['matrix', 'matrices'],
   ['vertex', 'vertices'],
-  ['ax', 'axes'], // How to go back to `axis` v `axe`, or is it `ax`?
+  ['ax', 'axes'], // Could also be plural of "axe".
   ['crisis', 'crises'],
   ['criterion', 'criteria'],
   ['phenomenon', 'phenomena'],
@@ -106,7 +104,6 @@ var tests = [
   ['self', 'selves'],
   ['chief', 'chiefs'],
   ['quiz', 'quizzes'],
-  ['cherry', 'cherries'],
   ['child', 'children'],
   ['syllabus', 'syllabi'],
   ['shelf', 'shelves'],
@@ -194,6 +191,7 @@ var tests = [
   ['general', 'generals'],
   ['corps', 'corps'],
   ['pliers', 'pliers'],
+  ['flyer', 'flyers'],
   ['scissors', 'scissors'],
   ['fireman', 'firemen'],
   ['chirp', 'chirps'],
@@ -236,7 +234,6 @@ var tests = [
   ['fax', 'faxes'],
   ['nut', 'nuts'],
   ['crust', 'crusts'],
-  ['stigma', 'stigmata'],
   ['lemma', 'lemmata'],
   ['anathema', 'anathemata'],
   ['locus', 'loci'],
@@ -259,7 +256,126 @@ var tests = [
   ['yes', 'yeses'],
   ['employ', 'employs'],
   ['employee', 'employees'],
-  ['dye', 'dyes']
+  ['history', 'histories'],
+  ['story', 'stories'],
+  ['purchase', 'purchases'],
+  ['order', 'orders'],
+  ['key', 'keys'],
+  ['bomb', 'bombs'],
+  ['sanity', 'sanities'],
+  ['ability', 'abilities'],
+  ['activity', 'activities'],
+  ['cutie', 'cuties'],
+  ['validation', 'validations'],
+  ['floatie', 'floaties'],
+  ['goalie', 'goalies'],
+  ['crawly', 'crawlies'],
+  ['duty', 'duties'],
+  ['scrutiny', 'scrutinies'],
+  ['deputy', 'deputies'],
+  ['beauty', 'beauties'],
+  ['bank', 'banks'],
+  ['tally', 'tallies'],
+  ['ally', 'allies'], // Could also be plural of "alley".
+  ['valley', 'vallies'],
+  ['medley', 'medleys'],
+  ['melody', 'melodies'],
+  ['trolly', 'trollies'],
+  ['thunk', 'thunks'],
+  ['koala', 'koalas'],
+  ['special', 'specials'],
+  ['book', 'books'],
+  ['knob', 'knobs'],
+  ['crab', 'crabs'],
+  ['plough', 'ploughs'],
+  ['high', 'highs'],
+  ['low', 'lows'],
+  ['hiccup', 'hiccups'],
+  ['bonus', 'bonuses'],
+  ['abacus', 'abacuses'],
+  ['phobia', 'phobias'],
+  ['case', 'cases'],
+  ['lace', 'laces'],
+  ['trace', 'traces'],
+  ['mage', 'mages'],
+  ['lotus', 'lotuses'],
+  ['motorbus', 'motorbuses'],
+  ['cutlas', 'cutlases'],
+  ['tequila', 'tequilas'],
+  ['liar', 'liars'],
+  ['delta', 'deltas'],
+  ['visa', 'visas'],
+  ['flea', 'fleas'],
+  ['favela', 'favelas'],
+  ['cobra', 'cobras'],
+  ['finish', 'finishes'],
+  ['gorilla', 'gorillas'],
+  ['mass', 'masses'],
+  ['face', 'faces'],
+  ['rabbit', 'rabbits'],
+  ['adventure', 'adventures'],
+  ['breeze', 'breezes'],
+  ['brew', 'brews'],
+  ['canopy', 'canopies'],
+  ['cave', 'caves'],
+  ['charge', 'charges'],
+  ['cinema', 'cinemas'],
+  ['coffee', 'coffees'],
+  ['favourite', 'favourites'],
+  ['themself', 'themselves'],
+  ['country', 'countries'],
+  ['issue', 'issues'],
+  ['authority', 'authorities'],
+  ['force', 'forces'],
+  ['objective', 'objectives'],
+  ['present', 'presents'],
+  ['industry', 'industries'],
+  ['believe', 'believes'],
+  ['century', 'centuries'],
+  ['category', 'categories'],
+  ['eve', 'eves'],
+  ['fee', 'fees'],
+  ['gene', 'genes'],
+  ['try', 'tries'],
+  ['currency', 'currencies'],
+  ['pose', 'poses'],
+  ['cheese', 'cheeses'],
+  ['clue', 'clues'],
+  ['litre', 'litres'],
+  ['money', 'monies'],
+  ['attorney', 'attornies'],
+  ['balcony', 'balconies'],
+  ['cockney', 'cockneys'],
+  ['donkey', 'donkeys'],
+  ['honey', 'honeys'],
+  ['smiley', 'smilies'],
+  ['survey', 'surveys'],
+  ['whiskey', 'whiskies'],
+  ['volley', 'volleys'],
+  ['tongue', 'tongues'],
+  ['suit', 'suits'],
+  ['suite', 'suites'],
+  ['cruise', 'cruises'],
+  ['eave', 'eaves'],
+  ['consultancy', 'consultancies'],
+  ['pouch', 'pouches'],
+  ['wallaby', 'wallabies'],
+  ['weekly', 'weeklies'],
+  ['whistle', 'whistles'],
+  ['utilise', 'utilises'],
+  ['utilize', 'utilizes'],
+  ['mercy', 'mercies'],
+  ['mercenary', 'mercenaries'],
+  ['take', 'takes'],
+  ['flush', 'flushes'],
+  ['gate', 'gates'],
+  ['evolve', 'evolves'],
+  ['slave', 'slaves'],
+  ['native', 'natives'],
+  ['revolve', 'revolves'],
+  ['twelve', 'twelves'],
+  ['sleeve', 'sleeves'],
+  ['subjective', 'subjectives']
 ];
 
 describe('pluralize', function () {
@@ -275,21 +391,35 @@ describe('pluralize', function () {
     });
   });
 
-  it('should change depending on count', function () {
-    tests.forEach(function (word) {
-      assert.equal(pluralize(word[0], 1), word[0]);
-      assert.equal(pluralize(word[0], 5), word[1]);
-      assert.equal(pluralize(word[1], 1), word[0]);
-      assert.equal(pluralize(word[1], 5), word[1]);
+  describe('should change depending on count', function () {
+    it('of singular words', function () {
+      tests.forEach(function (word) {
+        assert.equal(pluralize(word[0], 1), word[0]);
+        assert.equal(pluralize(word[1], 1), word[0]);
+      });
+    });
+
+    it('of plural words', function () {
+      tests.forEach(function (word) {
+        assert.equal(pluralize(word[0], 5), word[1]);
+        assert.equal(pluralize(word[1], 5), word[1]);
+      });
     });
   });
 
-  it('should prepend the count to the word', function () {
-    tests.forEach(function (word) {
-      assert.equal(pluralize(word[0], 1, true), '1 ' + word[0]);
-      assert.equal(pluralize(word[0], 5, true), '5 ' + word[1]);
-      assert.equal(pluralize(word[1], 1, true), '1 ' + word[0]);
-      assert.equal(pluralize(word[1], 5, true), '5 ' + word[1]);
+  describe('should prepend the count', function () {
+    it('to singular words', function () {
+      tests.forEach(function (word) {
+        assert.equal(pluralize(word[0], 1, true), '1 ' + word[0]);
+        assert.equal(pluralize(word[1], 1, true), '1 ' + word[0]);
+      });
+    });
+
+    it('to plural words', function () {
+      tests.forEach(function (word) {
+        assert.equal(pluralize(word[0], 5, true), '5 ' + word[1]);
+        assert.equal(pluralize(word[1], 5, true), '5 ' + word[1]);
+      });
     });
   });
 
@@ -308,39 +438,41 @@ describe('pluralize', function () {
     });
   });
 
-  it('should allow new uncountable rules', function () {
-    assert.equal(pluralize('paper'), 'papers');
-    pluralize.addUncountableRule('paper');
-    assert.equal(pluralize('paper'), 'paper');
-  });
+  describe('adding new rules', function () {
+    it('should allow new uncountable rules', function () {
+      assert.equal(pluralize('paper'), 'papers');
+      pluralize.addUncountableRule('paper');
+      assert.equal(pluralize('paper'), 'paper');
+    });
 
-  it('should allow new irregular words', function () {
-    assert.equal(pluralize('irregular'), 'irregulars');
-    pluralize.addIrregularRule('irregular', 'regular');
-    assert.equal(pluralize('irregular'), 'regular');
-  });
+    it('should allow new irregular words', function () {
+      assert.equal(pluralize('irregular'), 'irregulars');
+      pluralize.addIrregularRule('irregular', 'regular');
+      assert.equal(pluralize('irregular'), 'regular');
+    });
 
-  it('should allow new plural matching rules', function () {
-    assert.equal(pluralize.plural('regex'), 'regexes');
-    pluralize.addPluralRule(/gex$/i, 'gexii');
-    assert.equal(pluralize.plural('regex'), 'regexii');
-  });
+    it('should allow new plural matching rules', function () {
+      assert.equal(pluralize.plural('regex'), 'regexes');
+      pluralize.addPluralRule(/gex$/i, 'gexii');
+      assert.equal(pluralize.plural('regex'), 'regexii');
+    });
 
-  it('should allow new singular matching rules', function () {
-    assert.equal(pluralize.singular('singles'), 'single');
-    pluralize.addSingularRule(/singles$/, 'singular');
-    assert.equal(pluralize.singular('singles'), 'singular');
-  });
+    it('should allow new singular matching rules', function () {
+      assert.equal(pluralize.singular('singles'), 'single');
+      pluralize.addSingularRule(/singles$/, 'singular');
+      assert.equal(pluralize.singular('singles'), 'singular');
+    });
 
-  it('should allow new plural matching rules to be strings', function () {
-    assert.equal(pluralize.plural('person'), 'people');
-    pluralize.addPluralRule('person', 'peeps');
-    assert.equal(pluralize.plural('person'), 'peeps');
-  });
+    it('should allow new plural matching rules to be strings', function () {
+      assert.equal(pluralize.plural('person'), 'people');
+      pluralize.addPluralRule('person', 'peeps');
+      assert.equal(pluralize.plural('person'), 'peeps');
+    });
 
-  it('should allow new singular matching rules to be strings', function () {
-    assert.equal(pluralize.singular('mornings'), 'morning');
-    pluralize.addSingularRule('mornings', 'suck');
-    assert.equal(pluralize.singular('mornings'), 'suck');
+    it('should allow new singular matching rules to be strings', function () {
+      assert.equal(pluralize.singular('mornings'), 'morning');
+      pluralize.addSingularRule('mornings', 'suck');
+      assert.equal(pluralize.singular('mornings'), 'suck');
+    });
   });
 });

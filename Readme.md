@@ -30,21 +30,21 @@ pluralize('test', 5) // "tests"
 pluralize('test', 1, true) // "1 test"
 pluralize('test', 5, true) // "5 tests"
 
-plural('regex') // "regexes"
+pluralize.plural('regex') // "regexes"
 pluralize.addPluralRule(/gex$/i, 'gexii')
-plural('regex') // "regexii"
+pluralize.plural('regex') // "regexii"
 
-plural('singles', 1) // "single"
+pluralize.plural('singles', 1) // "single"
 pluralize.addSingularRule(/singles$/i, 'singular')
-plural('singles', 1) // "singular"
+pluralize.plural('singles', 1) // "singular"
 
-plural('irregular') // "irregulars"
-plural.addIrregularRule('irregular', 'regular')
-plural('irregular') // "regular"
+pluralize.plural('irregular') // "irregulars"
+pluralize.addIrregularRule('irregular', 'regular')
+pluralize.plural('irregular') // "regular"
 
-plural('paper') // "papers"
-plural.addUncountableRule('paper');
-plural('paper') // "paper"
+pluralize.plural('paper') // "papers"
+pluralize.addUncountableRule('paper');
+pluralize.plural('paper') // "paper"
 ```
 
 ## License

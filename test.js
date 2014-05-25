@@ -380,7 +380,12 @@ var tests = [
   ['subjective', 'subjectives'],
   ['stream', 'streams'],
   ['beam', 'beams'],
-  ['foam', 'foams']
+  ['foam', 'foams'],
+  ['callus', 'calluses'],
+  ['use', 'uses'],
+  ['beau', 'beaus'],
+  ['luau', 'luaus'],
+  ['pilau', 'pilaus']
 ];
 
 describe('pluralize', function () {

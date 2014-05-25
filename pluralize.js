@@ -235,6 +235,7 @@ pluralize.addIrregularRule('die',     'dice');
 pluralize.addIrregularRule('yes',     'yeses');
 pluralize.addIrregularRule('foot',    'feet');
 pluralize.addIrregularRule('eave',    'eaves');
+pluralize.addIrregularRule('beau',    'beaus');
 pluralize.addIrregularRule('goose',   'geese');
 pluralize.addIrregularRule('quiz',    'quizzes');
 pluralize.addIrregularRule('human',   'humans');
@@ -256,7 +257,7 @@ pluralize.addPluralRule(/$/, 's');
 pluralize.addPluralRule(/s$/, 's');
 pluralize.addPluralRule(/([^aeiou]ese)$/, '$1');
 pluralize.addPluralRule(/^(ax|test)is$/, '$1es');
-pluralize.addPluralRule(/(alias|[bcimnpst]us|tlas|gas)$/, '$1es');
+pluralize.addPluralRule(/(alias|[^aeou]us|tlas|gas)$/, '$1es');
 pluralize.addPluralRule(/(e[mn]u)s?$/, '$1s');
 pluralize.addPluralRule(/([^l]ias|[aeiou]las|[emjzr]as|[iu]am)$/, '$1');
 pluralize.addPluralRule(/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc)(?:us|i)$/, '$1i');
@@ -274,7 +275,7 @@ pluralize.addPluralRule(/^(m|l)(ice|ouse)$/, '$1ice');
 pluralize.addPluralRule(/(pe)(rson|ople)$/, '$1ople');
 pluralize.addPluralRule(/(child)(ren)?$/, '$1ren');
 pluralize.addPluralRule(/(eau)x?$/, '$1x');
-pluralize.addPluralRule(/m(a|e)n$/, 'men');
+pluralize.addPluralRule(/m[ae]n$/, 'men');
 
 /**
  * Singularization regular expressions.
@@ -291,7 +292,7 @@ pluralize.addSingularRule(/(^[pl]|zomb|^(?:neck)?t|[aeo][lt]|cut)ies$/, '$1ie');
 pluralize.addSingularRule(/([^c][eor]n|[i]l)ies$/, '$1ey');
 pluralize.addSingularRule(/(x|ch|ss|sh|zz)es$/, '$1');
 pluralize.addSingularRule(/^(m|l)ice$/, '$1ouse');
-pluralize.addSingularRule(/(alias|[bcimnpst]us|tlas|gas)(?:es)?$/, '$1');
+pluralize.addSingularRule(/(alias|[^aeou]us|tlas|gas)(?:es)?$/, '$1');
 pluralize.addSingularRule(/(e[mn]u)s?$/, '$1');
 pluralize.addSingularRule(/(o)es$/, '$1');
 pluralize.addSingularRule(/(shoe|movie|move|twelve)s$/, '$1');
@@ -304,7 +305,7 @@ pluralize.addSingularRule(/(cod|mur|sil|vert|ind)ices$/, '$1ex');
 pluralize.addSingularRule(/(matr)ices$/, '$1ix');
 pluralize.addSingularRule(/(pe)(rson|ople)$/, '$1rson');
 pluralize.addSingularRule(/(child)ren$/, '$1');
-pluralize.addSingularRule(/(eau)x$/, '$1');
+pluralize.addSingularRule(/(eau)[sx]?$/, '$1');
 pluralize.addSingularRule(/men$/, 'man');
 
 /**

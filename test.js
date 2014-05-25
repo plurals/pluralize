@@ -14,6 +14,7 @@ var tests = [
   ['news', 'news'],
   ['reindeer', 'reindeer'],
   ['starfish', 'starfish'],
+  ['smallpox', 'smallpox'],
   ['chickenpox', 'chickenpox'],
   // Latin.
   ['veniam', 'veniam'],
@@ -187,6 +188,8 @@ var tests = [
   ['lie', 'lies'],
   ['node', 'nodes'],
   ['chinese', 'chinese'],
+  ['please', 'pleases'],
+  ['japanese', 'japanese'],
   ['regex', 'regexes'],
   ['license', 'licenses'],
   ['zebra', 'zebras'],

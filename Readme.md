@@ -3,7 +3,7 @@
 Return a pluralized or singularized word based on the input string.
 
 [![Build Status](https://img.shields.io/travis/blakeembrey/pluralize/master.svg)](https://travis-ci.org/blakeembrey/pluralize)
-[![NPM version](https://img.shields.io/npm/v/pluralize.svg)](https://www.npmjs.org/package/path-to-regexp)
+[![NPM version](https://img.shields.io/npm/v/pluralize.svg)](https://www.npmjs.org/package/pluralize)
 
 ## Installation
 

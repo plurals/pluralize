@@ -396,7 +396,7 @@
     /fish$/, // "fish", "blowfish", "angelfish"
     /sheep$/,
     /measles$/,
-    /[^aeiou]ese$/, // "chinese", "japanese"
+    /[^aeiou]ese$/ // "chinese", "japanese"
   ].forEach(pluralize.addUncountableRule);
 
   return pluralize;

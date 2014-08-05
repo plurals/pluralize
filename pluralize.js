@@ -265,6 +265,7 @@
     ['himself',  'themselves'],
     ['themself', 'themselves'],
     // Words ending in with a consonant and `o`.
+    ['combo',   'combos'],
     ['canto',   'cantos'],
     ['hetero',  'heteros'],
     ['photo',   'photos'],

@@ -1,8 +1,13 @@
 /* global describe, it */
-var assert    = require('assert');
+var expect    = require('chai').expect;
 var pluralize = require('./');
 
-var tests = [
+/**
+ * Standard singular/plural matches.
+ *
+ * @type {Array}
+ */
+var BASIC_TESTS = [
   // Uncountables.
   ['fish', 'fish'],
   ['media', 'media'],
@@ -16,9 +21,12 @@ var tests = [
   ['starfish', 'starfish'],
   ['smallpox', 'smallpox'],
   ['chickenpox', 'chickenpox'],
+  ['shambles', 'shambles'],
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.
+  ['this', 'these'],
+  ['that', 'those'],
   ['man', 'men'],
   ['superman', 'supermen'],
   ['ox', 'oxen'],
@@ -28,6 +36,7 @@ var tests = [
   ['wife', 'wives'],
   ['guest', 'guests'],
   ['thing', 'things'],
+  ['mess', 'messes'],
   ['guess', 'guesses'],
   ['person', 'people'],
   ['meteor', 'meteors'],
@@ -37,17 +46,52 @@ var tests = [
   ['death', 'deaths'],
   ['coach', 'coaches'],
   ['boy', 'boys'],
+  ['toy', 'toys'],
   ['guy', 'guys'],
   ['girl', 'girls'],
   ['chair', 'chairs'],
+  ['toe', 'toes'],
+  ['tiptoe', 'tiptoes'],
   ['tomato', 'tomatoes'],
   ['potato', 'potatoes'],
+  ['tornado', 'tornadoes'],
+  ['torpedo', 'torpedoes'],
   ['hero', 'heroes'],
+  ['superhero', 'superheroes'],
   ['volcano', 'volcanoes'],
+  ['canto', 'cantos'],
+  ['hetero', 'heteros'],
+  ['photo', 'photos'],
+  ['portico', 'porticos'],
+  ['quarto', 'quartos'],
+  ['kimono', 'kimonos'],
+  ['albino', 'albinos'],
   ['cherry', 'cherries'],
   ['piano', 'pianos'],
+  ['pro', 'pros'],
+  ['combo', 'combos'],
+  ['turbo', 'turbos'],
+  ['bar', 'bars'],
+  ['crowbar', 'crowbars'],
+  ['van', 'vans'],
+  ['tobacco', 'tobaccos'],
+  ['afficionado', 'afficionados'],
   ['monkey', 'monkeys'],
-  ['day', 'days'],
+  ['neutrino', 'neutrinos'],
+  ['rhino', 'rhinos'],
+  ['steno', 'stenos'],
+  ['latino', 'latinos'],
+  ['casino', 'casinos'],
+  ['avocado', 'avocados'],
+  ['commando', 'commandos'],
+  ['tuxedo', 'tuxedos'],
+  ['speedo', 'speedos'],
+  ['dingo', 'dingos'],
+  ['echo', 'echos'],
+  ['motto', 'mottos'],
+  ['pass', 'passes'],
+  ['ghetto', 'ghettos'],
+  ['mango', 'mangos'],
   ['lady', 'ladies'],
   ['bath', 'baths'],
   ['professional', 'professionals'],
@@ -61,7 +105,8 @@ var tests = [
   ['index', 'indices'], // Maybe "indexes".
   ['matrix', 'matrices'],
   ['vertex', 'vertices'],
-  ['ax', 'axes'], // Could also be plural of "axe".
+  ['axe', 'axes'], // Could also be plural of "ax".
+  ['pickaxe', 'pickaxes'],
   ['crisis', 'crises'],
   ['criterion', 'criteria'],
   ['phenomenon', 'phenomena'],
@@ -111,13 +156,12 @@ var tests = [
   ['syllabus', 'syllabi'],
   ['shelf', 'shelves'],
   ['fizz', 'fizzes'],
+  ['tooth', 'teeth'],
   ['thief', 'thieves'],
   ['day', 'days'],
   ['loaf', 'loaves'],
-  ['mango', 'mangoes'],
   ['fix', 'fixes'],
   ['spy', 'spies'],
-  ['day', 'days'],
   ['vertebra', 'vertebrae'],
   ['clock', 'clocks'],
   ['lap', 'laps'],
@@ -135,8 +179,8 @@ var tests = [
   ['die', 'dice'],
   ['penny', 'pennies'],
   ['campus', 'campuses'],
-  ['platypus', 'platypuses'],
   ['virus', 'viri'],
+  ['iris', 'irises'],
   ['bureau', 'bureaux'],
   ['kiwi', 'kiwis'],
   ['wiki', 'wikis'],
@@ -163,6 +207,8 @@ var tests = [
   ['direction', 'directions'],
   ['land', 'lands'],
   ['row', 'rows'],
+  ['grow', 'grows'],
+  ['flow', 'flows'],
   ['rose', 'roses'],
   ['raise', 'raises'],
   ['friend', 'friends'],
@@ -179,6 +225,7 @@ var tests = [
   ['goose', 'geese'],
   ['foot', 'feet'],
   ['ex', 'exes'],
+  ['reflex', 'reflexes'],
   ['heat', 'heats'],
   ['train', 'trains'],
   ['test', 'tests'],
@@ -187,6 +234,7 @@ var tests = [
   ['eye', 'eyes'],
   ['lie', 'lies'],
   ['node', 'nodes'],
+  ['trade', 'trades'],
   ['chinese', 'chinese'],
   ['please', 'pleases'],
   ['japanese', 'japanese'],
@@ -205,6 +253,7 @@ var tests = [
   ['dye', 'dyes'],
   ['move', 'moves'],
   ['zombie', 'zombies'],
+  ['cover', 'covers'],
   ['tie', 'ties'],
   ['groove', 'grooves'],
   ['bee', 'bees'],
@@ -213,6 +262,7 @@ var tests = [
   ['wolf', 'wolves'],
   ['airwave', 'airwaves'],
   ['archive', 'archives'],
+  ['arch', 'arches'],
   ['dive', 'dives'],
   ['aftershave', 'aftershaves'],
   ['cave', 'caves'],
@@ -241,6 +291,7 @@ var tests = [
   ['crust', 'crusts'],
   ['lemma', 'lemmata'],
   ['anathema', 'anathemata'],
+  ['analysis', 'analyses'],
   ['locus', 'loci'],
   ['uterus', 'uteri'],
   ['automatum', 'automata'],
@@ -267,6 +318,7 @@ var tests = [
   ['order', 'orders'],
   ['key', 'keys'],
   ['bomb', 'bombs'],
+  ['city', 'cities'],
   ['sanity', 'sanities'],
   ['ability', 'abilities'],
   ['activity', 'activities'],
@@ -280,9 +332,11 @@ var tests = [
   ['deputy', 'deputies'],
   ['beauty', 'beauties'],
   ['bank', 'banks'],
+  ['family', 'families'],
   ['tally', 'tallies'],
-  ['ally', 'allies'], // Could also be plural of "alley".
-  ['valley', 'vallies'],
+  ['ally', 'allies'],
+  ['alley', 'alleys'],
+  ['valley', 'valleys'],
   ['medley', 'medleys'],
   ['melody', 'melodies'],
   ['trolly', 'trollies'],
@@ -297,6 +351,7 @@ var tests = [
   ['low', 'lows'],
   ['hiccup', 'hiccups'],
   ['bonus', 'bonuses'],
+  ['circus', 'circuses'],
   ['abacus', 'abacuses'],
   ['phobia', 'phobias'],
   ['case', 'cases'],
@@ -322,6 +377,8 @@ var tests = [
   ['breeze', 'breezes'],
   ['brew', 'brews'],
   ['canopy', 'canopies'],
+  ['copy', 'copies'],
+  ['spy', 'spies'],
   ['cave', 'caves'],
   ['charge', 'charges'],
   ['cinema', 'cinemas'],
@@ -346,9 +403,10 @@ var tests = [
   ['pose', 'poses'],
   ['cheese', 'cheeses'],
   ['clue', 'clues'],
+  ['cheer', 'cheers'],
   ['litre', 'litres'],
   ['money', 'monies'],
-  ['attorney', 'attornies'],
+  ['attorney', 'attorneys'],
   ['balcony', 'balconies'],
   ['cockney', 'cockneys'],
   ['donkey', 'donkeys'],
@@ -365,6 +423,7 @@ var tests = [
   ['consultancy', 'consultancies'],
   ['pouch', 'pouches'],
   ['wallaby', 'wallabies'],
+  ['abyss', 'abysses'],
   ['weekly', 'weeklies'],
   ['whistle', 'whistles'],
   ['utilise', 'utilises'],
@@ -387,105 +446,166 @@ var tests = [
   ['callus', 'calluses'],
   ['use', 'uses'],
   ['beau', 'beaus'],
+  ['fetus', 'fetuses'],
   ['luau', 'luaus'],
-  ['pilau', 'pilaus']
+  ['pilau', 'pilaus'],
+  ['shoe', 'shoes'],
+  ['sandshoe', 'sandshoes'],
+  ['zeus', 'zeuses'],
+  ['nucleus', 'nuclei'],
+  ['sky', 'skies'],
+  ['beach', 'beaches'],
+  ['brush', 'brushes'],
+  ['hoax', 'hoaxes'],
+  ['scratch', 'scratches'],
+  ['nanny', 'nannies']
 ];
 
+/**
+ * Odd plural to singular tests.
+ *
+ * @type {Array}
+ */
+var SINGULAR_TESTS = [
+  ['dingo', 'dingoes'],
+  ['mango', 'mangoes'],
+  ['echo', 'echoes'],
+  ['ghetto', 'ghettoes'],
+  ['nucleus', 'nucleuses']
+];
+
+/**
+ * Odd singular to plural tests.
+ *
+ * @type {Array}
+ */
+var PLURAL_TESTS = [
+  ['whisky',  'whiskies']
+];
+
+/**
+ * Test suite.
+ */
 describe('pluralize', function () {
-  it('should pluralize words', function () {
-    tests.forEach(function (word) {
-      assert.equal(pluralize.plural(word[0]), word[1]);
-    });
-  });
-
-  it('should singilarize words', function () {
-    tests.forEach(function (word) {
-      assert.equal(pluralize.singular(word[1]), word[0]);
-    });
-  });
-
-  describe('should change depending on count', function () {
-    it('of singular words', function () {
-      tests.forEach(function (word) {
-        assert.equal(pluralize(word[0], 1), word[0]);
-        assert.equal(pluralize(word[1], 1), word[0]);
+  describe('methods', function () {
+    describe('plural', function () {
+      BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
+        it(test[0] + ' -> ' + test[1], function () {
+          expect(pluralize.plural(test[0])).to.equal(test[1]);
+        });
       });
     });
 
-    it('of plural words', function () {
-      tests.forEach(function (word) {
-        assert.equal(pluralize(word[0], 5), word[1]);
-        assert.equal(pluralize(word[1], 5), word[1]);
+    describe('singular', function () {
+      BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
+        it(test[1] + ' -> ' + test[0], function () {
+          expect(pluralize.singular(test[1])).to.equal(test[0]);
+        });
       });
     });
   });
 
-  describe('should prepend the count', function () {
-    it('to singular words', function () {
-      tests.forEach(function (word) {
-        assert.equal(pluralize(word[0], 1, true), '1 ' + word[0]);
-        assert.equal(pluralize(word[1], 1, true), '1 ' + word[0]);
+  describe('automatically convert', function () {
+    describe('plural', function () {
+      BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
+        // Make sure the word stays pluralized.
+        it('5 ' + test[1] + ' -> ' + test[1], function () {
+          expect(pluralize(test[1], 5)).to.equal(test[1]);
+        });
+
+        // Make sure the word becomes a plural.
+        if (test[0] !== test[1]) {
+          it('5 ' + test[0] + ' -> ' + test[1], function () {
+            expect(pluralize(test[0], 5)).to.equal(test[1]);
+          });
+        }
       });
     });
 
-    it('to plural words', function () {
-      tests.forEach(function (word) {
-        assert.equal(pluralize(word[0], 5, true), '5 ' + word[1]);
-        assert.equal(pluralize(word[1], 5, true), '5 ' + word[1]);
+    describe('singular', function () {
+      BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
+        // Make sure the word stays singular.
+        it('1 ' + test[0] + ' -> ' + test[0], function () {
+          expect(pluralize(test[0], 1)).to.equal(test[0]);
+        });
+
+        // Make sure the word becomes singular.
+        if (test[0] !== test[1]) {
+          it('1 ' + test[1] + ' -> ' + test[0], function () {
+            expect(pluralize(test[1], 1)).to.equal(test[0]);
+          });
+        }
       });
     });
   });
 
-  it('should work with capitalized words', function () {
-    tests.forEach(function (word) {
-      assert.equal(pluralize(word[0].toUpperCase()), word[1].toUpperCase());
+  describe('prepend count', function () {
+    it('plural words', function () {
+      expect(pluralize('test', 5, true)).to.equal('5 tests');
+    });
+
+    it('singular words', function () {
+      expect(pluralize('test', 1, true)).to.equal('1 test');
     });
   });
 
-  it('should work with title-cased words', function () {
-    tests.forEach(function (word) {
-      assert.equal(
-        pluralize(word[0][0].toUpperCase() + word[0].substr(1)),
-        word[1][0].toUpperCase() + word[1].substr(1)
-      );
+  describe('detect case', function () {
+    it('upper case', function () {
+      expect(pluralize('Test')).to.equal('Tests');
+    });
+
+    it('title case', function () {
+      expect(pluralize('TEST')).to.equal('TESTS');
     });
   });
 
   describe('adding new rules', function () {
-    it('should allow new uncountable rules', function () {
-      assert.equal(pluralize('paper'), 'papers');
+    it('uncountable rules', function () {
+      expect(pluralize('paper')).to.equal('papers');
+
       pluralize.addUncountableRule('paper');
-      assert.equal(pluralize('paper'), 'paper');
+
+      expect(pluralize('paper')).to.equal('paper');
     });
 
     it('should allow new irregular words', function () {
-      assert.equal(pluralize('irregular'), 'irregulars');
+      expect(pluralize('irregular')).to.equal('irregulars');
+
       pluralize.addIrregularRule('irregular', 'regular');
-      assert.equal(pluralize('irregular'), 'regular');
+
+      expect(pluralize('irregular')).to.equal('regular');
     });
 
     it('should allow new plural matching rules', function () {
-      assert.equal(pluralize.plural('regex'), 'regexes');
+      expect(pluralize.plural('regex')).to.equal('regexes');
+
       pluralize.addPluralRule(/gex$/i, 'gexii');
-      assert.equal(pluralize.plural('regex'), 'regexii');
+
+      expect(pluralize.plural('regex')).to.equal('regexii');
     });
 
     it('should allow new singular matching rules', function () {
-      assert.equal(pluralize.singular('singles'), 'single');
+      expect(pluralize.singular('singles')).to.equal('single');
+
       pluralize.addSingularRule(/singles$/, 'singular');
-      assert.equal(pluralize.singular('singles'), 'singular');
+
+      expect(pluralize.singular('singles')).to.equal('singular');
     });
 
     it('should allow new plural matching rules to be strings', function () {
-      assert.equal(pluralize.plural('person'), 'people');
+      expect(pluralize.plural('person')).to.equal('people');
+
       pluralize.addPluralRule('person', 'peeps');
-      assert.equal(pluralize.plural('person'), 'peeps');
+
+      expect(pluralize.plural('person')).to.equal('peeps');
     });
 
     it('should allow new singular matching rules to be strings', function () {
-      assert.equal(pluralize.singular('mornings'), 'morning');
+      expect(pluralize.singular('mornings')).to.equal('morning');
+
       pluralize.addSingularRule('mornings', 'suck');
-      assert.equal(pluralize.singular('mornings'), 'suck');
+
+      expect(pluralize.singular('mornings')).to.equal('suck');
     });
   });
 });

@@ -14,8 +14,6 @@ npm install pluralize --save
 bower install pluralize --save
 ```
 
-## Usage
-
 ### Node
 
 ```javascript
@@ -36,15 +34,7 @@ define(function (require, exports, module) {
 <script src="pluralize.js"></script>
 ```
 
-### API
-
-* `pluralize(word, count, includeCount)`
-* `pluralize.plural(word)`
-* `pluralize.singular(word)`
-* `pluralize.addPluralRule(rule, replacement)`
-* `pluralize.addSingularRule(rule, replacement)`
-* `pluralize.addUncountableRule(word)`
-* `pluralize.addIrregularRule(singular, plural)`
+## Usage
 
 ```javascript
 pluralize('test'); //=> "tests"

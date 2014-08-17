@@ -1,11 +1,11 @@
 # Pluralize
 
-Return a pluralized or singularized word based on the input string.
-
 [![NPM version][npm-image]][npm-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Gittip][gittip-image]][gittip-url]
+
+Return a pluralized or singularized word based on the input string.
 
 ## Installation
 

@@ -458,7 +458,8 @@ var BASIC_TESTS = [
   ['brush', 'brushes'],
   ['hoax', 'hoaxes'],
   ['scratch', 'scratches'],
-  ['nanny', 'nannies']
+  ['nanny', 'nannies'],
+  ['negro', 'negroes']
 ];
 
 /**

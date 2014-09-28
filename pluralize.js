@@ -320,7 +320,7 @@
     [/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)(?:a|um)$/, '$1a'],
     [/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)(?:a|on)$/, '$1a'],
     [/sis$/, 'ses'],
-    [/(?:([^f])fe|(ar|l|[eo][ao])f)$/, '$1$2ves'],
+    [/(?:(i)fe|(ar|l|[eo][ao])f)$/, '$1$2ves'],
     [/([^aeiouy]|qu)y$/, '$1ies'],
     [/([^ch][ieo][ln])ey$/, '$1ies'],
     [/(x|ch|ss|sh|zz)$/, '$1es'],
@@ -429,6 +429,7 @@
     'tuna',
     'whiting',
     'wildebeest',
+    'wildlife',
     // Regexes.
     /pox$/, // "chickpox", "smallpox"
     /ois$/,

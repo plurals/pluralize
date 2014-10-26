@@ -27,9 +27,9 @@
    * @param  {string} str
    * @return {string}
    */
-  var toLowerCase = function (str) {
+  function toLowerCase (str) {
     return str.toLowerCase();
-  };
+  }
 
   /**
    * Uppercase a string.
@@ -37,9 +37,9 @@
    * @param  {string} str
    * @return {string}
    */
-  var toUpperCase = function (str) {
+  function toUpperCase (str) {
     return str.toUpperCase();
-  };
+  }
 
   /**
    * Titlecase a string.
@@ -47,9 +47,9 @@
    * @param  {string} str
    * @return {string}
    */
-  var toTitleCase = function (str) {
-    return toUpperCase(str[0]) + toLowerCase(str.substr(1));
-  };
+  function toTitleCase (str) {
+    return toUpperCase(str.charAt(0)) + toLowerCase(str.substr(1));
+  }
 
   /**
    * Return a word. This involves stringifying and trimming whitespace.
@@ -57,9 +57,9 @@
    * @param  {string} word
    * @return {string}
    */
-  var toWord = function (word) {
+  function toWord (word) {
     return String(word).trim();
-  };
+  }
 
   /**
    * Return a lowercased word.
@@ -67,9 +67,9 @@
    * @param  {string} word
    * @return {string}
    */
-  var toLowerWord = function (word) {
+  function toLowerWord (word) {
     return toLowerCase(toWord(word));
-  };
+  }
 
   /**
    * Sanitize a pluralization rule to a usable regular expression.
@@ -77,13 +77,13 @@
    * @param  {(RegExp|string)} rule
    * @return {RegExp}
    */
-  var sanitizeRule = function (rule) {
+  function sanitizeRule (rule) {
     if (typeof rule === 'string') {
       return new RegExp('^' + rule + '$');
     }
 
     return rule;
-  };
+  }
 
   /**
    * Pass in a word token to produce a function that can replicate the case on
@@ -92,7 +92,7 @@
    * @param  {string}   token
    * @return {Function}
    */
-  var restoreCase = function (token) {
+  function restoreCase (token) {
     // Capitalized word.
     if (token === token.toUpperCase()) {
       return toUpperCase;
@@ -105,7 +105,7 @@
 
     // Lower-cased word.
     return toLowerCase;
-  };
+  }
 
   /**
    * Sanitize a word by passing in the word and sanitization rules.
@@ -114,7 +114,7 @@
    * @param  {Array}    collection
    * @return {String}
    */
-  var sanitizeWord = function (word, collection) {
+  function sanitizeWord (word, collection) {
     // Empty string or doesn't need fixing.
     if (!word.length || uncountables[word]) {
       return word;
@@ -133,7 +133,7 @@
     }
 
     return word;
-  };
+  }
 
   /**
    * Replace a word with the updated word.
@@ -143,7 +143,7 @@
    * @param  {Array}    rules
    * @return {Function}
    */
-  var replaceWord = function (replaceMap, keepMap, rules) {
+  function replaceWord (replaceMap, keepMap, rules) {
     return function (word) {
       // Ensure the word is a string.
       word = toWord(word);
@@ -165,7 +165,7 @@
       // Run all the rules against the word.
       return restore(sanitizeWord(token, rules));
     };
-  };
+  }
 
   /**
    * Pluralize or singularize a word based on the passed in count.
@@ -175,18 +175,19 @@
    * @param  {Boolean} inclusive
    * @return {String}
    */
-  var pluralize = function (word, count, inclusive) {
-    var pluralized = count === 1 ? singular(word) : plural(word);
+  function pluralize (word, count, inclusive) {
+    var pluralized = count === 1 ?
+      pluralize.singular(word) : pluralize.plural(word);
 
     return (inclusive ? count + ' ' : '') + pluralized;
-  };
+  }
 
   /**
    * Pluralize a word.
    *
    * @type {Function}
    */
-  var plural = pluralize.plural = replaceWord(
+  pluralize.plural = replaceWord(
     irregularSingles, irregularPlurals, pluralRules
   );
 
@@ -195,7 +196,7 @@
    *
    * @type {Function}
    */
-  var singular = pluralize.singular = replaceWord(
+  pluralize.singular = replaceWord(
     irregularPlurals, irregularSingles, singularRules
   );
 

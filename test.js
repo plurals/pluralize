@@ -501,6 +501,12 @@ var BASIC_TESTS = [
   ['sunroof', 'sunrooves'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
+  // Non-standard case.
+  ['randomWord', 'randomWords'],
+  ['camelCase', 'camelCases'],
+  ['PascalCase', 'PascalCases'],
+  ['Alumnus', 'Alumni'],
+  ['CHICKEN', 'CHICKENS']
 ];
 
 /**
@@ -588,16 +594,6 @@ describe('pluralize', function () {
 
     it('singular words', function () {
       expect(pluralize('test', 1, true)).to.equal('1 test');
-    });
-  });
-
-  describe('detect case', function () {
-    it('upper case', function () {
-      expect(pluralize('Test')).to.equal('Tests');
-    });
-
-    it('title case', function () {
-      expect(pluralize('TEST')).to.equal('TESTS');
     });
   });
 

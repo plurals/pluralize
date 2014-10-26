@@ -22,53 +22,13 @@
   var irregularSingles = {};
 
   /**
-   * Lowercase a string.
-   *
-   * @param  {string} str
-   * @return {string}
-   */
-  function toLowerCase (str) {
-    return str.toLowerCase();
-  }
-
-  /**
-   * Uppercase a string.
-   *
-   * @param  {string} str
-   * @return {string}
-   */
-  function toUpperCase (str) {
-    return str.toUpperCase();
-  }
-
-  /**
-   * Titlecase a string.
+   * Title case a string.
    *
    * @param  {string} str
    * @return {string}
    */
   function toTitleCase (str) {
-    return toUpperCase(str.charAt(0)) + toLowerCase(str.substr(1));
-  }
-
-  /**
-   * Return a word. This involves stringifying and trimming whitespace.
-   *
-   * @param  {string} word
-   * @return {string}
-   */
-  function toWord (word) {
-    return String(word).trim();
-  }
-
-  /**
-   * Return a lowercased word.
-   *
-   * @param  {string} word
-   * @return {string}
-   */
-  function toLowerWord (word) {
-    return toLowerCase(toWord(word));
+    return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
   }
 
   /**
@@ -79,7 +39,7 @@
    */
   function sanitizeRule (rule) {
     if (typeof rule === 'string') {
-      return new RegExp('^' + rule + '$');
+      return new RegExp('^' + rule + '$', 'i');
     }
 
     return rule;
@@ -89,22 +49,40 @@
    * Pass in a word token to produce a function that can replicate the case on
    * another word.
    *
+   * @param  {string}   word
    * @param  {string}   token
    * @return {Function}
    */
-  function restoreCase (token) {
-    // Capitalized word.
-    if (token === token.toUpperCase()) {
-      return toUpperCase;
+  function restoreCase (word, token) {
+    // Upper cased words. E.g. "HELLO".
+    if (word === word.toUpperCase()) {
+      return token.toUpperCase();
     }
 
-    // Title-cased word.
-    if (token[0] === token[0].toUpperCase()) {
-      return toTitleCase;
+    // Title cased words. E.g. "Title".
+    if (word[0] === word[0].toUpperCase()) {
+      return toTitleCase(token);
     }
 
-    // Lower-cased word.
-    return toLowerCase;
+    // Lower cased words. E.g. "test".
+    return token.toLowerCase();
+  }
+
+  /**
+   * Interpolate a regexp string.
+   *
+   * @param  {[type]} str  [description]
+   * @param  {[type]} args [description]
+   * @return {[type]}      [description]
+   */
+  function interpolate (str, args) {
+    return str.replace(/\$(&|\d{1,2})/g, function (match, index) {
+      if (index === '&') {
+        return args[0];
+      }
+
+      return args[index] || '';
+    });
   }
 
   /**
@@ -128,7 +106,15 @@
 
       // If the rule passes, return the replacement.
       if (rule[0].test(word)) {
-        return word.replace(rule[0], rule[1]);
+        return word.replace(rule[0], function (match, index, word) {
+          var result = interpolate(rule[1], arguments);
+
+          if (match === '') {
+            return restoreCase(word[index - 1], result);
+          }
+
+          return restoreCase(match, result);
+        });
       }
     }
 
@@ -145,25 +131,21 @@
    */
   function replaceWord (replaceMap, keepMap, rules) {
     return function (word) {
-      // Ensure the word is a string.
-      word = toWord(word);
-
       // Get the correct token and case restoration functions.
-      var token   = toLowerCase(word);
-      var restore = restoreCase(word);
+      var token = word.toLowerCase();
 
       // Check against the keep object map.
       if (keepMap.hasOwnProperty(token)) {
-        return restore(token);
+        return restoreCase(word, token);
       }
 
       // Check against the replacement map for a direct word replacement.
       if (replaceMap.hasOwnProperty(token)) {
-        return restore(replaceMap[token]);
+        return restoreCase(word, replaceMap[token]);
       }
 
       // Run all the rules against the word.
-      return restore(sanitizeWord(token, rules));
+      return sanitizeWord(word, rules);
     };
   }
 
@@ -227,7 +209,7 @@
    */
   pluralize.addUncountableRule = function (word) {
     if (typeof word === 'string') {
-      return uncountables[toLowerWord(word)] = true;
+      return uncountables[word.toLowerCase()] = true;
     }
 
     // Set singular and plural references for the word.
@@ -242,8 +224,8 @@
    * @param {String} plural
    */
   pluralize.addIrregularRule = function (single, plural) {
-    plural = toLowerWord(plural);
-    single = toLowerWord(single);
+    plural = plural.toLowerCase();
+    single = single.toLowerCase();
 
     irregularSingles[single] = plural;
     irregularPlurals[plural] = single;
@@ -309,28 +291,28 @@
    * Pluralization rules.
    */
   [
-    [/s?$/, 's'],
-    [/([^aeiou]ese)$/, '$1'],
-    [/^(ax|test)is$/, '$1es'],
-    [/(alias|[^aou]us|tlas|gas|ris)$/, '$1es'],
-    [/(e[mn]u)s?$/, '$1s'],
-    [/([^l]ias|[aeiou]las|[emjzr]as|[iu]am)$/, '$1'],
-    [/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc)(?:us|i)$/, '$1i'],
-    [/^(alumn|alg|vertebr)(?:a|ae)$/, '$1ae'],
-    [/(her|at|gr)o$/, '$1oes'],
-    [/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)(?:a|um)$/, '$1a'],
-    [/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)(?:a|on)$/, '$1a'],
-    [/sis$/, 'ses'],
-    [/(?:(i)fe|(ar|l|[eo][ao])f)$/, '$1$2ves'],
-    [/([^aeiouy]|qu)y$/, '$1ies'],
-    [/([^ch][ieo][ln])ey$/, '$1ies'],
-    [/(x|ch|ss|sh|zz)$/, '$1es'],
-    [/(matr|cod|mur|sil|vert|ind)(?:ix|ex)$/, '$1ices'],
-    [/^(m|l)(?:ice|ouse)$/, '$1ice'],
-    [/(pe)(?:rson|ople)$/, '$1ople'],
-    [/(child)(?:ren)?$/, '$1ren'],
-    [/(eau)x?$/, '$1x'],
-    [/m[ae]n$/, 'men']
+    [/s?$/i, 's'],
+    [/([^aeiou]ese)$/i, '$1'],
+    [/^(ax|test)is$/i, '$1es'],
+    [/(alias|[^aou]us|tlas|gas|ris)$/i, '$1es'],
+    [/(e[mn]u)s?$/i, '$1s'],
+    [/([^l]ias|[aeiou]las|[emjzr]as|[iu]am)$/i, '$1'],
+    [/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc)(?:us|i)$/i, '$1i'],
+    [/^(alumn|alg|vertebr)(?:a|ae)$/i, '$1ae'],
+    [/(her|at|gr)o$/i, '$1oes'],
+    [/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)(?:a|um)$/i, '$1a'],
+    [/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)(?:a|on)$/i, '$1a'],
+    [/sis$/i, 'ses'],
+    [/(?:(i)fe|(ar|l|[eo][ao])f)$/i, '$1$2ves'],
+    [/([^aeiouy]|qu)y$/i, '$1ies'],
+    [/([^ch][ieo][ln])ey$/i, '$1ies'],
+    [/(x|ch|ss|sh|zz)$/i, '$1es'],
+    [/(matr|cod|mur|sil|vert|ind)(?:ix|ex)$/i, '$1ices'],
+    [/^(m|l)(?:ice|ouse)$/i, '$1ice'],
+    [/(pe)(?:rson|ople)$/i, '$1ople'],
+    [/(child)(?:ren)?$/i, '$1ren'],
+    [/(eau)x?$/i, '$1x'],
+    [/m[ae]n$/i, 'men']
   ].forEach(function (rule) {
     return pluralize.addPluralRule(rule[0], rule[1]);
   });
@@ -339,31 +321,31 @@
    * Singularization rules.
    */
   [
-    [/s$/, ''],
-    [/(ss)$/, '$1'],
-    [/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(?:sis|ses)$/, '$1sis'],
-    [/(^analy)(?:sis|ses)$/, '$1sis'],
-    [/([^aeflor])ves$/, '$1fe'],
-    [/(hive|tive|dr?ive)s$/, '$1'],
-    [/(ar|(?:wo|[ae])l|[eo][ao])ves$/, '$1f'],
-    [/([^aeiouy]|qu)ies$/, '$1y'],
-    [/(^[pl]|zomb|^(?:neck)?t|[aeo][lt]|cut)ies$/, '$1ie'],
-    [/([^c][eor]n|smil)ies$/, '$1ey'],
-    [/^(m|l)ice$/, '$1ouse'],
-    [/(x|ch|ss|sh|zz|tto|go|cho|alias|[^aou]us|tlas|gas|(?:her|at|gr)o|ris)(?:es)?$/, '$1'],
-    [/(e[mn]u)s?$/, '$1'],
-    [/(movie|twelve)s$/, '$1'],
-    [/(cris|test|diagnos)(?:is|es)$/, '$1is'],
-    [/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc)(?:us|i)$/, '$1us'],
-    [/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)a$/, '$1um'],
-    [/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)a$/, '$1on'],
-    [/^(alumn|alg|vertebr)ae$/, '$1a'],
-    [/(cod|mur|sil|vert|ind)ices$/, '$1ex'],
-    [/(matr)ices$/, '$1ix'],
-    [/(pe)(rson|ople)$/, '$1rson'],
-    [/(child)ren$/, '$1'],
-    [/(eau)[sx]?$/, '$1'],
-    [/men$/, 'man']
+    [/s$/i, ''],
+    [/(ss)$/i, '$1'],
+    [/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(?:sis|ses)$/i, '$1sis'],
+    [/(^analy)(?:sis|ses)$/i, '$1sis'],
+    [/([^aeflor])ves$/i, '$1fe'],
+    [/(hive|tive|dr?ive)s$/i, '$1'],
+    [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, '$1f'],
+    [/([^aeiouy]|qu)ies$/i, '$1y'],
+    [/(^[pl]|zomb|^(?:neck)?t|[aeo][lt]|cut)ies$/i, '$1ie'],
+    [/([^c][eor]n|smil)ies$/i, '$1ey'],
+    [/^(m|l)ice$/i, '$1ouse'],
+    [/(x|ch|ss|sh|zz|tto|go|cho|alias|[^aou]us|tlas|gas|(?:her|at|gr)o|ris)(?:es)?$/i, '$1'],
+    [/(e[mn]u)s?$/i, '$1'],
+    [/(movie|twelve)s$/i, '$1'],
+    [/(cris|test|diagnos)(?:is|es)$/i, '$1is'],
+    [/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc)(?:us|i)$/i, '$1us'],
+    [/^(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)a$/i, '$1um'],
+    [/^(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|\w+hedr)a$/i, '$1on'],
+    [/^(alumn|alg|vertebr)ae$/i, '$1a'],
+    [/(cod|mur|sil|vert|ind)ices$/i, '$1ex'],
+    [/(matr)ices$/i, '$1ix'],
+    [/(pe)(rson|ople)$/i, '$1rson'],
+    [/(child)ren$/i, '$1'],
+    [/(eau)[sx]?$/i, '$1'],
+    [/men$/i, 'man']
   ].forEach(function (rule) {
     return pluralize.addSingularRule(rule[0], rule[1]);
   });
@@ -432,13 +414,13 @@
     'wildebeest',
     'wildlife',
     // Regexes.
-    /pox$/, // "chickpox", "smallpox"
-    /ois$/,
-    /deer$/, // "deer", "reindeer"
-    /fish$/, // "fish", "blowfish", "angelfish"
-    /sheep$/,
-    /measles$/,
-    /[^aeiou]ese$/ // "chinese", "japanese"
+    /pox$/i, // "chickpox", "smallpox"
+    /ois$/i,
+    /deer$/i, // "deer", "reindeer"
+    /fish$/i, // "fish", "blowfish", "angelfish"
+    /sheep$/i,
+    /measles$/i,
+    /[^aeiou]ese$/i // "chinese", "japanese"
   ].forEach(pluralize.addUncountableRule);
 
   return pluralize;

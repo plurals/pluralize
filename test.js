@@ -498,7 +498,9 @@ var BASIC_TESTS = [
   ['reed', 'reeds'],
   ['reef', 'reefs'],
   ['yourself', 'yourselves'],
-  ['sunroof', 'sunrooves']
+  ['sunroof', 'sunrooves'],
+  // Prototype inheritance.
+  ['constructor', 'constructors'],
 ];
 
 /**

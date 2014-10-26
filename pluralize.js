@@ -116,7 +116,7 @@
    */
   function sanitizeWord (word, collection) {
     // Empty string or doesn't need fixing.
-    if (!word.length || uncountables[word]) {
+    if (!word.length || uncountables.hasOwnProperty(word)) {
       return word;
     }
 
@@ -153,12 +153,12 @@
       var restore = restoreCase(word);
 
       // Check against the keep object map.
-      if (keepMap[token]) {
+      if (keepMap.hasOwnProperty(token)) {
         return restore(token);
       }
 
       // Check against the replacement map for a direct word replacement.
-      if (replaceMap[token]) {
+      if (replaceMap.hasOwnProperty(token)) {
         return restore(replaceMap[token]);
       }
 

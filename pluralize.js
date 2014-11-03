@@ -1,18 +1,18 @@
-(function (root, pluralize) {
+(function (def) {
   /* istanbul ignore else */
   if (typeof require === 'function' && typeof exports === 'object' && typeof module === 'object') {
     // Node.
-    module.exports = pluralize();
+    module.exports = def();
   } else if (typeof define === 'function' && define.amd) {
     // AMD, registers as an anonymous module.
     define(function () {
-      return pluralize();
+      return def();
     });
   } else {
     // Browser global.
-    root.pluralize = pluralize();
+    pluralize = def();
   }
-})(this, function () {
+})(function () {
   // Rule storage - pluralize and singularize need to be run sequentially,
   // while other rules can be optimized using an object for instant lookups.
   var pluralRules      = [];

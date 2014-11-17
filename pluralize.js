@@ -267,6 +267,7 @@
     ['foot',    'feet'],
     ['eave',    'eaves'],
     ['goose',   'geese'],
+    ['mongoose','mongooses'],
     ['tooth',   'teeth'],
     ['quiz',    'quizzes'],
     ['human',   'humans'],
@@ -277,7 +278,24 @@
     ['genie',   'genies'],
     ['groove',  'grooves'],
     ['pickaxe', 'pickaxes'],
-    ['whiskey', 'whiskies']
+    ['whiskey', 'whiskies'],
+    ['syllabus','syllabui'],
+    ['diagnosis','diagnoses'],
+    ['radius'   'radii'],
+    ['stratum', 'strati'],
+    ['nucleus', 'nuclei'],
+    ['focus',   'foci'],
+    ['fungus',  'fungi'],
+    ['crisis',  'crises'],
+    ['criterion','criteria'],
+    ['index',   'indices'],
+    ['appendix','appendices'],
+    ['seraph',  'seraphim'],
+    //words that just break the rules
+    ['memo',    'memos'],
+    ['cello',   'cellos'],
+    ['knife',   'knives'],
+    ['roof',    'roofs']
   ].forEach(function (rule) {
     return pluralize.addIrregularRule(rule[0], rule[1]);
   });

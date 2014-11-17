@@ -76,11 +76,7 @@
    * @return {[type]}      [description]
    */
   function interpolate (str, args) {
-    return str.replace(/\$(&|\d{1,2})/g, function (match, index) {
-      if (index === '&') {
-        return args[0];
-      }
-
+    return str.replace(/\$(\d{1,2})/g, function (match, index) {
       return args[index] || '';
     });
   }
@@ -213,8 +209,8 @@
     }
 
     // Set singular and plural references for the word.
-    pluralize.addPluralRule(word, '$&');
-    pluralize.addSingularRule(word, '$&');
+    pluralize.addPluralRule(word, '$0');
+    pluralize.addSingularRule(word, '$0');
   };
 
   /**
@@ -270,8 +266,6 @@
     ['yes',     'yeses'],
     ['foot',    'feet'],
     ['eave',    'eaves'],
-    ['beau',    'beaus'],
-    ['bureau',  'bureaus'],
     ['goose',   'geese'],
     ['mongoose','mongooses'],
     ['tooth',   'teeth'],
@@ -330,7 +324,7 @@
     [/^(m|l)(?:ice|ouse)$/i, '$1ice'],
     [/(pe)(?:rson|ople)$/i, '$1ople'],
     [/(child)(?:ren)?$/i, '$1ren'],
-    [/(eau)x?$/i, '$1x'],
+    [/eaux$/i, '$0'],
     [/m[ae]n$/i, 'men']
   ].forEach(function (rule) {
     return pluralize.addPluralRule(rule[0], rule[1]);
@@ -363,7 +357,7 @@
     [/(matr)ices$/i, '$1ix'],
     [/(pe)(rson|ople)$/i, '$1rson'],
     [/(child)ren$/i, '$1'],
-    [/(eau)[sx]?$/i, '$1'],
+    [/(eau)x?$/i, '$1'],
     [/men$/i, 'man']
   ].forEach(function (rule) {
     return pluralize.addSingularRule(rule[0], rule[1]);

@@ -271,6 +271,7 @@
     ['foot',    'feet'],
     ['eave',    'eaves'],
     ['beau',    'beaus'],
+    ['bureau',  'bureaus'],
     ['goose',   'geese'],
     ['tooth',   'teeth'],
     ['quiz',    'quizzes'],

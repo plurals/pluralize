@@ -40,7 +40,7 @@ var BASIC_TESTS = [
   ['guess', 'guesses'],
   ['person', 'people'],
   ['meteor', 'meteors'],
-  ['chateau', 'chateaux'],
+  ['chateau', 'chateaus'],
   ['lap', 'laps'],
   ['cough', 'coughs'],
   ['death', 'deaths'],
@@ -181,7 +181,7 @@ var BASIC_TESTS = [
   ['campus', 'campuses'],
   ['virus', 'viri'],
   ['iris', 'irises'],
-  ['bureau', 'bureaux'],
+  ['bureau', 'bureaus'],
   ['kiwi', 'kiwis'],
   ['wiki', 'wikis'],
   ['igloo', 'igloos'],
@@ -446,6 +446,7 @@ var BASIC_TESTS = [
   ['callus', 'calluses'],
   ['use', 'uses'],
   ['beau', 'beaus'],
+  ['gateau', 'gateaus'],
   ['fetus', 'fetuses'],
   ['luau', 'luaus'],
   ['pilau', 'pilaus'],
@@ -499,6 +500,7 @@ var BASIC_TESTS = [
   ['reef', 'reefs'],
   ['yourself', 'yourselves'],
   ['sunroof', 'sunrooves'],
+  ['plateau', 'plateaus'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.
@@ -519,7 +521,8 @@ var SINGULAR_TESTS = [
   ['mango', 'mangoes'],
   ['echo', 'echoes'],
   ['ghetto', 'ghettoes'],
-  ['nucleus', 'nucleuses']
+  ['nucleus', 'nucleuses'],
+  ['bureau', 'bureaux']
 ];
 
 /**
@@ -528,7 +531,8 @@ var SINGULAR_TESTS = [
  * @type {Array}
  */
 var PLURAL_TESTS = [
-  ['whisky',  'whiskies']
+  ['whisky',  'whiskies'],
+  ['plateaux', 'plateaux']
 ];
 
 /**

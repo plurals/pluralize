@@ -266,8 +266,6 @@
     ['yes',     'yeses'],
     ['foot',    'feet'],
     ['eave',    'eaves'],
-    ['beau',    'beaus'],
-    ['bureau',  'bureaus'],
     ['goose',   'geese'],
     ['tooth',   'teeth'],
     ['quiz',    'quizzes'],
@@ -308,7 +306,7 @@
     [/^(m|l)(?:ice|ouse)$/i, '$1ice'],
     [/(pe)(?:rson|ople)$/i, '$1ople'],
     [/(child)(?:ren)?$/i, '$1ren'],
-    [/(eau)x?$/i, '$1x'],
+    [/eaux$/i, '$0'],
     [/m[ae]n$/i, 'men']
   ].forEach(function (rule) {
     return pluralize.addPluralRule(rule[0], rule[1]);
@@ -341,7 +339,7 @@
     [/(matr)ices$/i, '$1ix'],
     [/(pe)(rson|ople)$/i, '$1rson'],
     [/(child)ren$/i, '$1'],
-    [/(eau)[sx]?$/i, '$1'],
+    [/(eau)x?$/i, '$1'],
     [/men$/i, 'man']
   ].forEach(function (rule) {
     return pluralize.addSingularRule(rule[0], rule[1]);

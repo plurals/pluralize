@@ -542,7 +542,8 @@ var SINGULAR_TESTS = [
  */
 var PLURAL_TESTS = [
   ['whisky',  'whiskies'],
-  ['plateaux', 'plateaux']
+  ['plateaux', 'plateaux'],
+  ['axis', 'axes']
 ];
 
 /**

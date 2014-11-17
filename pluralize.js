@@ -76,11 +76,7 @@
    * @return {[type]}      [description]
    */
   function interpolate (str, args) {
-    return str.replace(/\$(&|\d{1,2})/g, function (match, index) {
-      if (index === '&') {
-        return args[0];
-      }
-
+    return str.replace(/\$(\d{1,2})/g, function (match, index) {
       return args[index] || '';
     });
   }
@@ -213,8 +209,8 @@
     }
 
     // Set singular and plural references for the word.
-    pluralize.addPluralRule(word, '$&');
-    pluralize.addSingularRule(word, '$&');
+    pluralize.addPluralRule(word, '$0');
+    pluralize.addSingularRule(word, '$0');
   };
 
   /**

@@ -98,7 +98,7 @@ var BASIC_TESTS = [
   ['dwarf', 'dwarves'], // Proper spelling is "dwarfs".
   ['encyclopedia', 'encyclopedias'],
   ['louse', 'lice'],
-  ['roof', 'rooves'],
+  ['roof', 'roofs'],
   ['woman', 'women'],
   ['formula', 'formulas'],
   ['polyhedron', 'polyhedra'],
@@ -153,7 +153,6 @@ var BASIC_TESTS = [
   ['chief', 'chiefs'],
   ['quiz', 'quizzes'],
   ['child', 'children'],
-  ['syllabus', 'syllabi'],
   ['shelf', 'shelves'],
   ['fizz', 'fizzes'],
   ['tooth', 'teeth'],
@@ -499,8 +498,18 @@ var BASIC_TESTS = [
   ['reed', 'reeds'],
   ['reef', 'reefs'],
   ['yourself', 'yourselves'],
-  ['sunroof', 'sunrooves'],
+  ['sunroof', 'sunroofs'],
   ['plateau', 'plateaus'],
+  ['radius', 'radii'],
+  ['stratum', 'strata'],
+  ['stratus', 'strati'],
+  ['focus', 'foci'],
+  ['fungus', 'fungi'],
+  ['appendix', 'appendices'],
+  ['seraph', 'seraphim'],
+  ['cherub', 'cherubim'],
+  ['memo', 'memos'],
+  ['cello', 'cellos'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.
@@ -522,7 +531,8 @@ var SINGULAR_TESTS = [
   ['echo', 'echoes'],
   ['ghetto', 'ghettoes'],
   ['nucleus', 'nucleuses'],
-  ['bureau', 'bureaux']
+  ['bureau', 'bureaux'],
+  ['seraph', 'seraphs']
 ];
 
 /**

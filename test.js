@@ -506,7 +506,26 @@ var BASIC_TESTS = [
   ['camelCase', 'camelCases'],
   ['PascalCase', 'PascalCases'],
   ['Alumnus', 'Alumni'],
-  ['CHICKEN', 'CHICKENS']
+  ['CHICKEN', 'CHICKENS'],
+  ['bureau',  'bureaus'],
+  ['mongoose','mongooses'],
+  ['syllabus','syllabui'],
+  ['diagnosis','diagnoses'],
+  ['radius'   'radii'],
+  ['stratum', 'strati'],
+  ['nucleus', 'nuclei'],
+  ['focus',   'foci'],
+  ['fungus',  'fungi'],
+  ['crisis',  'crises'],
+  ['criterion','criteria'],
+  ['index',   'indices'],
+  ['appendix','appendices'],
+  ['seraph',  'seraphim'],
+  //words that just break the rules
+  ['memo',    'memos'],
+  ['cello',   'cellos'],
+  ['knife',   'knives'],
+  ['roof',    'roofs']
 ];
 
 /**

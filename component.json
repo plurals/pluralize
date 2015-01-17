@@ -14,5 +14,9 @@
   "license": "MIT",
   "scripts": [
     "pluralize.js"
+  ],
+  "homepage": "https://github.com/blakeembrey/pluralize",
+  "authors": [
+    "Blake Embrey <hello@blakeembrey.com>"
   ]
 }

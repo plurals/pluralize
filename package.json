@@ -8,7 +8,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "istanbul cover _mocha -- -R spec"
+    "test": "istanbul cover _mocha -- -R spec --bail"
   },
   "repository": "https://github.com/blakeembrey/pluralize.git",
   "keywords": [

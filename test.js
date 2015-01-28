@@ -663,5 +663,12 @@ describe('pluralize', function () {
 
       expect(pluralize.singular('mornings')).to.equal('suck');
     });
+
+    it('should not modify letter cases', function () {
+      pluralize.addIrregularRule('UPPERCASE', 'UPPERCASEs');
+
+      expect(pluralize.plural('UPPERCASE')).to.equal('UPPERCASEs');
+    });
+
   });
 });

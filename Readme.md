@@ -9,7 +9,7 @@ Return a pluralized or singularized word based on the input string.
 
 ## Installation
 
-```javascript
+```
 npm install pluralize --save
 bower install pluralize --save
 ```

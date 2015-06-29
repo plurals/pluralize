@@ -1,6 +1,7 @@
 # Pluralize
 
 [![NPM version][npm-image]][npm-url]
+[![NPM downloads][downloads-image]][downloads-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
@@ -65,6 +66,8 @@ MIT
 
 [npm-image]: https://img.shields.io/npm/v/pluralize.svg?style=flat
 [npm-url]: https://npmjs.org/package/pluralize
+[downloads-image]: https://img.shields.io/npm/dm/pluralize.svg?style=flat
+[downloads-url]: https://npmjs.org/package/pluralize
 [travis-image]: https://img.shields.io/travis/blakeembrey/pluralize.svg?style=flat
 [travis-url]: https://travis-ci.org/blakeembrey/pluralize
 [coveralls-image]: https://img.shields.io/coveralls/blakeembrey/pluralize.svg?style=flat

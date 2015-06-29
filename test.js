@@ -296,7 +296,6 @@ var BASIC_TESTS = [
   ['analysis', 'analyses'],
   ['locus', 'loci'],
   ['uterus', 'uteri'],
-  ['automatum', 'automata'],
   ['curriculum', 'curricula'],
   ['quorum', 'quora'],
   ['genie', 'genies'],
@@ -513,6 +512,9 @@ var BASIC_TESTS = [
   ['cherub', 'cherubim'],
   ['memo', 'memos'],
   ['cello', 'cellos'],
+  ['automaton', 'automata'],
+  ['button', 'buttons'],
+  ['crayon', 'crayons'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.
@@ -546,7 +548,8 @@ var SINGULAR_TESTS = [
 var PLURAL_TESTS = [
   ['whisky',  'whiskies'],
   ['plateaux', 'plateaux'],
-  ['axis', 'axes']
+  ['axis', 'axes'],
+  ['automatum', 'automata']
 ];
 
 /**

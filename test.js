@@ -529,7 +529,7 @@ var BASIC_TESTS = [
  * @type {Array}
  */
 var SINGULAR_TESTS = [
-  ['dingo', 'dingoes'],
+  ['dingo', 'dingos'],
   ['mango', 'mangoes'],
   ['echo', 'echos'],
   ['ghetto', 'ghettoes'],

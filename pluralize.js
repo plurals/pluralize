@@ -73,9 +73,9 @@
   /**
    * Interpolate a regexp string.
    *
-   * @param  {[type]} str  [description]
-   * @param  {[type]} args [description]
-   * @return {[type]}      [description]
+   * @param  {string} str
+   * @param  {Array}  args
+   * @return {string}
    */
   function interpolate (str, args) {
     return str.replace(/\$(\d{1,2})/g, function (match, index) {

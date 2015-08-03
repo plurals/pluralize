@@ -22,6 +22,7 @@ var BASIC_TESTS = [
   ['smallpox', 'smallpox'],
   ['chickenpox', 'chickenpox'],
   ['shambles', 'shambles'],
+  ['garbage', 'garbage'],
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.

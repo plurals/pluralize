@@ -313,7 +313,8 @@
     [/(pe)(?:rson|ople)$/i, '$1ople'],
     [/(child)(?:ren)?$/i, '$1ren'],
     [/eaux$/i, '$0'],
-    [/m[ae]n$/i, 'men']
+    [/m[ae]n$/i, 'men'],
+    ['thou', 'you']
   ].forEach(function (rule) {
     return pluralize.addPluralRule(rule[0], rule[1])
   })
@@ -416,6 +417,7 @@
     'whiting',
     'wildebeest',
     'wildlife',
+    'you',
     // Regexes.
     /pox$/i, // "chickpox", "smallpox"
     /ois$/i,

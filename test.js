@@ -23,6 +23,7 @@ var BASIC_TESTS = [
   ['chickenpox', 'chickenpox'],
   ['shambles', 'shambles'],
   ['garbage', 'garbage'],
+  ['you', 'you'],
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.
@@ -550,7 +551,8 @@ var PLURAL_TESTS = [
   ['whisky', 'whiskies'],
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
-  ['automatum', 'automata']
+  ['automatum', 'automata'],
+  ['thou', 'you']
 ]
 
 /**

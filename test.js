@@ -24,6 +24,7 @@ var BASIC_TESTS = [
   ['shambles', 'shambles'],
   ['garbage', 'garbage'],
   ['you', 'you'],
+  ['wildlife', 'wildlife'],
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.

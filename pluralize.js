@@ -327,7 +327,7 @@
     [/(ss)$/i, '$1'],
     [/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(?:sis|ses)$/i, '$1sis'],
     [/(^analy)(?:sis|ses)$/i, '$1sis'],
-    [/(wi|kni|(?:after|half|high|low|mid|non|night|wild|[^\w]|^)li)ves$/i, '$1fe'],
+    [/(wi|kni|(?:after|half|high|low|mid|non|night|[^\w]|^)li)ves$/i, '$1fe'],
     [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, '$1f'],
     [/([^aeiouy]|qu)ies$/i, '$1y'],
     [/(^[pl]|zomb|^(?:neck)?t|[aeo][lt]|cut)ies$/i, '$1ie'],
@@ -415,6 +415,7 @@
     'tuna',
     'whiting',
     'wildebeest',
+    'wildlife',
     'you',
     // Regexes.
     /pox$/i, // "chickpox", "smallpox"

@@ -304,7 +304,7 @@
     [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)(?:a|um)$/i, '$1a'],
     [/(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat)(?:a|on)$/i, '$1a'],
     [/sis$/i, 'ses'],
-    [/(?:(i)fe|(ar|l|ea|eo|oa|hoo)f)$/i, '$1$2ves'],
+    [/(?:(kni|wi|li)fe|(ar|l|ea|eo|oa|hoo)f)$/i, '$1$2ves'],
     [/([^aeiouy]|qu)y$/i, '$1ies'],
     [/([^ch][ieo][ln])ey$/i, '$1ies'],
     [/(x|ch|ss|sh|zz)$/i, '$1es'],
@@ -327,8 +327,7 @@
     [/(ss)$/i, '$1'],
     [/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(?:sis|ses)$/i, '$1sis'],
     [/(^analy)(?:sis|ses)$/i, '$1sis'],
-    [/([^aeflor])ves$/i, '$1fe'],
-    [/(hive|tive|dr?ive)s$/i, '$1'],
+    [/(wi|kni|(?:after|half|high|low|mid|non|night|wild|[^\w]|^)li)ves$/i, '$1fe'],
     [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, '$1f'],
     [/([^aeiouy]|qu)ies$/i, '$1y'],
     [/(^[pl]|zomb|^(?:neck)?t|[aeo][lt]|cut)ies$/i, '$1ie'],
@@ -416,7 +415,6 @@
     'tuna',
     'whiting',
     'wildebeest',
-    'wildlife',
     'you',
     // Regexes.
     /pox$/i, // "chickpox", "smallpox"

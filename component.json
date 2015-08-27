@@ -1,6 +1,6 @@
 {
   "name": "pluralize",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Pluralize and singularize any word",
   "main": "pluralize.js",
   "repository": "blakeembrey/pluralize",

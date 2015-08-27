@@ -8,7 +8,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "lint": "standard",
+    "lint": "semistandard",
     "test-spec": "mocha -R spec --bail",
     "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec --bail",
     "test": "npm run lint && npm run test-cov"
@@ -33,6 +33,6 @@
     "istanbul": "^0.3.0",
     "mocha": "^1.21.4",
     "pre-commit": "^1.0.10",
-    "standard": "^4.4.1"
+    "semistandard": "^7.0.2"
   }
 }

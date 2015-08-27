@@ -1,6 +1,7 @@
 /* global describe, it */
-var expect = require('chai').expect
-var pluralize = require('./')
+
+var expect = require('chai').expect;
+var pluralize = require('./');
 
 /**
  * Standard singular/plural matches.
@@ -555,7 +556,7 @@ var BASIC_TESTS = [
   ['PascalCase', 'PascalCases'],
   ['Alumnus', 'Alumni'],
   ['CHICKEN', 'CHICKENS']
-]
+];
 
 /**
  * Odd plural to singular tests.
@@ -570,7 +571,7 @@ var SINGULAR_TESTS = [
   ['nucleus', 'nucleuses'],
   ['bureau', 'bureaux'],
   ['seraph', 'seraphs']
-]
+];
 
 /**
  * Odd singular to plural tests.
@@ -583,7 +584,7 @@ var PLURAL_TESTS = [
   ['axis', 'axes'],
   ['automatum', 'automata'],
   ['thou', 'you']
-]
+];
 
 /**
  * Test suite.
@@ -593,111 +594,111 @@ describe('pluralize', function () {
     describe('plural', function () {
       BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
         it(test[0] + ' -> ' + test[1], function () {
-          expect(pluralize.plural(test[0])).to.equal(test[1])
-        })
-      })
-    })
+          expect(pluralize.plural(test[0])).to.equal(test[1]);
+        });
+      });
+    });
 
     describe('singular', function () {
       BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
         it(test[1] + ' -> ' + test[0], function () {
-          expect(pluralize.singular(test[1])).to.equal(test[0])
-        })
-      })
-    })
-  })
+          expect(pluralize.singular(test[1])).to.equal(test[0]);
+        });
+      });
+    });
+  });
 
   describe('automatically convert', function () {
     describe('plural', function () {
       BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
         // Make sure the word stays pluralized.
         it('5 ' + test[1] + ' -> ' + test[1], function () {
-          expect(pluralize(test[1], 5)).to.equal(test[1])
-        })
+          expect(pluralize(test[1], 5)).to.equal(test[1]);
+        });
 
         // Make sure the word becomes a plural.
         if (test[0] !== test[1]) {
           it('5 ' + test[0] + ' -> ' + test[1], function () {
-            expect(pluralize(test[0], 5)).to.equal(test[1])
-          })
+            expect(pluralize(test[0], 5)).to.equal(test[1]);
+          });
         }
-      })
-    })
+      });
+    });
 
     describe('singular', function () {
       BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
         // Make sure the word stays singular.
         it('1 ' + test[0] + ' -> ' + test[0], function () {
-          expect(pluralize(test[0], 1)).to.equal(test[0])
-        })
+          expect(pluralize(test[0], 1)).to.equal(test[0]);
+        });
 
         // Make sure the word becomes singular.
         if (test[0] !== test[1]) {
           it('1 ' + test[1] + ' -> ' + test[0], function () {
-            expect(pluralize(test[1], 1)).to.equal(test[0])
-          })
+            expect(pluralize(test[1], 1)).to.equal(test[0]);
+          });
         }
-      })
-    })
-  })
+      });
+    });
+  });
 
   describe('prepend count', function () {
     it('plural words', function () {
-      expect(pluralize('test', 5, true)).to.equal('5 tests')
-    })
+      expect(pluralize('test', 5, true)).to.equal('5 tests');
+    });
 
     it('singular words', function () {
-      expect(pluralize('test', 1, true)).to.equal('1 test')
-    })
-  })
+      expect(pluralize('test', 1, true)).to.equal('1 test');
+    });
+  });
 
   describe('adding new rules', function () {
     it('uncountable rules', function () {
-      expect(pluralize('paper')).to.equal('papers')
+      expect(pluralize('paper')).to.equal('papers');
 
-      pluralize.addUncountableRule('paper')
+      pluralize.addUncountableRule('paper');
 
-      expect(pluralize('paper')).to.equal('paper')
-    })
+      expect(pluralize('paper')).to.equal('paper');
+    });
 
     it('should allow new irregular words', function () {
-      expect(pluralize('irregular')).to.equal('irregulars')
+      expect(pluralize('irregular')).to.equal('irregulars');
 
-      pluralize.addIrregularRule('irregular', 'regular')
+      pluralize.addIrregularRule('irregular', 'regular');
 
-      expect(pluralize('irregular')).to.equal('regular')
-    })
+      expect(pluralize('irregular')).to.equal('regular');
+    });
 
     it('should allow new plural matching rules', function () {
-      expect(pluralize.plural('regex')).to.equal('regexes')
+      expect(pluralize.plural('regex')).to.equal('regexes');
 
-      pluralize.addPluralRule(/gex$/i, 'gexii')
+      pluralize.addPluralRule(/gex$/i, 'gexii');
 
-      expect(pluralize.plural('regex')).to.equal('regexii')
-    })
+      expect(pluralize.plural('regex')).to.equal('regexii');
+    });
 
     it('should allow new singular matching rules', function () {
-      expect(pluralize.singular('singles')).to.equal('single')
+      expect(pluralize.singular('singles')).to.equal('single');
 
-      pluralize.addSingularRule(/singles$/, 'singular')
+      pluralize.addSingularRule(/singles$/, 'singular');
 
-      expect(pluralize.singular('singles')).to.equal('singular')
-    })
+      expect(pluralize.singular('singles')).to.equal('singular');
+    });
 
     it('should allow new plural matching rules to be strings', function () {
-      expect(pluralize.plural('person')).to.equal('people')
+      expect(pluralize.plural('person')).to.equal('people');
 
-      pluralize.addPluralRule('person', 'peeps')
+      pluralize.addPluralRule('person', 'peeps');
 
-      expect(pluralize.plural('person')).to.equal('peeps')
-    })
+      expect(pluralize.plural('person')).to.equal('peeps');
+    });
 
     it('should allow new singular matching rules to be strings', function () {
-      expect(pluralize.singular('mornings')).to.equal('morning')
+      expect(pluralize.singular('mornings')).to.equal('morning');
 
-      pluralize.addSingularRule('mornings', 'suck')
+      pluralize.addSingularRule('mornings', 'suck');
 
-      expect(pluralize.singular('mornings')).to.equal('suck')
-    })
-  })
-})
+      expect(pluralize.singular('mornings')).to.equal('suck');
+    });
+  });
+});

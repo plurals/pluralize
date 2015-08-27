@@ -428,4 +428,4 @@
   ].forEach(pluralize.addUncountableRule)
 
   return pluralize
-})
+});

@@ -31,6 +31,7 @@ var BASIC_TESTS = [
   // Pluralization.
   ['this', 'these'],
   ['that', 'those'],
+  ['is', 'are'],
   ['man', 'men'],
   ['superman', 'supermen'],
   ['ox', 'oxen'],

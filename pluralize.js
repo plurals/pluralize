@@ -246,6 +246,7 @@
     ['herself', 'themselves'],
     ['himself', 'themselves'],
     ['themself', 'themselves'],
+    ['is', 'are'],
     ['this', 'these'],
     ['that', 'those'],
     // Words ending in with a consonant and `o`.

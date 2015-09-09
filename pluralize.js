@@ -86,13 +86,14 @@
   /**
    * Sanitize a word by passing in the word and sanitization rules.
    *
+   * @param  {String}   token
    * @param  {String}   word
    * @param  {Array}    collection
    * @return {String}
    */
-  function sanitizeWord (word, collection) {
+  function sanitizeWord (token, word, collection) {
     // Empty string or doesn't need fixing.
-    if (!word.length || uncountables.hasOwnProperty(word)) {
+    if (!token.length || uncountables.hasOwnProperty(token)) {
       return word;
     }
 
@@ -143,7 +144,7 @@
       }
 
       // Run all the rules against the word.
-      return sanitizeWord(word, rules);
+      return sanitizeWord(token, word, rules);
     };
   }
 

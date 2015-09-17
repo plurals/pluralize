@@ -333,7 +333,7 @@
     [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, '$1f'],
     [/([^aeiouy]|qu)ies$/i, '$1y'],
     [/(^[pl]|zomb|^(?:neck)?t|[aeo][lt]|cut)ies$/i, '$1ie'],
-    [/([^c][eor]n|smil)ies$/i, '$1ey'],
+    [/(\b(?:mon|smil))ies$/i, '$1ey'],
     [/(m|l)ice$/i, '$1ouse'],
     [/(seraph|cherub)im$/i, '$1'],
     [/(x|ch|ss|sh|zz|tto|go|cho|alias|[^aou]us|tlas|gas|(?:her|at|gr)o|ris)(?:es)?$/i, '$1'],

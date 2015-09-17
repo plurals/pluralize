@@ -551,6 +551,16 @@ var BASIC_TESTS = [
   ['lowlife', 'lowlives'],
   ['low-life', 'low-lives'],
   ['strife', 'strifes'],
+  ['pony', 'ponies'],
+  ['phony', 'phonies'],
+  ['goony', 'goonies'],
+  ['felony', 'felonies'],
+  ['colony', 'colonies'],
+  ['symphony', 'symphonies'],
+  ['semicolony', 'semicolonies'],
+  ['radiotelephony', 'radiotelephonies'],
+  ['company', 'companies'],
+  ['ceremony', 'ceremonies'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.

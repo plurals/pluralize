@@ -8,7 +8,6 @@ notifications:
     on_failure: change
 
 node_js:
-  - "0.10"
   - "0.12"
   - "4"
 

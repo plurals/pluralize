@@ -358,7 +358,6 @@
    * Uncountable rules.
    */
   [
-    // Check with https://en.wiktionary.org/wiki/{{word}}
     // Singular words with no plurals.
     'agenda',
     'ammo',

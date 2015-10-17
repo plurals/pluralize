@@ -359,6 +359,7 @@
    */
   [
     // Singular words with no plurals.
+    'advice',
     'adulthood',
     'agenda',
     'aid',
@@ -376,11 +377,15 @@
     'chess',
     'clothing',
     'commerce',
+    'cod',
     'cooperation',
     'corps',
     'digestion',
     'debris',
     'diabetes',
+    'energy',
+    'equipment',
+    'elk',
     'excretion',
     'expertise',
     'flounder',

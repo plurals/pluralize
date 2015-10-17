@@ -359,16 +359,23 @@
    */
   [
     // Singular words with no plurals.
+    'adulthood',
     'agenda',
+    'aid',
+    'alcohol',
     'ammo',
     'athletics',
     'bison',
+    'blood',
     'bream',
     'buffalo',
+    'butter',
     'carp',
     'cash',
     'chassis',
+    'chess',
     'clothing',
+    'commerce',
     'cooperation',
     'corps',
     'digestion',

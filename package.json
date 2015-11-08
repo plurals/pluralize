@@ -19,7 +19,8 @@
     "plurals",
     "pluralize",
     "singular",
-    "singularize"
+    "singularize",
+    "inflection"
   ],
   "author": {
     "name": "Blake Embrey",

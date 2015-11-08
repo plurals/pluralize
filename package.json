@@ -4,8 +4,7 @@
   "description": "Pluralize and singularize any word",
   "main": "pluralize.js",
   "files": [
-    "pluralize.js",
-    "LICENSE"
+    "pluralize.js"
   ],
   "scripts": {
     "lint": "semistandard",

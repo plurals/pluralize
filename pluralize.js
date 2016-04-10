@@ -407,6 +407,7 @@
     'literature',
     'machinery',
     'mackerel',
+    'mail',
     'media',
     'mews',
     'moose',

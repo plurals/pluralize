@@ -86,10 +86,10 @@
   /**
    * Sanitize a word by passing in the word and sanitization rules.
    *
-   * @param  {String}   token
-   * @param  {String}   word
+   * @param  {string}   token
+   * @param  {string}   word
    * @param  {Array}    collection
-   * @return {String}
+   * @return {string}
    */
   function sanitizeWord (token, word, collection) {
     // Empty string or doesn't need fixing.
@@ -151,10 +151,10 @@
   /**
    * Pluralize or singularize a word based on the passed in count.
    *
-   * @param  {String}  word
-   * @param  {Number}  count
-   * @param  {Boolean} inclusive
-   * @return {String}
+   * @param  {string}  word
+   * @param  {number}  count
+   * @param  {boolean} inclusive
+   * @return {string}
    */
   function pluralize (word, count, inclusive) {
     var pluralized = count === 1
@@ -220,8 +220,8 @@
   /**
    * Add an irregular word definition.
    *
-   * @param {String} single
-   * @param {String} plural
+   * @param {string} single
+   * @param {string} plural
    */
   pluralize.addIrregularRule = function (single, plural) {
     plural = plural.toLowerCase();

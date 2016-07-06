@@ -56,6 +56,11 @@
    * @return {Function}
    */
   function restoreCase (word, token) {
+    // Tokens are an exact match.
+    if (word === token) {
+      return token;
+    }
+
     // Upper cased words. E.g. "HELLO".
     if (word === word.toUpperCase()) {
       return token.toUpperCase();

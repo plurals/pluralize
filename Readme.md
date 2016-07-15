@@ -4,7 +4,7 @@
 [![NPM downloads][downloads-image]][downloads-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
-![File Size coverage][filesize-url]
+![File Size][filesize-url]
 
 > Pluralize and singularize any word.
 

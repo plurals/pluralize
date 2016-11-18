@@ -4,6 +4,7 @@
 [![NPM downloads][downloads-image]][downloads-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
+[![CDNJS][cdnjs-image]][cdnjs-url]
 
 > Pluralize and singularize any word.
 
@@ -76,3 +77,5 @@ MIT
 [travis-url]: https://travis-ci.org/blakeembrey/pluralize
 [coveralls-image]: https://img.shields.io/coveralls/blakeembrey/pluralize.svg?style=flat
 [coveralls-url]: https://coveralls.io/r/blakeembrey/pluralize?branch=master
+[cdnjs-image]: https://img.shields.io/cdnjs/v/pluralize.svg
+[cdnjs-url]: https://cdnjs.com/libraries/pluralize

@@ -52,9 +52,9 @@ pluralize.plural('regex') //=> "regexes"
 pluralize.addPluralRule(/gex$/i, 'gexii')
 pluralize.plural('regex') //=> "regexii"
 
-pluralize.plural('singles', 1) //=> "single"
+pluralize.singular('singles') //=> "single"
 pluralize.addSingularRule(/singles$/i, 'singular')
-pluralize.plural('singles', 1) //=> "singular"
+pluralize.singular('singles') //=> "singular"
 
 pluralize.plural('irregular') //=> "irregulars"
 pluralize.addIrregularRule('irregular', 'regular')

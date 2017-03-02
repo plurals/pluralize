@@ -63,6 +63,8 @@ pluralize.plural('irregular') //=> "regular"
 pluralize.plural('paper') //=> "papers"
 pluralize.addUncountableRule('paper')
 pluralize.plural('paper') //=> "paper"
+
+pluralize('蘋果', 2, true) //=> "2 蘋果"
 ```
 
 ## License

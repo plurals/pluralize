@@ -28,6 +28,9 @@
   },
   "license": "MIT",
   "readmeFilename": "Readme.md",
+  "engines": {
+    "node": ">=4"
+  },
   "devDependencies": {
     "chai": "^3.2.0",
     "istanbul": "^0.4.5",

@@ -47,6 +47,7 @@ pluralize('test', 1) //=> "test"
 pluralize('test', 5) //=> "tests"
 pluralize('test', 1, true) //=> "1 test"
 pluralize('test', 5, true) //=> "5 tests"
+pluralize('蘋果', 2, true) //=> "2 蘋果"
 
 pluralize.plural('regex') //=> "regexes"
 pluralize.addPluralRule(/gex$/i, 'gexii')

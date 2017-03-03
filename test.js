@@ -581,7 +581,12 @@ var BASIC_TESTS = [
   ['camelCase', 'camelCases'],
   ['PascalCase', 'PascalCases'],
   ['Alumnus', 'Alumni'],
-  ['CHICKEN', 'CHICKENS']
+  ['CHICKEN', 'CHICKENS'],
+  ['日本語', '日本語'],
+  ['한국', '한국'],
+  ['中文', '中文'],
+  ['اللغة العربية', 'اللغة العربية'],
+  ['四 chicken', '四 chickens']
 ];
 
 /**

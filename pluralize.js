@@ -301,6 +301,7 @@
    */
   [
     [/s?$/i, 's'],
+    [/[^\u0000-\u007F]$/i, '$0'],
     [/([^aeiou]ese)$/i, '$1'],
     [/(ax|test)is$/i, '$1es'],
     [/(alias|[^aou]us|tlas|gas|ris)$/i, '$1es'],

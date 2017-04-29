@@ -618,6 +618,32 @@ var PLURAL_TESTS = [
 ];
 
 /**
+ * Is plural tests.
+ *
+ * @type {Array}
+ */
+var IS_PLURAL_TESTS = [
+  ['whisky', false],
+  ['echos', true],
+  ['bluffs', true],
+  ['incentive', false],
+  ['sleeve', false]
+];
+
+/**
+ * Is singular tests.
+ *
+ * @type {Array}
+ */
+var IS_SINGULAR_TESTS = [
+  ['whisky', true],
+  ['echos', false],
+  ['bluffs', false],
+  ['incentive', true],
+  ['sleeve', true]
+];
+
+/**
  * Test suite.
  */
 describe('pluralize', function () {
@@ -637,6 +663,21 @@ describe('pluralize', function () {
         });
       });
     });
+
+    describe('isPlural', function () {
+      IS_PLURAL_TESTS.forEach(function (test) {
+        it(test[0] + ' is plural: ' + test[0], function () {
+          expect(pluralize.isPlural(test[0])).to.equal(test[1]);
+        });
+      });
+    });
+
+    describe('isSingular', function () {
+      IS_SINGULAR_TESTS.forEach(function (test) {
+        it(test[0] + ' is singular: ' + test[0], function () {
+          expect(pluralize.isSingular(test[0])).to.equal(test[1]);
+        });
+      });
   });
 
   describe('automatically convert', function () {

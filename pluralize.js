@@ -169,6 +169,26 @@
   }
 
   /**
+   * Checks if a word is singular
+   *
+   * @param  {string}  word
+   * @return {boolean}
+   */
+  pluralize.isSingular = function (word) {
+    return (pluralize.singular(word) === word);
+  };
+
+  /**
+   * Checks if a word is plural
+   *
+   * @param  {string}  word
+   * @return {boolean}
+   */
+  pluralize.isPlural = function (word) {
+    return (pluralize.plural(word) === word);
+  };
+
+  /**
    * Pluralize a word.
    *
    * @type {Function}

@@ -678,6 +678,7 @@ describe('pluralize', function () {
           expect(pluralize.isSingular(test[0])).to.equal(test[1]);
         });
       });
+    });
   });
 
   describe('automatically convert', function () {

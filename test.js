@@ -666,7 +666,7 @@ describe('pluralize', function () {
 
     describe('isPlural', function () {
       IS_PLURAL_TESTS.forEach(function (test) {
-        it(test[0] + ' is plural: ' + test[0], function () {
+        it(test[0] + ' is plural: ' + test[1], function () {
           expect(pluralize.isPlural(test[0])).to.equal(test[1]);
         });
       });
@@ -674,7 +674,7 @@ describe('pluralize', function () {
 
     describe('isSingular', function () {
       IS_SINGULAR_TESTS.forEach(function (test) {
-        it(test[0] + ' is singular: ' + test[0], function () {
+        it(test[0] + ' is singular: ' + test[1], function () {
           expect(pluralize.isSingular(test[0])).to.equal(test[1]);
         });
       });

@@ -175,7 +175,7 @@
    * @return {boolean}
    */
   pluralize.isSingular = function (word) {
-    return (pluralize.singular(word) === word);
+    return (irregularSingles.hasOwnProperty(word) || (sanitizeWord(word.toLowerCase(), word, singularRules) === word));
   };
 
   /**
@@ -185,7 +185,7 @@
    * @return {boolean}
    */
   pluralize.isPlural = function (word) {
-    return (pluralize.plural(word) === word);
+    return (irregularPlurals.hasOwnProperty(word) || (sanitizeWord(word.toLowerCase(), word, pluralRules) === word));
   };
 
   /**

@@ -35,6 +35,6 @@
     "chai": "^3.2.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "semistandard": "^9.2.1"
+    "semistandard": "^11.0.0"
   }
 }

@@ -21,6 +21,7 @@ var BASIC_TESTS = [
   ['reindeer', 'reindeer'],
   ['starfish', 'starfish'],
   ['smallpox', 'smallpox'],
+  ['tennis', 'tennis'],
   ['chickenpox', 'chickenpox'],
   ['shambles', 'shambles'],
   ['garbage', 'garbage'],

@@ -320,7 +320,7 @@
     [/(x|ch|ss|sh|zz)$/i, '$1es'],
     [/(matr|cod|mur|sil|vert|ind|append)(?:ix|ex)$/i, '$1ices'],
     [/(m|l)(?:ice|ouse)$/i, '$1ice'],
-    [/(pe)(?:rson|ople)$/i, '$1ople'],
+    [/(person)$/i, 'people'],
     [/(child)(?:ren)?$/i, '$1ren'],
     [/eaux$/i, '$0'],
     [/m[ae]n$/i, 'men'],
@@ -354,7 +354,7 @@
     [/(alumn|alg|vertebr)ae$/i, '$1a'],
     [/(cod|mur|sil|vert|ind)ices$/i, '$1ex'],
     [/(matr|append)ices$/i, '$1ix'],
-    [/(pe)(rson|ople)$/i, '$1rson'],
+    [/(people)$/i, 'person'],
     [/(child)ren$/i, '$1'],
     [/(eau)x?$/i, '$1'],
     [/men$/i, 'man']

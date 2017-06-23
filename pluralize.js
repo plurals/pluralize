@@ -367,8 +367,8 @@
    */
   [
     // Singular words with no plurals.
-    'advice',
     'adulthood',
+    'advice',
     'agenda',
     'aid',
     'alcohol',
@@ -384,16 +384,16 @@
     'chassis',
     'chess',
     'clothing',
-    'commerce',
     'cod',
+    'commerce',
     'cooperation',
     'corps',
-    'digestion',
     'debris',
     'diabetes',
+    'digestion',
+    'elk',
     'energy',
     'equipment',
-    'elk',
     'excretion',
     'expertise',
     'flounder',
@@ -439,9 +439,9 @@
     'staff',
     'swine',
     'tennis',
-    'trout',
     'traffic',
     'transporation',
+    'trout',
     'tuna',
     'wealth',
     'welfare',
@@ -450,13 +450,13 @@
     'wildlife',
     'you',
     // Regexes.
-    /pox$/i, // "chickpox", "smallpox"
-    /ois$/i,
+    /[^aeiou]ese$/i, // "chinese", "japanese"
     /deer$/i, // "deer", "reindeer"
     /fish$/i, // "fish", "blowfish", "angelfish"
-    /sheep$/i,
     /measles$/i,
-    /[^aeiou]ese$/i // "chinese", "japanese"
+    /o[iu]s$/i, // "carnivorous"
+    /pox$/i, // "chickpox", "smallpox"
+    /sheep$/i
   ].forEach(pluralize.addUncountableRule);
 
   return pluralize;

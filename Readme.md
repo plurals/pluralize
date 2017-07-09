@@ -5,6 +5,8 @@
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 ![File Size][filesize-url]
+[![CDNJS][cdnjs-image]][cdnjs-url]
+[![Greenkeeper badge](https://badges.greenkeeper.io/blakeembrey/pluralize.svg)](https://greenkeeper.io/)
 
 > Pluralize and singularize any word.
 
@@ -47,14 +49,15 @@ pluralize('test', 1) //=> "test"
 pluralize('test', 5) //=> "tests"
 pluralize('test', 1, true) //=> "1 test"
 pluralize('test', 5, true) //=> "5 tests"
+pluralize('蘋果', 2, true) //=> "2 蘋果"
 
 pluralize.plural('regex') //=> "regexes"
 pluralize.addPluralRule(/gex$/i, 'gexii')
 pluralize.plural('regex') //=> "regexii"
 
-pluralize.plural('singles', 1) //=> "single"
+pluralize.singular('singles') //=> "single"
 pluralize.addSingularRule(/singles$/i, 'singular')
-pluralize.plural('singles', 1) //=> "singular"
+pluralize.singular('singles') //=> "singular"
 
 pluralize.plural('irregular') //=> "irregulars"
 pluralize.addIrregularRule('irregular', 'regular')
@@ -78,3 +81,5 @@ MIT
 [coveralls-image]: https://img.shields.io/coveralls/blakeembrey/pluralize.svg?style=flat
 [coveralls-url]: https://coveralls.io/r/blakeembrey/pluralize?branch=master
 [filesize-url]: https://img.shields.io/github/size/blakeembrey/pluralize/pluralize.js.svg?style=flat
+[cdnjs-image]: https://img.shields.io/cdnjs/v/pluralize.svg
+[cdnjs-url]: https://cdnjs.com/libraries/pluralize

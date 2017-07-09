@@ -21,6 +21,7 @@ var BASIC_TESTS = [
   ['reindeer', 'reindeer'],
   ['starfish', 'starfish'],
   ['smallpox', 'smallpox'],
+  ['tennis', 'tennis'],
   ['chickenpox', 'chickenpox'],
   ['shambles', 'shambles'],
   ['garbage', 'garbage'],
@@ -28,6 +29,8 @@ var BASIC_TESTS = [
   ['wildlife', 'wildlife'],
   ['Staff', 'Staff'],
   ['STAFF', 'STAFF'],
+  ['turquois', 'turquois'],
+  ['carnivorous', 'carnivorous'],
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.
@@ -574,6 +577,7 @@ var BASIC_TESTS = [
   ['radiotelephony', 'radiotelephonies'],
   ['company', 'companies'],
   ['ceremony', 'ceremonies'],
+  ['carnivore', 'carnivores'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.
@@ -581,7 +585,12 @@ var BASIC_TESTS = [
   ['camelCase', 'camelCases'],
   ['PascalCase', 'PascalCases'],
   ['Alumnus', 'Alumni'],
-  ['CHICKEN', 'CHICKENS']
+  ['CHICKEN', 'CHICKENS'],
+  ['日本語', '日本語'],
+  ['한국', '한국'],
+  ['中文', '中文'],
+  ['اللغة العربية', 'اللغة العربية'],
+  ['四 chicken', '四 chickens']
 ];
 
 /**

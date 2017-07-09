@@ -77,4 +77,4 @@ MIT
 [travis-url]: https://travis-ci.org/blakeembrey/pluralize
 [coveralls-image]: https://img.shields.io/coveralls/blakeembrey/pluralize.svg?style=flat
 [coveralls-url]: https://coveralls.io/r/blakeembrey/pluralize?branch=master
-[filesize-url]: https://img.shields.io/github/filesize//blakeembrey/pluralize/master/pluralize.js.svg?style=flat
+[filesize-url]: https://img.shields.io/github/size/blakeembrey/pluralize/pluralize.js.svg?style=flat

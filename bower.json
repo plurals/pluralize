@@ -1,9 +1,7 @@
 {
   "name": "pluralize",
-  "version": "4.0.0",
   "description": "Pluralize and singularize any word",
   "main": "pluralize.js",
-  "repository": "blakeembrey/pluralize",
   "keywords": [
     "plural",
     "plurals",
@@ -12,11 +10,17 @@
     "singularize"
   ],
   "license": "MIT",
-  "scripts": [
-    "pluralize.js"
-  ],
   "homepage": "https://github.com/blakeembrey/pluralize",
   "authors": [
     "Blake Embrey <hello@blakeembrey.com>"
+  ],
+  "moduleType": [
+    "globals",
+    "amd",
+    "node"
+  ],
+  "ignore": [
+    "/.*",
+    "test.js"
   ]
 }

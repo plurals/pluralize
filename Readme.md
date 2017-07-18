@@ -4,6 +4,7 @@
 [![NPM downloads][downloads-image]][downloads-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
+![File Size][filesize-url]
 [![CDNJS][cdnjs-image]][cdnjs-url]
 [![Greenkeeper badge](https://badges.greenkeeper.io/blakeembrey/pluralize.svg)](https://greenkeeper.io/)
 
@@ -82,5 +83,6 @@ MIT
 [travis-url]: https://travis-ci.org/blakeembrey/pluralize
 [coveralls-image]: https://img.shields.io/coveralls/blakeembrey/pluralize.svg?style=flat
 [coveralls-url]: https://coveralls.io/r/blakeembrey/pluralize?branch=master
+[filesize-url]: https://img.shields.io/github/size/blakeembrey/pluralize/pluralize.js.svg?style=flat
 [cdnjs-image]: https://img.shields.io/cdnjs/v/pluralize.svg
 [cdnjs-url]: https://cdnjs.com/libraries/pluralize

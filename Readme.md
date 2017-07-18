@@ -65,6 +65,9 @@ pluralize.plural('irregular') //=> "regular"
 pluralize.plural('paper') //=> "papers"
 pluralize.addUncountableRule('paper')
 pluralize.plural('paper') //=> "paper"
+
+pluralize.isPlural('test') //=> false
+pluralize.isSingular('test') //=> true
 ```
 
 ## License

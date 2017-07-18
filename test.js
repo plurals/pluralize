@@ -634,10 +634,26 @@ describe('pluralize', function () {
       });
     });
 
+    describe('isPlural', function () {
+      BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
+        it('isPlural(' + test[1] + ')', function () {
+          expect(pluralize.isPlural(test[1])).to.equal(true);
+        });
+      });
+    });
+
     describe('singular', function () {
       BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
         it(test[1] + ' -> ' + test[0], function () {
           expect(pluralize.singular(test[1])).to.equal(test[0]);
+        });
+      });
+    });
+
+    describe('isSingular', function () {
+      BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
+        it('isSingular(' + test[0] + ')', function () {
+          expect(pluralize.isSingular(test[0])).to.equal(true);
         });
       });
     });

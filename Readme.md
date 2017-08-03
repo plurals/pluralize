@@ -14,6 +14,7 @@
 
 ```
 npm install pluralize --save
+yarn add pluralize
 bower install pluralize --save
 ```
 

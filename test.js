@@ -579,6 +579,16 @@ var BASIC_TESTS = [
   ['ceremony', 'ceremonies'],
   ['carnivore', 'carnivores'],
   ['emphasis', 'emphases'],
+  ['abuse', 'abuses'],
+  ['ass', 'asses'],
+  ['mile', 'miles'],
+  ['consensus', 'consensuses'],
+  ['coatdress', 'coatdresses'],
+  ['courthouse', 'courthouses'],
+  ['playhouse', 'playhouses'],
+  ['crispness', 'crispnesses'],
+  ['racehorse', 'racehorses'],
+  ['greatness', 'greatnesses'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.

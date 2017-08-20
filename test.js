@@ -578,6 +578,7 @@ var BASIC_TESTS = [
   ['company', 'companies'],
   ['ceremony', 'ceremonies'],
   ['carnivore', 'carnivores'],
+  ['emphasis', 'emphases'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.

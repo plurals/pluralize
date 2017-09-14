@@ -467,7 +467,7 @@
     'swine',
     'tennis',
     'traffic',
-    'transporation',
+    'transportation',
     'trout',
     'tuna',
     'wealth',

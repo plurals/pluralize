@@ -616,7 +616,8 @@ var SINGULAR_TESTS = [
   ['ghetto', 'ghettoes'],
   ['nucleus', 'nucleuses'],
   ['bureau', 'bureaux'],
-  ['seraph', 'seraphs']
+  ['seraph', 'seraphs'],
+  ["it's", "it's"]
 ];
 
 /**

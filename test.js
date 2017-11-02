@@ -616,7 +616,8 @@ var SINGULAR_TESTS = [
   ['ghetto', 'ghettoes'],
   ['nucleus', 'nucleuses'],
   ['bureau', 'bureaux'],
-  ['seraph', 'seraphs']
+  ['seraph', 'seraphs'],
+  ['christmas', 'christmas']
 ];
 
 /**
@@ -629,7 +630,8 @@ var PLURAL_TESTS = [
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['automatum', 'automata'],
-  ['thou', 'you']
+  ['thou', 'you'],
+  ['christmas', 'christmases']
 ];
 
 /**

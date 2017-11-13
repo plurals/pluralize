@@ -476,7 +476,7 @@
     'wildebeest',
     'wildlife',
     'you',
-    'pokemon',
+    '/pok(e|é)mon/',
     // Regexes.
     /[^aeiou]ese$/i, // "chinese", "japanese"
     /deer$/i, // "deer", "reindeer"

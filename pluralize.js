@@ -49,7 +49,10 @@
     // Tokens are an exact match.
     if (word === token) return token;
 
-    // Upper cased words. E.g. "HELLO".
+    // Lower cased words. E.g. "hello".
+    if (word === word.toLowerCase()) return token.toLowerCase();
+
+    // Upper cased words. E.g. "WHISKY".
     if (word === word.toUpperCase()) return token.toUpperCase();
 
     // Title cased words. E.g. "Title".

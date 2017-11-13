@@ -601,7 +601,11 @@ var BASIC_TESTS = [
   ['한국', '한국'],
   ['中文', '中文'],
   ['اللغة العربية', 'اللغة العربية'],
-  ['四 chicken', '四 chickens']
+  ['四 chicken', '四 chickens'],
+  ['Order2', 'Order2s'],
+  ['Work Order2', 'Work Order2s'],
+  ['SoundFX2', 'SoundFX2s'],
+  ['oDonald', 'oDonalds']
 ];
 
 /**
@@ -629,7 +633,9 @@ var PLURAL_TESTS = [
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['automatum', 'automata'],
-  ['thou', 'you']
+  ['thou', 'you'],
+  ['WHISKY', 'WHISKIES'],
+  ['axiS', 'axes']
 ];
 
 /**

@@ -593,6 +593,10 @@ var BASIC_TESTS = [
   ['greatness', 'greatnesses'],
   ['christmas', 'christmases'],
   ['zymase', 'zymases'],
+  ['demon', 'demons'],
+  ['lemon', 'lemons'],
+  ['pokemon', 'pokemon'],
+  ['pokémon', 'pokémon'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.

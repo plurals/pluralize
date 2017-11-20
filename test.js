@@ -616,9 +616,7 @@ var SINGULAR_TESTS = [
   ['ghetto', 'ghettoes'],
   ['nucleus', 'nucleuses'],
   ['bureau', 'bureaux'],
-  ['seraph', 'seraphs'],
-  ['pokemon', 'pokemon'],
-  ['pokémon', 'pokémon']
+  ['seraph', 'seraphs']
 ];
 
 /**
@@ -631,7 +629,9 @@ var PLURAL_TESTS = [
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['automatum', 'automata'],
-  ['thou', 'you']
+  ['thou', 'you'],
+  ['pokemon', 'pokemon'],
+  ['pokémon', 'pokémon']
 ];
 
 /**

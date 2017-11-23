@@ -74,7 +74,7 @@ pluralize.isSingular('test') //=> true
 
 ## License
 
-MIT
+MIT License (https://opensource.org/licenses/MIT)
 
 [npm-image]: https://img.shields.io/npm/v/pluralize.svg?style=flat
 [npm-url]: https://npmjs.org/package/pluralize

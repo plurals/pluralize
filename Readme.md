@@ -24,6 +24,12 @@ bower install pluralize --save
 var pluralize = require('pluralize')
 ```
 
+### Node (ES6)
+
+```javascript
+import pluralize from 'pluralize';
+```
+
 ### AMD
 
 ```javascript

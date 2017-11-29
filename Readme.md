@@ -72,9 +72,9 @@ pluralize.isPlural('test') //=> false
 pluralize.isSingular('test') //=> true
 ```
 
-## License
+## License[https://github.com/blakeembrey/pluralize/blob/master/LICENSE]
 
-MIT License (https://opensource.org/licenses/MIT)
+MIT License[https://opensource.org/licenses/MIT]
 
 [npm-image]: https://img.shields.io/npm/v/pluralize.svg?style=flat
 [npm-url]: https://npmjs.org/package/pluralize

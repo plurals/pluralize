@@ -61,7 +61,7 @@ pluralize.addSingularRule(/singles$/i, 'singular')
 pluralize.singular('singles') //=> "singular"
 
 pluralize.plural('irregular') //=> "irregulars"
-pluralize.addIrregularRule('irregular', 'regular')
+pluralize.addPluralRule('irregular', 'regular')
 pluralize.plural('irregular') //=> "regular"
 
 pluralize.plural('paper') //=> "papers"

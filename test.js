@@ -13,6 +13,7 @@ var BASIC_TESTS = [
   ['fish', 'fish'],
   ['media', 'media'],
   ['moose', 'moose'],
+  ['police', 'police'],
   ['sheep', 'sheep'],
   ['series', 'series'],
   ['species', 'species'],

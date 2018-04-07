@@ -52,28 +52,27 @@ pluralize('test', 1, true) //=> "1 test"
 pluralize('test', 5, true) //=> "5 tests"
 pluralize('蘋果', 2, true) //=> "2 蘋果"
 
-// Add and test a rule to pluralize
+// Example of new plural rule:
 pluralize.plural('regex') //=> "regexes"
 pluralize.addPluralRule(/gex$/i, 'gexii')
 pluralize.plural('regex') //=> "regexii"
 
-// Add and test a rule to singularize
+// Example of new singular rule:
 pluralize.singular('singles') //=> "single"
 pluralize.addSingularRule(/singles$/i, 'singular')
 pluralize.singular('singles') //=> "singular"
 
-// Add and test an irregular rule, such as 'I' => 'we'
+// Example of new irregular rule, e.g. "I" -> "we":
 pluralize.plural('irregular') //=> "irregulars"
 pluralize.addIrregularRule('irregular', 'regular')
 pluralize.plural('irregular') //=> "regular"
 
-// Add and test an uncountable rule, for singular words
-// with no plural in this context
+// Example of uncountable rule (rules without singular/plural in context):
 pluralize.plural('paper') //=> "papers"
 pluralize.addUncountableRule('paper')
 pluralize.plural('paper') //=> "paper"
 
-// Ask pluralize about the current state of the word 'test'
+// Example of asking whether a word looks singular or plural:
 pluralize.isPlural('test') //=> false
 pluralize.isSingular('test') //=> true
 ```

@@ -52,22 +52,28 @@ pluralize('test', 1, true) //=> "1 test"
 pluralize('test', 5, true) //=> "5 tests"
 pluralize('蘋果', 2, true) //=> "2 蘋果"
 
+// Add and test a rule to pluralize
 pluralize.plural('regex') //=> "regexes"
 pluralize.addPluralRule(/gex$/i, 'gexii')
 pluralize.plural('regex') //=> "regexii"
 
+// Add and test a rule to singularize
 pluralize.singular('singles') //=> "single"
 pluralize.addSingularRule(/singles$/i, 'singular')
 pluralize.singular('singles') //=> "singular"
 
+// Add and test an irregular rule, such as 'I' => 'we'
 pluralize.plural('irregular') //=> "irregulars"
 pluralize.addIrregularRule('irregular', 'regular')
 pluralize.plural('irregular') //=> "regular"
 
+// Add and test an uncountable rule, for singular words
+// with no plural in this context
 pluralize.plural('paper') //=> "papers"
 pluralize.addUncountableRule('paper')
 pluralize.plural('paper') //=> "paper"
 
+// Ask pluralize about the current state of the word 'test'
 pluralize.isPlural('test') //=> false
 pluralize.isSingular('test') //=> true
 ```

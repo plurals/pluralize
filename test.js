@@ -13,6 +13,7 @@ var BASIC_TESTS = [
   ['fish', 'fish'],
   ['media', 'media'],
   ['moose', 'moose'],
+  ['police', 'police'],
   ['sheep', 'sheep'],
   ['series', 'series'],
   ['species', 'species'],
@@ -593,6 +594,10 @@ var BASIC_TESTS = [
   ['greatness', 'greatnesses'],
   ['christmas', 'christmases'],
   ['zymase', 'zymases'],
+  ['accomplice', 'accomplices'],
+  ['amice', 'amices'],
+  ['titmouse', 'titmice'],
+  ['slice', 'slices'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.

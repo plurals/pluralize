@@ -451,6 +451,7 @@
     'pike',
     'plankton',
     'pliers',
+    'police',
     'pollution',
     'premises',
     'rain',

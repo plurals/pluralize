@@ -485,7 +485,8 @@
     /measles$/i,
     /o[iu]s$/i, // "carnivorous"
     /pox$/i, // "chickpox", "smallpox"
-    /sheep$/i
+    /sheep$/i,
+    /'/i
   ].forEach(pluralize.addUncountableRule);
 
   return pluralize;

@@ -772,4 +772,22 @@ describe('pluralize', function () {
       expect(pluralize.singular('mornings')).to.equal('suck');
     });
   });
+
+  describe('removing rules', function () {
+    it('irregular rules', function () {
+      expect(pluralize('me')).to.equal('us');
+
+      pluralize.removeIrregularRule('me');
+
+      expect(pluralize('me')).to.equal('mes');
+    });
+
+    it('uncountable rules', function () {
+      expect(pluralize('media')).to.equal('media');
+
+      pluralize.removeUncountableRule('media');
+
+      expect(pluralize('media')).to.equal('medias');
+    });
+  });
 });

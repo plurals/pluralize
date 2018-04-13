@@ -223,6 +223,27 @@
   };
 
   /**
+   * Remove a pluralization rule from the collection.
+   *
+   * @param {(string|RegExp)} rule
+   */
+  pluralize.removePluralRule = function (rule) {
+    rule = sanitizeRule(rule);
+    var index = null;
+
+    for (var i = 0; i <= pluralRules.length; i = i + 1) {
+      if (pluralRules[i][0] === rule) {
+        index = i;
+        break;
+      }
+    }
+
+    if (index !== null) {
+      pluralRules.splice(index, 1);
+    }
+  };
+
+  /**
    * Add a singularization rule to the collection.
    *
    * @param {(string|RegExp)} rule
@@ -230,6 +251,27 @@
    */
   pluralize.addSingularRule = function (rule, replacement) {
     singularRules.push([sanitizeRule(rule), replacement]);
+  };
+
+  /**
+   * Remove a singularization rule from the collection.
+   *
+   * @param {(string|RegExp)} rule
+   */
+  pluralize.removeSingularRule = function (rule) {
+    rule = sanitizeRule(rule);
+    var index = null;
+
+    for (var i = 0; i <= singularRules.length; i = i + 1) {
+      if (singularRules[i][0] === rule) {
+        index = i;
+        break;
+      }
+    }
+
+    if (index !== null) {
+      singularRules.splice(index, 1);
+    }
   };
 
   /**
@@ -249,6 +291,22 @@
   };
 
   /**
+   * Remove an uncountable word rule.
+   *
+   * @param {(string|RegExp)} word
+   */
+  pluralize.removeUncountableRule = function (word) {
+    if (typeof word === 'string') {
+      delete uncountables[word.toLowerCase()];
+      return;
+    }
+
+    // Remove singular and plural references for the word.
+    pluralize.removePluralRule(word);
+    pluralize.removeSingularRule(word);
+  };
+
+  /**
    * Add an irregular word definition.
    *
    * @param {string} single
@@ -260,6 +318,19 @@
 
     irregularSingles[single] = plural;
     irregularPlurals[plural] = single;
+  };
+
+  /**
+   * Remove an irregular word definition.
+   *
+   * @param {string} single
+   */
+  pluralize.removeIrregularRule = function (single) {
+    single = single.toLowerCase();
+    var plural = irregularSingles[single] || null;
+
+    delete irregularSingles[single];
+    delete irregularPlurals[plural];
   };
 
   /**

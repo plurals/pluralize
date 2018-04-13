@@ -228,11 +228,11 @@
    * @param {(string|RegExp)} rule
    */
   pluralize.removePluralRule = function (rule) {
-    rule = sanitizeRule(rule);
+    var check = sanitizeRule(rule).toString();
     var index = null;
 
-    for (var i = 0; i <= pluralRules.length; i = i + 1) {
-      if (pluralRules[i][0] === rule) {
+    for (var i = 0; i < pluralRules.length; i = i + 1) {
+      if (pluralRules[i][0].toString() === check) {
         index = i;
         break;
       }
@@ -259,11 +259,11 @@
    * @param {(string|RegExp)} rule
    */
   pluralize.removeSingularRule = function (rule) {
-    rule = sanitizeRule(rule);
+    var check = sanitizeRule(rule).toString();
     var index = null;
 
-    for (var i = 0; i <= singularRules.length; i = i + 1) {
-      if (singularRules[i][0] === rule) {
+    for (var i = 0; i < singularRules.length; i = i + 1) {
+      if (singularRules[i][0].toString() === check) {
         index = i;
         break;
       }

@@ -774,6 +774,22 @@ describe('pluralize', function () {
   });
 
   describe('removing rules', function () {
+    it('plural rules', function () {
+      expect(pluralize('thou')).to.equal('you');
+
+      pluralize.removePluralRule('thou');
+
+      expect(pluralize('thou')).to.equal('thous');
+    });
+
+    it('singular rules', function () {
+      expect(pluralize.singular('women')).to.equal('woman');
+
+      pluralize.removeSingularRule(/men$/i);
+
+      expect(pluralize.singular('women')).to.equal('women');
+    });
+
     it('irregular rules', function () {
       expect(pluralize('me')).to.equal('us');
 

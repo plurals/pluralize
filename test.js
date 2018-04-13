@@ -804,6 +804,12 @@ describe('pluralize', function () {
       pluralize.removeUncountableRule('media');
 
       expect(pluralize('media')).to.equal('medias');
+
+      expect(pluralize('reindeer')).to.equal('reindeer');
+
+      pluralize.removeUncountableRule(/deer$/i);
+
+      expect(pluralize('reindeer')).to.equal('reindeers');
     });
   });
 });

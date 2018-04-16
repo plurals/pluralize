@@ -229,17 +229,12 @@
    */
   pluralize.removePluralRule = function (rule) {
     var check = sanitizeRule(rule).toString();
-    var index = null;
 
     for (var i = 0; i < pluralRules.length; i = i + 1) {
       if (pluralRules[i][0].toString() === check) {
-        index = i;
+        pluralRules.splice(i, 1);
         break;
       }
-    }
-
-    if (index !== null) {
-      pluralRules.splice(index, 1);
     }
   };
 
@@ -260,17 +255,12 @@
    */
   pluralize.removeSingularRule = function (rule) {
     var check = sanitizeRule(rule).toString();
-    var index = null;
 
     for (var i = 0; i < singularRules.length; i = i + 1) {
       if (singularRules[i][0].toString() === check) {
-        index = i;
+        singularRules.splice(i, 1);
         break;
       }
-    }
-
-    if (index !== null) {
-      singularRules.splice(index, 1);
     }
   };
 

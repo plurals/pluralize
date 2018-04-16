@@ -233,7 +233,7 @@
     for (var i = 0; i < pluralRules.length; i = i + 1) {
       if (pluralRules[i][0].toString() === check) {
         pluralRules.splice(i, 1);
-        break;
+        return;
       }
     }
   };
@@ -259,7 +259,7 @@
     for (var i = 0; i < singularRules.length; i = i + 1) {
       if (singularRules[i][0].toString() === check) {
         singularRules.splice(i, 1);
-        break;
+        return;
       }
     }
   };

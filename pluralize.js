@@ -449,6 +449,7 @@
     'mud',
     'manga',
     'news',
+    'only',
     'pike',
     'plankton',
     'pliers',

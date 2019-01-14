@@ -6,7 +6,6 @@
 [![Test coverage][coveralls-image]][coveralls-url]
 ![File Size][filesize-url]
 [![CDNJS][cdnjs-image]][cdnjs-url]
-[![Greenkeeper badge](https://badges.greenkeeper.io/blakeembrey/pluralize.svg)](https://greenkeeper.io/)
 
 > Pluralize and singularize any word.
 

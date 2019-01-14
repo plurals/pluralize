@@ -422,6 +422,7 @@
     'equipment',
     'excretion',
     'expertise',
+    'firmware',
     'flounder',
     'fun',
     'gallows',

@@ -397,6 +397,7 @@
     'aid',
     'alcohol',
     'ammo',
+    'analytics',
     'anime',
     'athletics',
     'audio',

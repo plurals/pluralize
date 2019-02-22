@@ -152,7 +152,7 @@ var BASIC_TESTS = [
   ['viscus', 'viscera'],
   ['cactus', 'cacti'],
   ['hippopotamus', 'hippopotamuses'],
-  ['octopus', 'octopi'],
+  ['octopus', 'octopuses'],
   ['platypus', 'platypuses'],
   ['kangaroo', 'kangaroos'],
   ['atlas', 'atlases'],

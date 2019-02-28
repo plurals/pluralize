@@ -6,6 +6,7 @@
 [![Test coverage][coveralls-image]][coveralls-url]
 ![File Size][filesize-url]
 [![CDNJS][cdnjs-image]][cdnjs-url]
+[![TypeScript definitions on DefinitelyTyped](https://img.shields.io/badge/DefinitelyTyped-.d.ts-blue.svg)](http://definitelytyped.org)
 
 > Pluralize and singularize any word.
 

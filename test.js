@@ -34,6 +34,7 @@ var BASIC_TESTS = [
   ['turquois', 'turquois'],
   ['carnivorous', 'carnivorous'],
   ['only', 'only'],
+  ['aircraft', 'aircraft'],
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.

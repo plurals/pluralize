@@ -395,6 +395,7 @@
     'advice',
     'agenda',
     'aid',
+    'aircraft',
     'alcohol',
     'ammo',
     'analytics',

@@ -641,7 +641,8 @@ var PLURAL_TESTS = [
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['automatum', 'automata'],
-  ['thou', 'you']
+  ['thou', 'you'],
+  ['passerby', 'passersby']
 ];
 
 /**

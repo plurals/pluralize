@@ -431,6 +431,7 @@
     'gallows',
     'garbage',
     'graffiti',
+    'hardware',
     'headquarters',
     'health',
     'herpes',

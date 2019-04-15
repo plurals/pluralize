@@ -306,6 +306,7 @@
     ['yes', 'yeses'],
     ['foot', 'feet'],
     ['eave', 'eaves'],
+    ['enterprise', 'enterprises'],
     ['goose', 'geese'],
     ['tooth', 'teeth'],
     ['quiz', 'quizzes'],

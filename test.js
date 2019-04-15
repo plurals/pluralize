@@ -563,6 +563,7 @@ var BASIC_TESTS = [
   ['progressive', 'progressives'],
   ['laxative', 'laxatives'],
   ['incentive', 'incentives'],
+  ['enterprise', 'enterprises'],
   ['relative', 'relatives'],
   ['positive', 'positives'],
   ['perspective', 'perspectives'],

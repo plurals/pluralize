@@ -465,7 +465,7 @@
     'series',
     'sewage',
     'shambles',
-    'shrimp'
+    'shrimp',
     'software',
     'species',
     'staff',

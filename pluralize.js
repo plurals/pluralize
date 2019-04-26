@@ -317,7 +317,6 @@
     ['thief', 'thieves'],
     ['groove', 'grooves'],
     ['pickaxe', 'pickaxes'],
-    ['whiskey', 'whiskies'],
     ['passerby', 'passersby']
   ].forEach(function (rule) {
     return pluralize.addIrregularRule(rule[0], rule[1]);

@@ -444,7 +444,7 @@ var BASIC_TESTS = [
   ['honey', 'honeys'],
   ['smiley', 'smilies'],
   ['survey', 'surveys'],
-  ['whiskey', 'whiskies'],
+  ['whiskey', 'whiskeys'],
   ['volley', 'volleys'],
   ['tongue', 'tongues'],
   ['suit', 'suits'],

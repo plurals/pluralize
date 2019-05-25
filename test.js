@@ -589,6 +589,10 @@ var BASIC_TESTS = [
   ['crispness', 'crispnesses'],
   ['racehorse', 'racehorses'],
   ['greatness', 'greatnesses'],
+  ['demon', 'demons'],
+  ['lemon', 'lemons'],
+  ['pokemon', 'pokemon'],
+  ['pokémon', 'pokémon'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.
@@ -629,9 +633,7 @@ var PLURAL_TESTS = [
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['automatum', 'automata'],
-  ['thou', 'you'],
-  ['pokemon', 'pokemon'],
-  ['pokémon', 'pokémon']
+  ['thou', 'you']
 ];
 
 /**

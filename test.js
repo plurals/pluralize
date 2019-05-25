@@ -608,6 +608,8 @@ var BASIC_TESTS = [
   ['amice', 'amices'],
   ['titmouse', 'titmice'],
   ['slice', 'slices'],
+  ['base', 'bases'],
+  ['database', 'databases'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.

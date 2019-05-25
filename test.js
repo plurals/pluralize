@@ -445,6 +445,7 @@ var BASIC_TESTS = [
   ['smiley', 'smilies'],
   ['survey', 'surveys'],
   ['whiskey', 'whiskeys'],
+  ['whisky', 'whiskies'],
   ['volley', 'volleys'],
   ['tongue', 'tongues'],
   ['suit', 'suits'],
@@ -650,13 +651,11 @@ var SINGULAR_TESTS = [
  * @type {Array}
  */
 var PLURAL_TESTS = [
-  ['whisky', 'whiskies'],
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['basis', 'bases'],
   ['automatum', 'automata'],
   ['thou', 'you'],
-  ['WHISKY', 'WHISKIES'],
   ['axiS', 'axes'],
   ['passerby', 'passersby']
 ];

@@ -457,6 +457,7 @@
     'manga',
     'news',
     'only',
+    'personnel',
     'pike',
     'plankton',
     'pliers',

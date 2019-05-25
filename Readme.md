@@ -6,7 +6,6 @@
 [![Test coverage][coveralls-image]][coveralls-url]
 ![File Size][filesize-url]
 [![CDNJS][cdnjs-image]][cdnjs-url]
-[![Greenkeeper badge](https://badges.greenkeeper.io/blakeembrey/pluralize.svg)](https://greenkeeper.io/)
 
 > Pluralize and singularize any word.
 
@@ -46,6 +45,7 @@ This module uses a pre-defined list of rules, applied in order, to singularize o
 
 ```javascript
 pluralize('test') //=> "tests"
+pluralize('test', 0) //=> "tests"
 pluralize('test', 1) //=> "test"
 pluralize('test', 5) //=> "tests"
 pluralize('test', 1, true) //=> "1 test"

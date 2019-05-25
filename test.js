@@ -10,9 +10,11 @@ var pluralize = require('./');
  */
 var BASIC_TESTS = [
   // Uncountables.
+  ['firmware', 'firmware'],
   ['fish', 'fish'],
   ['media', 'media'],
   ['moose', 'moose'],
+  ['police', 'police'],
   ['sheep', 'sheep'],
   ['series', 'series'],
   ['species', 'species'],
@@ -31,6 +33,8 @@ var BASIC_TESTS = [
   ['STAFF', 'STAFF'],
   ['turquois', 'turquois'],
   ['carnivorous', 'carnivorous'],
+  ['only', 'only'],
+  ['aircraft', 'aircraft'],
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.
@@ -149,7 +153,7 @@ var BASIC_TESTS = [
   ['viscus', 'viscera'],
   ['cactus', 'cacti'],
   ['hippopotamus', 'hippopotamuses'],
-  ['octopus', 'octopi'],
+  ['octopus', 'octopuses'],
   ['platypus', 'platypuses'],
   ['kangaroo', 'kangaroos'],
   ['atlas', 'atlases'],
@@ -332,6 +336,8 @@ var BASIC_TESTS = [
   ['sun', 'suns'],
   ['drink', 'drinks'],
   ['diploma', 'diplomas'],
+  ['dilemma', 'dilemmas'],
+  ['grandma', 'grandmas'],
   ['no', 'nos'],
   ['yes', 'yeses'],
   ['employ', 'employs'],
@@ -438,7 +444,7 @@ var BASIC_TESTS = [
   ['honey', 'honeys'],
   ['smiley', 'smilies'],
   ['survey', 'surveys'],
-  ['whiskey', 'whiskies'],
+  ['whiskey', 'whiskeys'],
   ['volley', 'volleys'],
   ['tongue', 'tongues'],
   ['suit', 'suits'],
@@ -557,6 +563,9 @@ var BASIC_TESTS = [
   ['progressive', 'progressives'],
   ['laxative', 'laxatives'],
   ['incentive', 'incentives'],
+  ['genesis', 'geneses'],
+  ['surprise', 'surprises'],
+  ['enterprise', 'enterprises'],
   ['relative', 'relatives'],
   ['positive', 'positives'],
   ['perspective', 'perspectives'],
@@ -593,6 +602,12 @@ var BASIC_TESTS = [
   ['lemon', 'lemons'],
   ['pokemon', 'pokemon'],
   ['pokémon', 'pokémon'],
+  ['christmas', 'christmases'],
+  ['zymase', 'zymases'],
+  ['accomplice', 'accomplices'],
+  ['amice', 'amices'],
+  ['titmouse', 'titmice'],
+  ['slice', 'slices'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.
@@ -605,7 +620,11 @@ var BASIC_TESTS = [
   ['한국', '한국'],
   ['中文', '中文'],
   ['اللغة العربية', 'اللغة العربية'],
-  ['四 chicken', '四 chickens']
+  ['四 chicken', '四 chickens'],
+  ['Order2', 'Order2s'],
+  ['Work Order2', 'Work Order2s'],
+  ['SoundFX2', 'SoundFX2s'],
+  ['oDonald', 'oDonalds']
 ];
 
 /**
@@ -633,7 +652,10 @@ var PLURAL_TESTS = [
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['automatum', 'automata'],
-  ['thou', 'you']
+  ['thou', 'you'],
+  ['WHISKY', 'WHISKIES'],
+  ['axiS', 'axes'],
+  ['passerby', 'passersby']
 ];
 
 /**

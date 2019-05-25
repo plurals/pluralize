@@ -24,7 +24,7 @@ bower install pluralize --save
 var pluralize = require('pluralize')
 ```
 
-### Node (ES6)
+### Node (ES2015 Module)
 
 ```javascript
 import pluralize from 'pluralize';

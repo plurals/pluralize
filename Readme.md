@@ -43,6 +43,12 @@ This module uses a pre-defined list of rules, applied in order, to singularize o
 
 ## Usage
 
+* `word: string` The word to pluralize
+* `count: number` How many of the word exist
+* `inclusive: boolean` Whether to prefix with the number (e.g. 3 ducks)
+
+Examples:
+
 ```javascript
 pluralize('test') //=> "tests"
 pluralize('test', 0) //=> "tests"

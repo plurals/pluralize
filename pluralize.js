@@ -167,9 +167,9 @@
   /**
    * Pluralize or singularize a word based on the passed in count.
    *
-   * @param  {string}  word
-   * @param  {number}  count
-   * @param  {boolean} inclusive
+   * @param  {string}  word      The word to pluralize
+   * @param  {number}  count     How many of the word exist
+   * @param  {boolean} inclusive Whether to prefix with the number (e.g. 3 ducks)
    * @return {string}
    */
   function pluralize (word, count, inclusive) {

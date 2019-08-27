@@ -660,6 +660,16 @@ var PLURAL_TESTS = [
   ['passerby', 'passersby']
 ];
 
+var POSESSIVE_TESTS = [
+  ['Bob', "Bob's"],
+  ['dress', "dress's"],
+  ['dresses', "dresses'"],
+  ['whisky', "whisky's"],
+  ['whiskies', "whiskies'"],
+  ['sheep', "sheep's"],
+  ['christmas', "christmas's"]
+];
+
 /**
  * Test suite.
  */
@@ -693,6 +703,14 @@ describe('pluralize', function () {
       BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
         it('isSingular(' + test[0] + ')', function () {
           expect(pluralize.isSingular(test[0])).to.equal(true);
+        });
+      });
+    });
+
+    describe('possessive', function () {
+      POSESSIVE_TESTS.forEach(function (test) {
+        it(test[0] + ' -> ' + test[1], function () {
+          expect(pluralize.possessive(test[0])).to.equal(test[1]);
         });
       });
     });

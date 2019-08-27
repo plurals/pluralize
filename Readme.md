@@ -81,6 +81,12 @@ pluralize.plural('paper') //=> "paper"
 // Example of asking whether a word looks singular or plural:
 pluralize.isPlural('test') //=> false
 pluralize.isSingular('test') //=> true
+
+// Example of making a word possessive, handling plural cases:
+pluralize.posessive('Bob') // => "Bob's"
+pluralize.posessive('sheep') // => "sheep's"
+pluralize.posessive('dress') // => "dress's"
+pluralize.posessive('dresses') // => "dresses'"
 ```
 
 ## License

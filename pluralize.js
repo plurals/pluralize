@@ -180,6 +180,15 @@
   }
 
   /**
+   * Make a word posessive handling plurals properly.
+   *
+   * @type {Function}
+   */
+  pluralize.possessive = function (word) {
+    return word + (pluralize.isPlural(word) && word.endsWith('s') ? "'" : "'s");
+  };
+
+  /**
    * Pluralize a word.
    *
    * @type {Function}

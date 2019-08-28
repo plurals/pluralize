@@ -185,7 +185,13 @@
    * @type {Function}
    */
   pluralize.possessive = function (word) {
-    return word + (pluralize.isPlural(word) && word.endsWith('s') ? "'" : "'s");
+    var possessiveWord = word + "'s";
+
+    if (word.endsWith('s') && pluralize.isPlural(word)) {
+      possessiveWord = possessiveWord.slice(0, -1); // Drop the "s"
+    }
+
+    return possessiveWord;
   };
 
   /**

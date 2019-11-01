@@ -49,6 +49,11 @@
     // Tokens are an exact match.
     if (word === token) return token;
 
+    // Starts with the same letters
+    if (token.toLowerCase().startsWith(word.toLowerCase())) {
+      return word + token.substring(word.length);
+    }
+
     // Lower cased words. E.g. "hello".
     if (word === word.toLowerCase()) return token.toLowerCase();
 

@@ -3,3 +3,5 @@ node_modules
 components
 build
 coverage
+yarn.lock
+package-lock.json

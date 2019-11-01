@@ -825,6 +825,14 @@ describe('pluralize', function () {
       expect(pluralize.plural('IP')).to.equal('IPs');
     });
 
+    it('should allow new plural matching rules sTaRTREK', function () {
+      expect(pluralize.plural('sTaRTREK')).to.equal('sTaRTREKS');
+
+      pluralize.addPluralRule(/sTaRTREK$/i, 'sTaRTREKs');
+
+      expect(pluralize.plural('sTaRTREK')).to.equal('sTaRTREKs');
+    });
+
     it('should allow new plural matching rules', function () {
       expect(pluralize.plural('Blank Application2')).to.equal('Blank Application2s');
 

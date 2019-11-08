@@ -320,7 +320,8 @@
     ['thief', 'thieves'],
     ['groove', 'grooves'],
     ['pickaxe', 'pickaxes'],
-    ['passerby', 'passersby']
+    ['passerby', 'passersby'],
+    ['sku', 'skus']
   ].forEach(function (rule) {
     return pluralize.addIrregularRule(rule[0], rule[1]);
   });

@@ -669,7 +669,8 @@ var BASIC_TESTS = [
   ['Order2', 'Order2s'],
   ['Work Order2', 'Work Order2s'],
   ['SoundFX2', 'SoundFX2s'],
-  ['oDonald', 'oDonalds']
+  ['oDonald', 'oDonalds'],
+  ['sku', 'skus']
 ];
 
 /**
@@ -684,7 +685,9 @@ var SINGULAR_TESTS = [
   ['ghetto', 'ghettoes'],
   ['nucleus', 'nucleuses'],
   ['bureau', 'bureaux'],
-  ['seraph', 'seraphs']
+  ['seraph', 'seraphs'],
+  ['ruckus', 'ruckuses'],
+  ['sku', 'skus']
 ];
 
 /**

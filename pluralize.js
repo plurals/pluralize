@@ -22,6 +22,7 @@
   var uncountables = {};
   var irregularPlurals = {};
   var irregularSingles = {};
+  var restoreCaseExceptions = [];
 
   /**
    * Sanitize a pluralization rule to a usable regular expression.
@@ -31,7 +32,7 @@
    */
   function sanitizeRule (rule) {
     if (typeof rule === 'string') {
-      return new RegExp('^' + rule + '$', 'i');
+      return new RegExp(rule + '$', 'i');
     }
 
     return rule;
@@ -46,6 +47,9 @@
    * @return {Function}
    */
   function restoreCase (word, token) {
+    // Do not restore the case of specified tokens
+    if (restoreCaseExceptions.indexOf(token) !== -1) return token;
+
     // Tokens are an exact match.
     if (word === token) return token;
 
@@ -115,7 +119,6 @@
     // Iterate over the sanitization rules and use the first one to match.
     while (len--) {
       var rule = rules[len];
-
       if (rule[0].test(word)) return replace(word, rule);
     }
 
@@ -223,6 +226,16 @@
    */
   pluralize.addPluralRule = function (rule, replacement) {
     pluralRules.push([sanitizeRule(rule), replacement]);
+  };
+
+  /**
+   * Add an exception to restoreCase.
+   *
+   * @param {string} exception
+   */
+
+  pluralize.addRestoreCaseException = function (exception) {
+    restoreCaseExceptions.push(exception);
   };
 
   /**

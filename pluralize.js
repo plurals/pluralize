@@ -367,7 +367,7 @@
     [/(wi|kni|(?:after|half|high|low|mid|non|night|[^\w]|^)li)ves$/i, '$1fe'],
     [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, '$1f'],
     [/ies$/i, 'y'],
-    [/(dg|ss|ois|lk|ok|wn|mb|th|ch|ec|oal|is|ec|ck|ix|sser|ts|wb)ies$/i, '$1ie'],
+    [/(dg|ss|ois|lk|ok|wn|mb|th|ch|ec|oal|is|ck|ix|sser|ts|wb)ies$/i, '$1ie'],
     [/\b(l|(?:neck|cross|hog|aun)?t|coll|faer|food|gen|goon|group|hipp|junk|vegg|(?:pork)?p|charl|calor|cut)ies$/i, '$1ie'],
     [/\b(mon|smil)ies$/i, '$1ey'],
     [/\b((?:tit)?m|l)ice$/i, '$1ouse'],

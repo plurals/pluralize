@@ -272,8 +272,9 @@
     // Pronouns.
     ['I', 'we'],
     ['me', 'us'],
-    ['he', 'they'],
     ['she', 'they'],
+    // "he" should go 2nd, so that pluralize('they', 1) gives "he"
+    ['he', 'they'],
     ['them', 'them'],
     ['myself', 'ourselves'],
     ['yourself', 'yourselves'],

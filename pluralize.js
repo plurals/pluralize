@@ -292,6 +292,7 @@
     ['volcano', 'volcanoes'],
     ['tornado', 'tornadoes'],
     ['torpedo', 'torpedoes'],
+    ['mosquito', 'mosquitoes'],
     // Ends with `us`.
     ['genus', 'genera'],
     ['viscus', 'viscera'],

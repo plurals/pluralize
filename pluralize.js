@@ -324,7 +324,8 @@
     ['thief', 'thieves'],
     ['groove', 'grooves'],
     ['pickaxe', 'pickaxes'],
-    ['passerby', 'passersby']
+    ['passerby', 'passersby'],
+    ['cookie', 'cookies']
   ].forEach(function (rule) {
     return pluralize.addIrregularRule(rule[0], rule[1]);
   });
@@ -492,6 +493,7 @@
     'wildebeest',
     'wildlife',
     'you',
+    'thanks',
     /pok[eé]mon$/i,
     // Regexes.
     /[^aeiou]ese$/i, // "chinese", "japanese"

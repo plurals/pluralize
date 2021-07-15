@@ -809,6 +809,38 @@ describe('pluralize', function () {
       expect(pluralize.plural('regex')).to.equal('regexii');
     });
 
+    it('should allow new plural matching rules vIvP', function () {
+      expect(pluralize.plural('vIP')).to.equal('vIPS');
+
+      pluralize.addPluralRule(/vIvP$/i, 'vIvPs');
+
+      expect(pluralize.plural('vIvP')).to.equal('vIvPs');
+    });
+
+    it('should allow new plural matching rules IP', function () {
+      expect(pluralize.plural('IP')).to.equal('IPS');
+
+      pluralize.addPluralRule(/IP$/i, 'IPs');
+
+      expect(pluralize.plural('IP')).to.equal('IPs');
+    });
+
+    it('should allow new plural matching rules sTaRTREK', function () {
+      expect(pluralize.plural('sTaRTREK')).to.equal('sTaRTREKS');
+
+      pluralize.addPluralRule(/sTaRTREK$/i, 'sTaRTREKs');
+
+      expect(pluralize.plural('sTaRTREK')).to.equal('sTaRTREKs');
+    });
+
+    it('should allow new plural matching rules', function () {
+      expect(pluralize.plural('Blank Application2')).to.equal('Blank Application2s');
+
+      pluralize.addPluralRule(/tion2$/i, 'tion2S');
+
+      expect(pluralize.plural('Blank Application2')).to.equal('Blank Application2S');
+    });
+
     it('should allow new singular matching rules', function () {
       expect(pluralize.singular('singles')).to.equal('single');
 

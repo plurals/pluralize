@@ -49,6 +49,12 @@
     // Tokens are an exact match.
     if (word === token) return token;
 
+    // This is an unique case, where we try to preserved the words that aren't changed significantly.
+    // E.g. "sTaRTREK" (plural form is sTaRTREKs).
+    if ((token.toLowerCase().substring(0, word.length)) === word.toLowerCase()) {
+      return word + token.substring(word.length);
+    }
+
     // Lower cased words. E.g. "hello".
     if (word === word.toLowerCase()) return token.toLowerCase();
 

@@ -833,4 +833,35 @@ describe('pluralize', function () {
       expect(pluralize.singular('mornings')).to.equal('suck');
     });
   });
+
+  describe('getting existing rules', function () {
+    it('should allow access to plural rules', function () {
+      var rules = pluralize.getPluralRules();
+      expect(rules).to.be.an('array');
+    });
+
+    it('should allow access to singular rules', function () {
+      var rules = pluralize.getSingularRules();
+      expect(rules).to.be.an('array');
+    });
+  });
+
+  describe('getting uncountable words', function () {
+    it('should allow access to uncountable words', function () {
+      var uncountable = pluralize.getUncountables();
+      expect(uncountable).to.be.ok.and.an('object');
+    });
+  });
+
+  describe('getting irregular words', function () {
+    it('should allow access to irregular plural words', function () {
+      var irregular = pluralize.getIrregularPlurals();
+      expect(irregular).to.be.ok.and.an('object');
+    });
+
+    it('should allow access to irregular singular words', function () {
+      var irregular = pluralize.getIrregularSingles();
+      expect(irregular).to.be.ok.and.an('object');
+    });
+  });
 });

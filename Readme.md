@@ -81,6 +81,11 @@ pluralize.plural('paper') //=> "paper"
 // Example of asking whether a word looks singular or plural:
 pluralize.isPlural('test') //=> false
 pluralize.isSingular('test') //=> true
+
+// Example of adding a token exception whose case should not be restored:
+pluralize.plural('promo ID') //=> 'promo IDS'
+pluralize.addRestoreCaseException('IDs')
+pluralize.plural('promo ID') //=> 'promo IDs'
 ```
 
 ## License

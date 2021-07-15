@@ -832,5 +832,12 @@ describe('pluralize', function () {
 
       expect(pluralize.singular('mornings')).to.equal('suck');
     });
+
+    it('will skip restoring case on specified token exceptions', function () {
+      expect(pluralize.plural('promo ID')).to.equal('promo IDS');
+      pluralize.addRestoreCaseException('IDs');
+      pluralize.addPluralRule('ID', 'IDs');
+      expect(pluralize.plural('promo ID')).to.equal('promo IDs');
+    });
   });
 });

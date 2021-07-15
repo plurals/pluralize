@@ -441,6 +441,7 @@
     'hardware',
     'headquarters',
     'health',
+    'hertz',
     'herpes',
     'highjinks',
     'homework',

@@ -1,7 +1,8 @@
 /* global describe, it */
 
 var expect = require('chai').expect;
-var pluralize = require('./');
+// Run `npm run build` before tests
+var pluralize = require('./dist/index.js');
 
 /**
  * Standard singular/plural matches.
@@ -745,13 +746,13 @@ describe('pluralize', function () {
       BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
         // Make sure the word stays pluralized.
         it('5 ' + test[1] + ' -> ' + test[1], function () {
-          expect(pluralize(test[1], 5)).to.equal(test[1]);
+          expect(pluralize.pluralize(test[1], 5)).to.equal(test[1]);
         });
 
         // Make sure the word becomes a plural.
         if (test[0] !== test[1]) {
           it('5 ' + test[0] + ' -> ' + test[1], function () {
-            expect(pluralize(test[0], 5)).to.equal(test[1]);
+            expect(pluralize.pluralize(test[0], 5)).to.equal(test[1]);
           });
         }
       });
@@ -761,13 +762,13 @@ describe('pluralize', function () {
       BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
         // Make sure the word stays singular.
         it('1 ' + test[0] + ' -> ' + test[0], function () {
-          expect(pluralize(test[0], 1)).to.equal(test[0]);
+          expect(pluralize.pluralize(test[0], 1)).to.equal(test[0]);
         });
 
         // Make sure the word becomes singular.
         if (test[0] !== test[1]) {
           it('1 ' + test[1] + ' -> ' + test[0], function () {
-            expect(pluralize(test[1], 1)).to.equal(test[0]);
+            expect(pluralize.pluralize(test[1], 1)).to.equal(test[0]);
           });
         }
       });
@@ -776,7 +777,7 @@ describe('pluralize', function () {
 
   describe('prepend count', function () {
     it('plural words', function () {
-      expect(pluralize('test', 5, true)).to.equal('5 tests');
+      expect(pluralize.pluralize('test', 5, true)).to.equal('5 tests');
     });
 
     it('singular words', function () {
@@ -786,19 +787,19 @@ describe('pluralize', function () {
 
   describe('adding new rules', function () {
     it('uncountable rules', function () {
-      expect(pluralize('paper')).to.equal('papers');
+      expect(pluralize.pluralize('paper')).to.equal('papers');
 
       pluralize.addUncountableRule('paper');
 
-      expect(pluralize('paper')).to.equal('paper');
+      expect(pluralize.pluralize('paper')).to.equal('paper');
     });
 
     it('should allow new irregular words', function () {
-      expect(pluralize('irregular')).to.equal('irregulars');
+      expect(pluralize.pluralize('irregular')).to.equal('irregulars');
 
       pluralize.addIrregularRule('irregular', 'regular');
 
-      expect(pluralize('irregular')).to.equal('regular');
+      expect(pluralize.pluralize('irregular')).to.equal('regular');
     });
 
     it('should allow new plural matching rules', function () {

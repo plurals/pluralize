@@ -39,7 +39,7 @@ define(function (require, exports, module) {
 
 ## Why?
 
-This module uses a pre-defined list of rules, applied in order, to singularize or pluralize a given word. There are many cases where this is useful, such as any automation based on user input. For applications where the word(s) are known ahead of time, you can use a simple ternary (or function) which would be a much lighter alternative.
+This module uses a pre-defined list of rules, applied in order, to singularize or pluralize a given word. There are many cases where this is useful, such as any automation based on user input. For applications where the word(s) are known to be ahead of time, you can use a simple ternary (or function) which would be much lighter alternative.
 
 ## Usage
 

@@ -479,6 +479,7 @@
     'sewage',
     'shambles',
     'shrimp',
+    'sms',
     'software',
     'staff',
     'swine',

@@ -274,6 +274,7 @@
     ['me', 'us'],
     ['he', 'they'],
     ['she', 'they'],
+    ['it', 'them'],
     ['them', 'them'],
     ['myself', 'ourselves'],
     ['yourself', 'yourselves'],

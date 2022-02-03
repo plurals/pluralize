@@ -475,6 +475,7 @@
     'rice',
     'salmon',
     'scissors',
+    'selected',
     'series',
     'sewage',
     'shambles',
@@ -502,7 +503,6 @@
     /o[iu]s$/i, // "carnivorous"
     /pox$/i, // "chickpox", "smallpox"
     /sheep$/i
-    /selected$/i
   ].forEach(pluralize.addUncountableRule);
 
   return pluralize;

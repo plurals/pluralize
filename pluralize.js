@@ -440,6 +440,7 @@
     'gallows',
     'garbage',
     'graffiti',
+    'grouse',
     'hardware',
     'headquarters',
     'health',
@@ -502,7 +503,8 @@
     /measles$/i,
     /o[iu]s$/i, // "carnivorous"
     /pox$/i, // "chickpox", "smallpox"
-    /sheep$/i
+    /sheep$/i,
+    /grouse$/i
   ].forEach(pluralize.addUncountableRule);
 
   return pluralize;

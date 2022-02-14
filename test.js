@@ -34,6 +34,7 @@ var BASIC_TESTS = [
   ['carnivorous', 'carnivorous'],
   ['only', 'only'],
   ['aircraft', 'aircraft'],
+  ['grouse', 'grouse'],
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.
@@ -670,7 +671,8 @@ var BASIC_TESTS = [
   ['Order2', 'Order2s'],
   ['Work Order2', 'Work Order2s'],
   ['SoundFX2', 'SoundFX2s'],
-  ['oDonald', 'oDonalds']
+  ['oDonald', 'oDonalds'],
+  ['black grouse', 'black grouse']
 ];
 
 /**

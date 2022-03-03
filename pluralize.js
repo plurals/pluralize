@@ -402,7 +402,6 @@
     // Singular words with no plurals.
     'adulthood',
     'advice',
-    'agenda',
     'aid',
     'aircraft',
     'alcohol',

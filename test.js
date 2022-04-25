@@ -801,6 +801,14 @@ describe('pluralize', function () {
       expect(pluralize('irregular')).to.equal('regular');
     });
 
+    it('should allow new irregular words with preserved casing', function () {
+      expect(pluralize('ID')).to.equal('IDS');
+
+      pluralize.addIrregularRule('ID', 'IDs', { preserveCasing: true });
+
+      expect(pluralize('ID')).to.equal('IDs');
+    });
+
     it('should allow new plural matching rules', function () {
       expect(pluralize.plural('regex')).to.equal('regexes');
 

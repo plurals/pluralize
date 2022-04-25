@@ -73,6 +73,11 @@ pluralize.plural('irregular') //=> "irregulars"
 pluralize.addIrregularRule('irregular', 'regular')
 pluralize.plural('irregular') //=> "regular"
 
+// Example of new irregular rule preserving casing, e.g. "ID" -> "IDs":
+pluralize.plural('ID') //=> "IDS"
+pluralize.addIrregularRule('ID', 'IDs', { preserveCasing: true })
+pluralize.plural('ID') //=> "IDs"
+
 // Example of uncountable rule (rules without singular/plural in context):
 pluralize.plural('paper') //=> "papers"
 pluralize.addUncountableRule('paper')

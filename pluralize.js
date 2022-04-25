@@ -132,6 +132,11 @@
    */
   function replaceWord (replaceMap, keepMap, rules) {
     return function (word) {
+      // If replaceMap has the exact casing, we preserve the casing
+      if (replaceMap.hasOwnProperty(word)) {
+        return replaceMap[word];
+      }
+
       // Get the correct token and case restoration functions.
       var token = word.toLowerCase();
 
@@ -257,9 +262,11 @@
    * @param {string} single
    * @param {string} plural
    */
-  pluralize.addIrregularRule = function (single, plural) {
-    plural = plural.toLowerCase();
-    single = single.toLowerCase();
+  pluralize.addIrregularRule = function (single, plural, { preserveCasing = false } = {}) {
+    if (!preserveCasing) {
+      plural = plural.toLowerCase();
+      single = single.toLowerCase();
+    }
 
     irregularSingles[single] = plural;
     irregularPlurals[plural] = single;

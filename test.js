@@ -1,14 +1,14 @@
 /* global describe, it */
 
-var expect = require('chai').expect;
-var pluralize = require('./');
+const expect = require('chai').expect;
+const pluralize = require('./');
 
 /**
  * Standard singular/plural matches.
  *
  * @type {Array}
  */
-var BASIC_TESTS = [
+const BASIC_TESTS = [
   // Uncountables.
   ['firmware', 'firmware'],
   ['fish', 'fish'],
@@ -677,7 +677,7 @@ var BASIC_TESTS = [
  *
  * @type {Array}
  */
-var SINGULAR_TESTS = [
+const SINGULAR_TESTS = [
   ['dingo', 'dingos'],
   ['mango', 'mangoes'],
   ['echo', 'echos'],
@@ -692,7 +692,7 @@ var SINGULAR_TESTS = [
  *
  * @type {Array}
  */
-var PLURAL_TESTS = [
+const PLURAL_TESTS = [
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['basis', 'bases'],

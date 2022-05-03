@@ -262,7 +262,9 @@
    * @param {string} single
    * @param {string} plural
    */
-  pluralize.addIrregularRule = function (single, plural, { preserveCasing = false } = {}) {
+  pluralize.addIrregularRule = function (single, plural, options) {
+    var preserveCasing = !!(options && options.preserveCasing);
+    
     if (!preserveCasing) {
       plural = plural.toLowerCase();
       single = single.toLowerCase();

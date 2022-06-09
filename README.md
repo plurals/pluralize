@@ -2,10 +2,9 @@
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][downloads-url]
-[![Build status][travis-image]][travis-url]
-[![Test coverage][coveralls-image]][coveralls-url]
+[![Build Status][build-image]][build-url]
+[![GitHub Super-Linter][superlint-image]][superlint-url]
 ![File Size][filesize-url]
-[![CDNJS][cdnjs-image]][cdnjs-url]
 
 > Pluralize and singularize any word.
 > A fork of [pluralize]
@@ -82,11 +81,9 @@ MIT
 [npm-url]: https://npmjs.org/package/pluralize-esm
 [downloads-image]: https://img.shields.io/npm/dm/pluralize-esm.svg?style=flat
 [downloads-url]: https://npmjs.org/package/pluralize-esm
-[travis-image]: https://img.shields.io/travis/stipsan/pluralize-esm.svg?style=flat
-[travis-url]: https://travis-ci.org/stipsan/pluralize-esm
-[coveralls-image]: https://img.shields.io/coveralls/stipsan/pluralize-esm.svg?style=flat
-[coveralls-url]: https://coveralls.io/r/stipsan/pluralize-esm?branch=master
 [filesize-url]: https://img.shields.io/github/size/stipsan/pluralize-esm/dist/module.js.svg?style=flat
-[cdnjs-image]: https://img.shields.io/cdnjs/v/pluralize-esm.svg
-[cdnjs-url]: https://cdnjs.com/libraries/pluralize-esm
 [pluralize]: https://npmjs.org/package/pluralize
+[superlint-image]: https://github.com/stipsan/pluralize-esm/workflows/lint/badge.svg
+[superlint-url]: https://github.com/marketplace/actions/super-linter
+[build-image]: https://github.com/stipsan/pluralize-esm/workflows/build/badge.svg
+[build-url]: https://github.com/stipsan/pluralize-esm/actions

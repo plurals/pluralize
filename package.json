@@ -41,7 +41,8 @@
   },
   "prettier": {
     "semi": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "arrowParens": "avoid"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.6.0",

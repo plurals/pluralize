@@ -2,7 +2,7 @@
 // while other rules can be optimized using an object for instant lookups.
 var pluralRules = []
 var singularRules = []
-var uncountables = {}
+const uncountables = new Set<string>()
 var irregularPlurals = {}
 var irregularSingles = {}
 
@@ -89,7 +89,7 @@ function replace(word: string, rule) {
  */
 function sanitizeWord(token: string, word: string, rules) {
   // Empty string or doesn't need fixing.
-  if (!token.length || uncountables.hasOwnProperty(token)) {
+  if (!token.length || uncountables.has(token)) {
     return word
   }
 
@@ -114,7 +114,7 @@ function sanitizeWord(token: string, word: string, rules) {
  * @return {Function}
  */
 function replaceWord(replaceMap, keepMap, rules) {
-  return function (word) {
+  return function (word: string): string {
     // Get the correct token and case restoration functions.
     var token = word.toLowerCase()
 
@@ -154,7 +154,11 @@ function checkWord(replaceMap, keepMap, rules, bool?: boolean) {
  * @param count
  * @param inclusive
  */
-function pluralize(word: string, count?: number, inclusive?: boolean): string {
+const pluralize = (
+  word: string,
+  count?: number,
+  inclusive?: boolean
+): string => {
   var pluralized =
     count === 1 ? pluralize.singular(word) : pluralize.plural(word)
 
@@ -203,28 +207,34 @@ pluralize.isSingular = checkWord(
  * @param rule
  * @param replacement
  */
-pluralize.addPluralRule = function (rule, replacement) {
+pluralize.addPluralRule = (
+  rule: string | RegExp,
+  replacement: string
+): void => {
   pluralRules.push([sanitizeRule(rule), replacement])
 }
 
 /**
  * Add a singularization rule to the collection.
  *
- * @param {(string|RegExp)} rule
- * @param {string}          replacement
+ * @param rule
+ * @param replacement
  */
-pluralize.addSingularRule = function (rule, replacement) {
+pluralize.addSingularRule = (
+  rule: string | RegExp,
+  replacement: string
+): void => {
   singularRules.push([sanitizeRule(rule), replacement])
 }
 
 /**
  * Add an uncountable word rule.
  *
- * @param {(string|RegExp)} word
+ * @param word
  */
-pluralize.addUncountableRule = function (word) {
+pluralize.addUncountableRule = (word: string | RegExp): void => {
   if (typeof word === 'string') {
-    uncountables[word.toLowerCase()] = true
+    uncountables.add(word.toLowerCase())
     return
   }
 
@@ -236,10 +246,10 @@ pluralize.addUncountableRule = function (word) {
 /**
  * Add an irregular word definition.
  *
- * @param {string} single
- * @param {string} plural
+ * @param single
+ * @param plural
  */
-pluralize.addIrregularRule = function (single: string, plural: string) {
+pluralize.addIrregularRule = (single: string, plural: string): void => {
   plural = plural.toLowerCase()
   single = single.toLowerCase()
 

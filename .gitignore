@@ -4,3 +4,4 @@ components
 build
 coverage
 .parcel-cache
+dist

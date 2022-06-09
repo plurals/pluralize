@@ -12,7 +12,7 @@ var irregularSingles = {}
  * @param  {(RegExp|string)} rule
  * @return {RegExp}
  */
-function sanitizeRule(rule) {
+function sanitizeRule(rule: RegExp | string) {
   if (typeof rule === 'string') {
     return new RegExp('^' + rule + '$', 'i')
   }
@@ -28,7 +28,7 @@ function sanitizeRule(rule) {
  * @param  {string}   token
  * @return {Function}
  */
-function restoreCase(word, token) {
+function restoreCase(word: string, token: string): string {
   // Tokens are an exact match.
   if (word === token) return token
 
@@ -54,7 +54,7 @@ function restoreCase(word, token) {
  * @param  {Array}  args
  * @return {string}
  */
-function interpolate(str, args) {
+function interpolate(str: string, args) {
   return str.replace(/\$(\d{1,2})/g, function (match, index) {
     return args[index] || ''
   })
@@ -67,7 +67,7 @@ function interpolate(str, args) {
  * @param  {Array}  rule
  * @return {string}
  */
-function replace(word, rule) {
+function replace(word: string, rule) {
   return word.replace(rule[0], function (match, index) {
     var result = interpolate(rule[1], arguments)
 
@@ -87,7 +87,7 @@ function replace(word, rule) {
  * @param  {Array}    rules
  * @return {string}
  */
-function sanitizeWord(token, word, rules) {
+function sanitizeWord(token: string, word: string, rules) {
   // Empty string or doesn't need fixing.
   if (!token.length || uncountables.hasOwnProperty(token)) {
     return word
@@ -136,8 +136,8 @@ function replaceWord(replaceMap, keepMap, rules) {
 /**
  * Check if a word is part of the map.
  */
-function checkWord(replaceMap, keepMap, rules, bool) {
-  return function (word) {
+function checkWord(replaceMap, keepMap, rules, bool?: boolean) {
+  return function (word: string) {
     var token = word.toLowerCase()
 
     if (keepMap.hasOwnProperty(token)) return true
@@ -150,12 +150,11 @@ function checkWord(replaceMap, keepMap, rules, bool) {
 /**
  * Pluralize or singularize a word based on the passed in count.
  *
- * @param  {string}  word      The word to pluralize
- * @param  {number}  count     How many of the word exist
- * @param  {boolean} inclusive Whether to prefix with the number (e.g. 3 ducks)
- * @return {string}
+ * @param word
+ * @param count
+ * @param inclusive
  */
-function pluralize(word, count, inclusive) {
+function pluralize(word: string, count?: number, inclusive?: boolean): string {
   var pluralized =
     count === 1 ? pluralize.singular(word) : pluralize.plural(word)
 
@@ -163,23 +162,23 @@ function pluralize(word, count, inclusive) {
 }
 
 /**
- * Pluralize a word.
+ * Pluralize a word based.
  *
- * @type {Function}
+ * @param word
  */
 pluralize.plural = replaceWord(irregularSingles, irregularPlurals, pluralRules)
 
 /**
- * Check if a word is plural.
+ * Test if provided word is plural.
  *
- * @type {Function}
+ * @param word
  */
 pluralize.isPlural = checkWord(irregularSingles, irregularPlurals, pluralRules)
 
 /**
- * Singularize a word.
+ * Singularize a word based.
  *
- * @type {Function}
+ * @param word
  */
 pluralize.singular = replaceWord(
   irregularPlurals,
@@ -188,9 +187,9 @@ pluralize.singular = replaceWord(
 )
 
 /**
- * Check if a word is singular.
+ * Test if provided word is singular.
  *
- * @type {Function}
+ * @param word
  */
 pluralize.isSingular = checkWord(
   irregularPlurals,
@@ -201,8 +200,8 @@ pluralize.isSingular = checkWord(
 /**
  * Add a pluralization rule to the collection.
  *
- * @param {(string|RegExp)} rule
- * @param {string}          replacement
+ * @param rule
+ * @param replacement
  */
 pluralize.addPluralRule = function (rule, replacement) {
   pluralRules.push([sanitizeRule(rule), replacement])
@@ -240,7 +239,7 @@ pluralize.addUncountableRule = function (word) {
  * @param {string} single
  * @param {string} plural
  */
-pluralize.addIrregularRule = function (single, plural) {
+pluralize.addIrregularRule = function (single: string, plural: string) {
   plural = plural.toLowerCase()
   single = single.toLowerCase()
 

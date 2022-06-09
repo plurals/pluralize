@@ -2,25 +2,10 @@
   "name": "pluralize",
   "description": "Pluralize and singularize any word",
   "main": "pluralize.js",
-  "keywords": [
-    "plural",
-    "plurals",
-    "pluralize",
-    "singular",
-    "singularize"
-  ],
+  "keywords": ["plural", "plurals", "pluralize", "singular", "singularize"],
   "license": "MIT",
   "homepage": "https://github.com/blakeembrey/pluralize",
-  "authors": [
-    "Blake Embrey <hello@blakeembrey.com>"
-  ],
-  "moduleType": [
-    "globals",
-    "amd",
-    "node"
-  ],
-  "ignore": [
-    "/.*",
-    "test.js"
-  ]
+  "authors": ["Blake Embrey <hello@blakeembrey.com>"],
+  "moduleType": ["globals", "amd", "node"],
+  "ignore": ["/.*", "test.js"]
 }

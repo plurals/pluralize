@@ -18,13 +18,13 @@ npm install pluralize-esm
 ### Node
 
 ```javascript
-var pluralize = require("pluralize-esm");
+var pluralize = require('pluralize-esm')
 ```
 
 ### ESM
 
 ```javascript
-import pluralize from "pluralize-esm";
+import pluralize from 'pluralize-esm'
 ```
 
 ## Why?
@@ -40,37 +40,37 @@ This module uses a pre-defined list of rules, applied in order, to singularize o
 Examples:
 
 ```javascript
-pluralize("test"); //=> "tests"
-pluralize("test", 0); //=> "tests"
-pluralize("test", 1); //=> "test"
-pluralize("test", 5); //=> "tests"
-pluralize("test", 1, true); //=> "1 test"
-pluralize("test", 5, true); //=> "5 tests"
-pluralize("蘋果", 2, true); //=> "2 蘋果"
+pluralize('test') //=> "tests"
+pluralize('test', 0) //=> "tests"
+pluralize('test', 1) //=> "test"
+pluralize('test', 5) //=> "tests"
+pluralize('test', 1, true) //=> "1 test"
+pluralize('test', 5, true) //=> "5 tests"
+pluralize('蘋果', 2, true) //=> "2 蘋果"
 
 // Example of new plural rule:
-pluralize.plural("regex"); //=> "regexes"
-pluralize.addPluralRule(/gex$/i, "gexii");
-pluralize.plural("regex"); //=> "regexii"
+pluralize.plural('regex') //=> "regexes"
+pluralize.addPluralRule(/gex$/i, 'gexii')
+pluralize.plural('regex') //=> "regexii"
 
 // Example of new singular rule:
-pluralize.singular("singles"); //=> "single"
-pluralize.addSingularRule(/singles$/i, "singular");
-pluralize.singular("singles"); //=> "singular"
+pluralize.singular('singles') //=> "single"
+pluralize.addSingularRule(/singles$/i, 'singular')
+pluralize.singular('singles') //=> "singular"
 
 // Example of new irregular rule, e.g. "I" -> "we":
-pluralize.plural("irregular"); //=> "irregulars"
-pluralize.addIrregularRule("irregular", "regular");
-pluralize.plural("irregular"); //=> "regular"
+pluralize.plural('irregular') //=> "irregulars"
+pluralize.addIrregularRule('irregular', 'regular')
+pluralize.plural('irregular') //=> "regular"
 
 // Example of uncountable rule (rules without singular/plural in context):
-pluralize.plural("paper"); //=> "papers"
-pluralize.addUncountableRule("paper");
-pluralize.plural("paper"); //=> "paper"
+pluralize.plural('paper') //=> "papers"
+pluralize.addUncountableRule('paper')
+pluralize.plural('paper') //=> "paper"
 
 // Example of asking whether a word looks singular or plural:
-pluralize.isPlural("test"); //=> false
-pluralize.isSingular("test"); //=> true
+pluralize.isPlural('test') //=> false
+pluralize.isSingular('test') //=> true
 ```
 
 ## License

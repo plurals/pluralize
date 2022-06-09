@@ -1,4 +1,5 @@
-import test from 'node:test';
+import { strict as assert } from 'node:assert'
+import test from 'node:test'
 import pluralize from 'pluralize-esm'
 
 const BASIC_TESTS = [
@@ -665,12 +666,8 @@ const BASIC_TESTS = [
   ['oDonald', 'oDonalds'],
 ]
 
-/**
- * Odd plural to singular tests.
- *
- * @type {Array}
- */
-var SINGULAR_TESTS = [
+const SINGULAR_TESTS = [
+  ...BASIC_TESTS,
   ['dingo', 'dingos'],
   ['mango', 'mangoes'],
   ['echo', 'echos'],
@@ -681,6 +678,7 @@ var SINGULAR_TESTS = [
 ]
 
 const PLURAL_TESTS = [
+  ...BASIC_TESTS,
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['basis', 'bases'],
@@ -690,133 +688,114 @@ const PLURAL_TESTS = [
   ['passerby', 'passersby'],
 ]
 
-/**
- * Test suite.
- */
-  test('methods', function (t) {
-    t.test('plural', function (t) {
-      BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
-        it(test[0] + ' -> ' + test[1], function (t) {
-          assert(pluralize.plural(test[0])).strictEqual(test[1])
-        })
-      })
-    })
-
-    t.test('isPlural', function (t) {
-      BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
-        it('isPlural(' + test[1] + ')', function (t) {
-          expect(pluralize.isPlural(test[1])).to.equal(true)
-        })
-      })
-    })
-
-    t.test('singular', function (t) {
-      BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
-        it(test[1] + ' -> ' + test[0], function (t) {
-          expect(pluralize.singular(test[1])).to.equal(test[0])
-        })
-      })
-    })
-
-    t.test('isSingular', function (t) {
-      BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
-        it('isSingular(' + test[0] + ')', function (t) {
-          expect(pluralize.isSingular(test[0])).to.equal(true)
-        })
-      })
-    })
+test('methods', async (t) => {
+  await t.test('plural', () => {
+    for (const [a, b] of PLURAL_TESTS) {
+      assert.equal(pluralize.plural(a), b)
+    }
   })
 
-  t.test('automatically convert', function (t) {
-    t.test('plural', function (t) {
-      BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
-        // Make sure the word stays pluralized.
-        it('5 ' + test[1] + ' -> ' + test[1], function (t) {
-          expect(pluralize(test[1], 5)).to.equal(test[1])
-        })
-
-        // Make sure the word becomes a plural.
-        if (test[0] !== test[1]) {
-          it('5 ' + test[0] + ' -> ' + test[1], function (t) {
-            expect(pluralize(test[0], 5)).to.equal(test[1])
-          })
-        }
-      })
-    })
-
-    t.test('singular', function (t) {
-      BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
-        // Make sure the word stays singular.
-        it('1 ' + test[0] + ' -> ' + test[0], function (t) {
-          expect(pluralize(test[0], 1)).to.equal(test[0])
-        })
-
-        // Make sure the word becomes singular.
-        if (test[0] !== test[1]) {
-          it('1 ' + test[1] + ' -> ' + test[0], function (t) {
-            expect(pluralize(test[1], 1)).to.equal(test[0])
-          })
-        }
-      })
-    })
+  await t.test('isPlural', () => {
+    for (const [, b] of PLURAL_TESTS) {
+      assert.equal(pluralize.isPlural(b), true)
+    }
   })
 
-  t.test('prepend count', function (t) {
-    it('plural words', function (t) {
-      expect(pluralize('test', 5, true)).to.equal('5 tests')
-    })
-
-    it('singular words', function (t) {
-      expect(pluralize('test', 1, true)).to.equal('1 test')
-    })
+  await t.test('singular', () => {
+    for (const [a, b] of SINGULAR_TESTS) {
+      assert.equal(pluralize.singular(b), a)
+    }
   })
 
-  t.test('adding new rules', function (t) {
-    it('uncountable rules', function (t) {
-      expect(pluralize('paper')).to.equal('papers')
-
-      pluralize.addUncountableRule('paper')
-
-      expect(pluralize('paper')).to.equal('paper')
-    })
-
-    it('should allow new irregular words', function (t) {
-      expect(pluralize('irregular')).to.equal('irregulars')
-
-      pluralize.addIrregularRule('irregular', 'regular')
-
-      expect(pluralize('irregular')).to.equal('regular')
-    })
-
-    it('should allow new plural matching rules', function (t) {
-      expect(pluralize.plural('regex')).to.equal('regexes')
-
-      pluralize.addPluralRule(/gex$/i, 'gexii')
-
-      expect(pluralize.plural('regex')).to.equal('regexii')
-    })
-
-    it('should allow new singular matching rules', function (t) {
-      expect(pluralize.singular('singles')).to.equal('single')
-
-      pluralize.addSingularRule(/singles$/, 'singular')
-
-      expect(pluralize.singular('singles')).to.equal('singular')
-    })
-
-    it('should allow new plural matching rules to be strings', function (t) {
-      expect(pluralize.plural('person')).to.equal('people')
-
-      pluralize.addPluralRule('person', 'peeps')
-
-      expect(pluralize.plural('person')).to.equal('peeps')
-    })
-
-    it('should allow new singular matching rules to be strings', function (t) {
-      expect(pluralize.singular('mornings')).to.equal('morning')
-
-      pluralize.addSingularRule('mornings', 'suck')
-
-      expect(pluralize.singular('mornings')).to.equal('suck')
-    })
+  await t.test('isSingular', async () => {
+    for (const [a] of SINGULAR_TESTS) {
+      assert.equal(pluralize.isSingular(a), true)
+    }
   })
+})
+
+test('automatically convert', async (t) => {
+  await t.test('plural', () => {
+    for (const [a, b] of PLURAL_TESTS) {
+      // Make sure the word stays pluralized.
+      assert.equal(pluralize(b, 5), b)
+
+      // Make sure the word becomes a plural.
+      if (a !== b) {
+        assert.equal(pluralize(a, 5), b)
+      }
+    }
+  })
+
+  await t.test('singular', () => {
+    for (const [a, b] of SINGULAR_TESTS) {
+      // Make sure the word stays singular.
+      assert.equal(pluralize(a, 1), a)
+
+      // Make sure the word becomes singular.
+      if (a !== b) {
+        assert.equal(pluralize(b, 1), a)
+      }
+    }
+  })
+})
+
+test('prepend count', async (t) => {
+  await t.test('plural words', function (t) {
+    assert.equal(pluralize('test', 5, true), '5 tests')
+  })
+
+  await t.test('singular words', function (t) {
+    assert.equal(pluralize('test', 1, true), '1 test')
+  })
+})
+
+test('adding new rules', async (t) => {
+  await t.test('uncountable rules', () => {
+    assert.equal(pluralize('paper'), 'papers')
+
+    pluralize.addUncountableRule('paper')
+
+    assert.equal(pluralize('paper'), 'paper')
+  })
+
+  await t.test('should allow new irregular words', () => {
+    assert.equal(pluralize('irregular'), 'irregulars')
+
+    pluralize.addIrregularRule('irregular', 'regular')
+
+    assert.equal(pluralize('irregular'), 'regular')
+  })
+
+  await t.test('should allow new plural matching rules', () => {
+    assert.equal(pluralize.plural('regex'), 'regexes')
+
+    pluralize.addPluralRule(/gex$/i, 'gexii')
+
+    assert.equal(pluralize.plural('regex'), 'regexii')
+  })
+
+  await t.test('should allow new singular matching rules', () => {
+    assert.equal(pluralize.singular('singles'), 'single')
+
+    pluralize.addSingularRule(/singles$/, 'singular')
+
+    assert.equal(pluralize.singular('singles'), 'singular')
+  })
+
+  await t.test('should allow new plural matching rules to be strings', () => {
+    assert.equal(pluralize.plural('person'), 'people')
+
+    pluralize.addPluralRule('person', 'peeps')
+
+    assert.equal(pluralize.plural('person'), 'peeps')
+  })
+
+  await t.test('should allow new singular matching rules to be strings', () => {
+    assert.equal(pluralize.singular('mornings'), 'morning')
+
+    pluralize.addSingularRule('mornings', 'suck')
+
+    assert.equal(pluralize.singular('mornings'), 'suck')
+  })
+})

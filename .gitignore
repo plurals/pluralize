@@ -3,3 +3,4 @@ node_modules
 components
 build
 coverage
+.parcel-cache

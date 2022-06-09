@@ -20,11 +20,11 @@
   "exports": {
     ".": {
       "require": "./dist/main.js",
-      "default": "./dist/module.js"
+      "default": "./dist/module.mjs"
     }
   },
   "main": "dist/main.js",
-  "module": "dist/module.js",
+  "module": "dist/module.mjs",
   "source": "src/index.ts",
   "types": "dist/types.d.ts",
   "files": [
@@ -32,14 +32,13 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist",
+    "check": "tsc --noEmit",
     "build": "parcel build",
     "format": "prettier --write .",
-    "lint": "semistandard",
+    "lint": "prettier --check .",
     "package-check": "package-check",
     "prepublishOnly": "npm run build",
-    "test": "npm run lint && npm run test-cov",
-    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec --bail",
-    "test-spec": "mocha -R spec --bail"
+    "test": "node --test"
   },
   "prettier": {
     "semi": false,

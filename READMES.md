@@ -8,6 +8,7 @@
 [![CDNJS][cdnjs-image]][cdnjs-url]
 
 > Pluralize and singularize any word.
+> A fork of [pluralize]
 
 ## Installation
 
@@ -88,3 +89,4 @@ MIT
 [filesize-url]: https://img.shields.io/github/size/stipsan/pluralize-esm/dist/module.js.svg?style=flat
 [cdnjs-image]: https://img.shields.io/cdnjs/v/pluralize-esm.svg
 [cdnjs-url]: https://cdnjs.com/libraries/pluralize-esm
+[pluralize]: https://npmjs.org/package/pluralize

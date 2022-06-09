@@ -1,14 +1,7 @@
-/* global describe, it */
+import test from 'node:test';
+import pluralize from 'pluralize-esm'
 
-var expect = require('chai').expect
-var pluralize = require('./')
-
-/**
- * Standard singular/plural matches.
- *
- * @type {Array}
- */
-var BASIC_TESTS = [
+const BASIC_TESTS = [
   // Uncountables.
   ['firmware', 'firmware'],
   ['fish', 'fish'],
@@ -687,12 +680,7 @@ var SINGULAR_TESTS = [
   ['seraph', 'seraphs'],
 ]
 
-/**
- * Odd singular to plural tests.
- *
- * @type {Array}
- */
-var PLURAL_TESTS = [
+const PLURAL_TESTS = [
   ['plateaux', 'plateaux'],
   ['axis', 'axes'],
   ['basis', 'bases'],
@@ -705,68 +693,67 @@ var PLURAL_TESTS = [
 /**
  * Test suite.
  */
-describe('pluralize', function () {
-  describe('methods', function () {
-    describe('plural', function () {
+  test('methods', function (t) {
+    t.test('plural', function (t) {
       BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
-        it(test[0] + ' -> ' + test[1], function () {
-          expect(pluralize.plural(test[0])).to.equal(test[1])
+        it(test[0] + ' -> ' + test[1], function (t) {
+          assert(pluralize.plural(test[0])).strictEqual(test[1])
         })
       })
     })
 
-    describe('isPlural', function () {
+    t.test('isPlural', function (t) {
       BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
-        it('isPlural(' + test[1] + ')', function () {
+        it('isPlural(' + test[1] + ')', function (t) {
           expect(pluralize.isPlural(test[1])).to.equal(true)
         })
       })
     })
 
-    describe('singular', function () {
+    t.test('singular', function (t) {
       BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
-        it(test[1] + ' -> ' + test[0], function () {
+        it(test[1] + ' -> ' + test[0], function (t) {
           expect(pluralize.singular(test[1])).to.equal(test[0])
         })
       })
     })
 
-    describe('isSingular', function () {
+    t.test('isSingular', function (t) {
       BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
-        it('isSingular(' + test[0] + ')', function () {
+        it('isSingular(' + test[0] + ')', function (t) {
           expect(pluralize.isSingular(test[0])).to.equal(true)
         })
       })
     })
   })
 
-  describe('automatically convert', function () {
-    describe('plural', function () {
+  t.test('automatically convert', function (t) {
+    t.test('plural', function (t) {
       BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
         // Make sure the word stays pluralized.
-        it('5 ' + test[1] + ' -> ' + test[1], function () {
+        it('5 ' + test[1] + ' -> ' + test[1], function (t) {
           expect(pluralize(test[1], 5)).to.equal(test[1])
         })
 
         // Make sure the word becomes a plural.
         if (test[0] !== test[1]) {
-          it('5 ' + test[0] + ' -> ' + test[1], function () {
+          it('5 ' + test[0] + ' -> ' + test[1], function (t) {
             expect(pluralize(test[0], 5)).to.equal(test[1])
           })
         }
       })
     })
 
-    describe('singular', function () {
+    t.test('singular', function (t) {
       BASIC_TESTS.concat(SINGULAR_TESTS).forEach(function (test) {
         // Make sure the word stays singular.
-        it('1 ' + test[0] + ' -> ' + test[0], function () {
+        it('1 ' + test[0] + ' -> ' + test[0], function (t) {
           expect(pluralize(test[0], 1)).to.equal(test[0])
         })
 
         // Make sure the word becomes singular.
         if (test[0] !== test[1]) {
-          it('1 ' + test[1] + ' -> ' + test[0], function () {
+          it('1 ' + test[1] + ' -> ' + test[0], function (t) {
             expect(pluralize(test[1], 1)).to.equal(test[0])
           })
         }
@@ -774,18 +761,18 @@ describe('pluralize', function () {
     })
   })
 
-  describe('prepend count', function () {
-    it('plural words', function () {
+  t.test('prepend count', function (t) {
+    it('plural words', function (t) {
       expect(pluralize('test', 5, true)).to.equal('5 tests')
     })
 
-    it('singular words', function () {
+    it('singular words', function (t) {
       expect(pluralize('test', 1, true)).to.equal('1 test')
     })
   })
 
-  describe('adding new rules', function () {
-    it('uncountable rules', function () {
+  t.test('adding new rules', function (t) {
+    it('uncountable rules', function (t) {
       expect(pluralize('paper')).to.equal('papers')
 
       pluralize.addUncountableRule('paper')
@@ -793,7 +780,7 @@ describe('pluralize', function () {
       expect(pluralize('paper')).to.equal('paper')
     })
 
-    it('should allow new irregular words', function () {
+    it('should allow new irregular words', function (t) {
       expect(pluralize('irregular')).to.equal('irregulars')
 
       pluralize.addIrregularRule('irregular', 'regular')
@@ -801,7 +788,7 @@ describe('pluralize', function () {
       expect(pluralize('irregular')).to.equal('regular')
     })
 
-    it('should allow new plural matching rules', function () {
+    it('should allow new plural matching rules', function (t) {
       expect(pluralize.plural('regex')).to.equal('regexes')
 
       pluralize.addPluralRule(/gex$/i, 'gexii')
@@ -809,7 +796,7 @@ describe('pluralize', function () {
       expect(pluralize.plural('regex')).to.equal('regexii')
     })
 
-    it('should allow new singular matching rules', function () {
+    it('should allow new singular matching rules', function (t) {
       expect(pluralize.singular('singles')).to.equal('single')
 
       pluralize.addSingularRule(/singles$/, 'singular')
@@ -817,7 +804,7 @@ describe('pluralize', function () {
       expect(pluralize.singular('singles')).to.equal('singular')
     })
 
-    it('should allow new plural matching rules to be strings', function () {
+    it('should allow new plural matching rules to be strings', function (t) {
       expect(pluralize.plural('person')).to.equal('people')
 
       pluralize.addPluralRule('person', 'peeps')
@@ -825,7 +812,7 @@ describe('pluralize', function () {
       expect(pluralize.plural('person')).to.equal('peeps')
     })
 
-    it('should allow new singular matching rules to be strings', function () {
+    it('should allow new singular matching rules to be strings', function (t) {
       expect(pluralize.singular('mornings')).to.equal('morning')
 
       pluralize.addSingularRule('mornings', 'suck')
@@ -833,4 +820,3 @@ describe('pluralize', function () {
       expect(pluralize.singular('mornings')).to.equal('suck')
     })
   })
-})

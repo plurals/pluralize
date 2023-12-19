@@ -17,11 +17,11 @@
 })(this, function () {
   // Rule storage - pluralize and singularize need to be run sequentially,
   // while other rules can be optimized using an object for instant lookups.
-  var pluralRules = [];
-  var singularRules = [];
-  var uncountables = {};
-  var irregularPlurals = {};
-  var irregularSingles = {};
+  const pluralRules = [];
+  const singularRules = [];
+  const uncountables = {};
+  const irregularPlurals = {};
+  const irregularSingles = {};
 
   /**
    * Sanitize a pluralization rule to a usable regular expression.
@@ -86,7 +86,7 @@
    */
   function replace (word, rule) {
     return word.replace(rule[0], function (match, index) {
-      var result = interpolate(rule[1], arguments);
+      const result = interpolate(rule[1], arguments);
 
       if (match === '') {
         return restoreCase(word[index - 1], result);
@@ -110,11 +110,11 @@
       return word;
     }
 
-    var len = rules.length;
+    let len = rules.length;
 
     // Iterate over the sanitization rules and use the first one to match.
     while (len--) {
-      var rule = rules[len];
+      const rule = rules[len];
 
       if (rule[0].test(word)) return replace(word, rule);
     }
@@ -132,8 +132,13 @@
    */
   function replaceWord (replaceMap, keepMap, rules) {
     return function (word) {
+      // If replaceMap has the exact casing, we preserve the casing
+      if (replaceMap.hasOwnProperty(word)) {
+        return replaceMap[word];
+      }
+
       // Get the correct token and case restoration functions.
-      var token = word.toLowerCase();
+      const token = word.toLowerCase();
 
       // Check against the keep object map.
       if (keepMap.hasOwnProperty(token)) {
@@ -155,7 +160,7 @@
    */
   function checkWord (replaceMap, keepMap, rules, bool) {
     return function (word) {
-      var token = word.toLowerCase();
+      const token = word.toLowerCase();
 
       if (keepMap.hasOwnProperty(token)) return true;
       if (replaceMap.hasOwnProperty(token)) return false;
@@ -173,8 +178,9 @@
    * @return {string}
    */
   function pluralize (word, count, inclusive) {
-    var pluralized = count === 1
-      ? pluralize.singular(word) : pluralize.plural(word);
+    const pluralized = count === 1
+      ? pluralize.singular(word)
+      : pluralize.plural(word);
 
     return (inclusive ? count + ' ' : '') + pluralized;
   }
@@ -257,9 +263,13 @@
    * @param {string} single
    * @param {string} plural
    */
-  pluralize.addIrregularRule = function (single, plural) {
-    plural = plural.toLowerCase();
-    single = single.toLowerCase();
+  pluralize.addIrregularRule = function (single, plural, options) {
+    const preserveCasing = !!(options && options.preserveCasing);
+
+    if (!preserveCasing) {
+      plural = plural.toLowerCase();
+      single = single.toLowerCase();
+    }
 
     irregularSingles[single] = plural;
     irregularPlurals[plural] = single;

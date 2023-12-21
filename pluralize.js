@@ -317,6 +317,7 @@
     ['tooth', 'teeth'],
     ['quiz', 'quizzes'],
     ['human', 'humans'],
+    ['coronavirus', 'coronaviruses'],
     ['proof', 'proofs'],
     ['carve', 'carves'],
     ['valve', 'valves'],

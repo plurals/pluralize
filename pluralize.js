@@ -313,7 +313,6 @@
     ['yes', 'yeses'],
     ['foot', 'feet'],
     ['eave', 'eaves'],
-    ['goose', 'geese'],
     ['tooth', 'teeth'],
     ['quiz', 'quizzes'],
     ['human', 'humans'],
@@ -354,6 +353,7 @@
     [/(x|ch|ss|sh|zz)$/i, '$1es'],
     [/(matr|cod|mur|sil|vert|ind|append)(?:ix|ex)$/i, '$1ices'],
     [/\b((?:tit)?m|l)(?:ice|ouse)$/i, '$1ice'],
+    [/\b((?:g)?g)(?:eese|oose)$/i, '$1eese'],
     [/(pe)(?:rson|ople)$/i, '$1ople'],
     [/(child)(?:ren)?$/i, '$1ren'],
     [/eaux$/i, '$0'],
@@ -390,7 +390,8 @@
     [/(pe)(rson|ople)$/i, '$1rson'],
     [/(child)ren$/i, '$1'],
     [/(eau)x?$/i, '$1'],
-    [/men$/i, 'man']
+    [/men$/i, 'man'],
+    [/geese$/i, 'goose']
   ].forEach(function (rule) {
     return pluralize.addSingularRule(rule[0], rule[1]);
   });

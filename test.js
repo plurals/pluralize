@@ -534,6 +534,7 @@ var BASIC_TESTS = [
   ['radius', 'radii'],
   ['stratum', 'strata'],
   ['stratus', 'strati'],
+  ['prius', 'prii'],
   ['focus', 'foci'],
   ['fungus', 'fungi'],
   ['appendix', 'appendices'],

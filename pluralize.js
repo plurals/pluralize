@@ -293,6 +293,7 @@
     // Words ending in with a consonant and `o`.
     ['echo', 'echoes'],
     ['dingo', 'dingoes'],
+    ['graffito', 'graffiti'],
     ['volcano', 'volcanoes'],
     ['tornado', 'tornadoes'],
     ['torpedo', 'torpedoes'],
@@ -438,7 +439,6 @@
     'fun',
     'gallows',
     'garbage',
-    'graffiti',
     'hardware',
     'headquarters',
     'health',

@@ -23,6 +23,12 @@ bower install pluralize --save
 var pluralize = require('pluralize')
 ```
 
+### Node (ES2015 Module)
+
+```javascript
+import pluralize from 'pluralize';
+```
+
 ### AMD
 
 ```javascript

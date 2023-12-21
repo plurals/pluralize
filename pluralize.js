@@ -283,6 +283,7 @@
     ['themself', 'themselves'],
     ['is', 'are'],
     ['was', 'were'],
+    ['does', 'do'],
     ['has', 'have'],
     ['this', 'these'],
     ['that', 'those'],

@@ -40,6 +40,7 @@ var BASIC_TESTS = [
   ['this', 'these'],
   ['that', 'those'],
   ['is', 'are'],
+  ['does', 'do'],
   ['man', 'men'],
   ['superman', 'supermen'],
   ['ox', 'oxen'],

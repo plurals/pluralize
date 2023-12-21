@@ -475,6 +475,7 @@
     'rice',
     'salmon',
     'scissors',
+    'selected',
     'series',
     'sewage',
     'shambles',

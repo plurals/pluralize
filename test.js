@@ -653,6 +653,7 @@ var BASIC_TESTS = [
   ['charlie', 'charlies'],
   ['bookie', 'bookies'],
   ['auntie', 'aunties'],
+  ['selected', 'selected'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.

@@ -299,6 +299,7 @@
     // Ends with `us`.
     ['genus', 'genera'],
     ['viscus', 'viscera'],
+    ['corpus', 'corpora'],
     // Ends with `ma`.
     ['stigma', 'stigmata'],
     ['stoma', 'stomata'],
@@ -325,7 +326,8 @@
     ['groove', 'grooves'],
     ['pickaxe', 'pickaxes'],
     ['passerby', 'passersby'],
-    ['canvas', 'canvases']
+    ['canvas', 'canvases'],
+    ['child', 'children']
   ].forEach(function (rule) {
     return pluralize.addIrregularRule(rule[0], rule[1]);
   });
@@ -355,7 +357,7 @@
     [/(matr|cod|mur|sil|vert|ind|append)(?:ix|ex)$/i, '$1ices'],
     [/\b((?:tit)?m|l)(?:ice|ouse)$/i, '$1ice'],
     [/(pe)(?:rson|ople)$/i, '$1ople'],
-    [/(child)(?:ren)?$/i, '$1ren'],
+    // returns 'ren' as plural for 'child'
     [/eaux$/i, '$0'],
     [/m[ae]n$/i, 'men'],
     ['thou', 'you']
@@ -388,7 +390,6 @@
     [/(cod|mur|sil|vert|ind)ices$/i, '$1ex'],
     [/(matr|append)ices$/i, '$1ix'],
     [/(pe)(rson|ople)$/i, '$1rson'],
-    [/(child)ren$/i, '$1'],
     [/(eau)x?$/i, '$1'],
     [/men$/i, 'man']
   ].forEach(function (rule) {

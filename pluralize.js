@@ -189,6 +189,15 @@
   );
 
   /**
+   * Check if a word is countable.
+   *
+   * @type {Function}
+   */
+  pluralize.isCountable = function(word) {
+    return !(word.toLowerCase() in uncountables);
+  };
+
+  /**
    * Check if a word is plural.
    *
    * @type {Function}

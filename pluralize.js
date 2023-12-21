@@ -436,6 +436,7 @@
     'firmware',
     'flounder',
     'fun',
+    'furniture',
     'gallows',
     'garbage',
     'graffiti',

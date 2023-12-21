@@ -266,6 +266,41 @@
   };
 
   /**
+   * Get all known plural rules.
+   */
+  pluralize.getPluralRules = function () {
+    return pluralRules;
+  };
+
+  /**
+   * Get all known singular rules.
+   */
+  pluralize.getSingularRules = function () {
+    return singularRules;
+  };
+
+  /**
+   * Get all known uncountable words.
+   */
+  pluralize.getUncountables = function () {
+    return uncountables;
+  };
+
+  /**
+   * Get all known irregular plural words.
+   */
+  pluralize.getIrregularPlurals = function () {
+    return irregularPlurals;
+  };
+
+  /**
+   * Get all known irregular single words.
+   */
+  pluralize.getIrregularSingles = function () {
+    return irregularSingles;
+  };
+
+  /**
    * Irregular rules.
    */
   [

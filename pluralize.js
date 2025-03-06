@@ -317,6 +317,7 @@
     ['tooth', 'teeth'],
     ['quiz', 'quizzes'],
     ['human', 'humans'],
+    ['german', 'germans'],
     ['proof', 'proofs'],
     ['carve', 'carves'],
     ['valve', 'valves'],

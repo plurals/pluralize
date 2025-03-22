@@ -782,6 +782,33 @@ describe('pluralize', function () {
     it('singular words', function () {
       expect(pluralize('test', 1, true)).to.equal('1 test');
     });
+
+    it('formats using Intl.NumberFormat', function () {
+      expect(pluralize('test', 1234567.89, new Intl.NumberFormat('en-US', { useGrouping: true, maximumFractionDigits: 1 }))).to.equal('1,234,567.9 tests');
+    });
+
+    it('formats using function', function () {
+      expect(pluralize('test', 1234567.89, (amount) => amount.toFixed(1))).to.equal('1234567.9 tests');
+    });
+
+    it('formats using function which returns number as is', function () {
+      expect(pluralize('test', 1234567.89, (amount) => amount)).to.equal('1234567.89 tests');
+    });
+
+    it('excludes extra space when format function returns empty string', function () {
+      expect(pluralize('test', 1234567.89, () => '')).to.equal('tests');
+    });
+
+    it('excludes extra space when Intl.NumberFormat returns empty string', function () {
+      // Not sure if it's possible for Intl.NumberFormat to return an empty string
+      // so just patching it to force one just in case, so we get the test coverage
+      const formatter = new Intl.NumberFormat();
+      Object.defineProperty(formatter, 'format', {
+        value: () => ''
+      });
+
+      expect(pluralize('test', 1234567.89, formatter)).to.equal('tests');
+    });
   });
 
   describe('adding new rules', function () {

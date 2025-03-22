@@ -165,18 +165,40 @@
   }
 
   /**
+   * Returns the formatted number prefix (or an empty string)
+   *
+   * @param {number} amount The number to format
+   * @param {boolean | Intl.NumberFormat | (amount: number) => string} inclusive Whether to prefix with the number (e.g. 3 ducks). Can also be a function that formats the number, or an Intl.NumberFormat instance.
+   */
+  function getNumberPrefix (amount, inclusive) {
+    if (!inclusive) return '';
+
+    if (typeof inclusive === 'function') {
+      const formatted = inclusive(amount);
+      return formatted !== '' ? formatted + ' ' : '';
+    }
+
+    if (inclusive instanceof Intl.NumberFormat) {
+      const formatted = inclusive.format(amount);
+      return formatted !== '' ? formatted + ' ' : '';
+    }
+
+    return amount + ' ';
+  }
+
+  /**
    * Pluralize or singularize a word based on the passed in count.
    *
    * @param  {string}  word      The word to pluralize
    * @param  {number}  count     How many of the word exist
-   * @param  {boolean} inclusive Whether to prefix with the number (e.g. 3 ducks)
+   * @param  {boolean | Intl.NumberFormat | (amount: number) => string} inclusive Whether to prefix with the number (e.g. 3 ducks). Can also be a function that formats the number, or an Intl.NumberFormat instance.
    * @return {string}
    */
   function pluralize (word, count, inclusive) {
     var pluralized = count === 1
       ? pluralize.singular(word) : pluralize.plural(word);
 
-    return (inclusive ? count + ' ' : '') + pluralized;
+    return getNumberPrefix(count, inclusive) + pluralized;
   }
 
   /**

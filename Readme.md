@@ -2,7 +2,6 @@
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][downloads-url]
-[![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 ![File Size][filesize-url]
 [![CDNJS][cdnjs-image]][cdnjs-url]
@@ -91,8 +90,6 @@ MIT
 [npm-url]: https://npmjs.org/package/pluralize
 [downloads-image]: https://img.shields.io/npm/dm/pluralize.svg?style=flat
 [downloads-url]: https://npmjs.org/package/pluralize
-[travis-image]: https://img.shields.io/travis/blakeembrey/pluralize.svg?style=flat
-[travis-url]: https://travis-ci.org/blakeembrey/pluralize
 [coveralls-image]: https://img.shields.io/coveralls/blakeembrey/pluralize.svg?style=flat
 [coveralls-url]: https://coveralls.io/r/blakeembrey/pluralize?branch=master
 [filesize-url]: https://img.shields.io/github/size/blakeembrey/pluralize/pluralize.js.svg?style=flat

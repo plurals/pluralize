@@ -653,6 +653,9 @@ var BASIC_TESTS = [
   ['charlie', 'charlies'],
   ['bookie', 'bookies'],
   ['auntie', 'aunties'],
+  // Accented word endings.
+  ['café', 'cafés'],
+  ['cliché', 'clichés'],
   // Prototype inheritance.
   ['constructor', 'constructors'],
   // Non-standard case.

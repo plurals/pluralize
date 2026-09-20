@@ -426,6 +426,7 @@
     'cooperation',
     'corps',
     'debris',
+    'deceased',
     'diabetes',
     'digestion',
     'elk',

@@ -17,6 +17,7 @@ var BASIC_TESTS = [
   ['police', 'police'],
   ['sheep', 'sheep'],
   ['series', 'series'],
+  ['deceased', 'deceased'],
   ['agenda', 'agenda'],
   ['news', 'news'],
   ['reindeer', 'reindeer'],

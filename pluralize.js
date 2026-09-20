@@ -104,9 +104,25 @@
    * @param  {Array}    rules
    * @return {string}
    */
+
+  /**
+   * Lowercase token for the final camelCase segment of a word.
+   * E.g. "TimeSeries" -> "series", "series" -> "series".
+   *
+   * @param  {string} word
+   * @return {string}
+   */
+  function lastCamelToken (word) {
+    var parts = word.split(/(?=[A-Z])/);
+    var last = parts[parts.length - 1] || word;
+    return last.toLowerCase();
+  }
+
   function sanitizeWord (token, word, rules) {
     // Empty string or doesn't need fixing.
-    if (!token.length || uncountables.hasOwnProperty(token)) {
+    // Also keep camelCase compounds whose final segment is uncountable
+    // (e.g. "TimeSeries" ends with uncountable "series").
+    if (!token.length || uncountables.hasOwnProperty(token) || uncountables.hasOwnProperty(lastCamelToken(word))) {
       return word;
     }
 
@@ -159,6 +175,8 @@
 
       if (keepMap.hasOwnProperty(token)) return true;
       if (replaceMap.hasOwnProperty(token)) return false;
+      // CamelCase compounds ending in an uncountable segment (TimeSeries).
+      if (uncountables.hasOwnProperty(lastCamelToken(word))) return true;
 
       return sanitizeWord(token, token, rules) === token;
     };

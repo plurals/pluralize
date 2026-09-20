@@ -238,6 +238,7 @@ var BASIC_TESTS = [
   ['zero', 'zeros'],
   ['quest', 'quests'],
   ['goose', 'geese'],
+  ['epoch', 'epochs'],
   ['foot', 'feet'],
   ['ex', 'exes'],
   ['reflex', 'reflexes'],

@@ -325,7 +325,9 @@
     ['groove', 'grooves'],
     ['pickaxe', 'pickaxes'],
     ['passerby', 'passersby'],
-    ['canvas', 'canvases']
+    ['canvas', 'canvases'],
+    // Ends with `ch` but takes a regular -s plural (not -es).
+    ['epoch', 'epochs']
   ].forEach(function (rule) {
     return pluralize.addIrregularRule(rule[0], rule[1]);
   });

@@ -37,6 +37,10 @@ var BASIC_TESTS = [
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.
+  ['fuse', 'fuses'],
+  ['excuse', 'excuses'],
+  ['refuse', 'refuses'],
+  ['lens', 'lenses'],
   ['this', 'these'],
   ['that', 'those'],
   ['is', 'are'],

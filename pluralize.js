@@ -325,7 +325,8 @@
     ['groove', 'grooves'],
     ['pickaxe', 'pickaxes'],
     ['passerby', 'passersby'],
-    ['canvas', 'canvases']
+    ['canvas', 'canvases'],
+    ['lens', 'lenses']
   ].forEach(function (rule) {
     return pluralize.addIrregularRule(rule[0], rule[1]);
   });
@@ -379,7 +380,7 @@
     [/(seraph|cherub)im$/i, '$1'],
     [/(x|ch|ss|sh|zz|tto|go|cho|alias|[^aou]us|t[lm]as|gas|(?:her|at|gr)o|[aeiou]ris)(?:es)?$/i, '$1'],
     [/(analy|diagno|parenthe|progno|synop|the|empha|cri|ne)(?:sis|ses)$/i, '$1sis'],
-    [/(movie|twelve|abuse|e[mn]u)s$/i, '$1'],
+    [/(movie|twelve|abuse|fuse|excuse|refuse|e[mn]u)s$/i, '$1'],
     [/(test)(?:is|es)$/i, '$1is'],
     [/(alumn|syllab|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i, '$1us'],
     [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|quor)a$/i, '$1um'],

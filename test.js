@@ -10,6 +10,9 @@ var pluralize = require('./');
  */
 var BASIC_TESTS = [
   // Uncountables.
+  ['feedback', 'feedback'],
+  ['Feedback', 'Feedback'],
+  ['FEEDBACK', 'FEEDBACK'],
   ['firmware', 'firmware'],
   ['fish', 'fish'],
   ['media', 'media'],

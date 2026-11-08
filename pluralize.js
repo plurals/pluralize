@@ -378,6 +378,8 @@
     [/\b((?:tit)?m|l)ice$/i, '$1ouse'],
     [/(seraph|cherub)im$/i, '$1'],
     [/(x|ch|ss|sh|zz|tto|go|cho|alias|[^aou]us|t[lm]as|gas|(?:her|at|gr)o|[aeiou]ris)(?:es)?$/i, '$1'],
+    // Preserve the e in -che nouns, without matching -ach words like "coach".
+    [/(cache|niche|(?:\b|head|back|ear|heart|stomach|tooth)ache|avalanche|mustache|moustache|cliche|quiche)s$/i, '$1'],
     [/(analy|diagno|parenthe|progno|synop|the|empha|cri|ne)(?:sis|ses)$/i, '$1sis'],
     [/(movie|twelve|abuse|e[mn]u)s$/i, '$1'],
     [/(test)(?:is|es)$/i, '$1is'],

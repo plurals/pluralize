@@ -358,6 +358,7 @@
     [/(child)(?:ren)?$/i, '$1ren'],
     [/eaux$/i, '$0'],
     [/m[ae]n$/i, 'men'],
+    [/(specimen|lumen)s?$/i, '$1s'],
     ['thou', 'you']
   ].forEach(function (rule) {
     return pluralize.addPluralRule(rule[0], rule[1]);
@@ -390,7 +391,8 @@
     [/(pe)(rson|ople)$/i, '$1rson'],
     [/(child)ren$/i, '$1'],
     [/(eau)x?$/i, '$1'],
-    [/men$/i, 'man']
+    [/men$/i, 'man'],
+    [/(specimen|lumen)s?$/i, '$1']
   ].forEach(function (rule) {
     return pluralize.addSingularRule(rule[0], rule[1]);
   });

@@ -458,6 +458,7 @@
     'media',
     'mews',
     'moose',
+    'motoring',
     'music',
     'mud',
     'manga',

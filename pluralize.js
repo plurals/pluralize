@@ -307,6 +307,7 @@
     ['schema', 'schemata'],
     ['anathema', 'anathemata'],
     // Other irregular rules.
+    ['balladeer', 'balladeers'],
     ['ox', 'oxen'],
     ['axe', 'axes'],
     ['die', 'dice'],

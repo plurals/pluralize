@@ -37,6 +37,9 @@ var BASIC_TESTS = [
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.
+  ['balladeer', 'balladeers'],
+  ['Balladeer', 'Balladeers'],
+  ['BALLADEER', 'BALLADEERS'],
   ['this', 'these'],
   ['that', 'those'],
   ['is', 'are'],

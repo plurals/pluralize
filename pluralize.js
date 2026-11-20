@@ -456,6 +456,7 @@
     'mackerel',
     'mail',
     'media',
+    'memorabilia',
     'mews',
     'moose',
     'music',

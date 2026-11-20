@@ -317,6 +317,7 @@
     ['tooth', 'teeth'],
     ['quiz', 'quizzes'],
     ['human', 'humans'],
+    ['grammy', 'grammys'],
     ['proof', 'proofs'],
     ['carve', 'carves'],
     ['valve', 'valves'],

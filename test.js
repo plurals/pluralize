@@ -37,6 +37,9 @@ var BASIC_TESTS = [
   // Latin.
   ['veniam', 'veniam'],
   // Pluralization.
+  ['aegis', 'aegises'],
+  ['Aegis', 'Aegises'],
+  ['AEGIS', 'AEGISES'],
   ['this', 'these'],
   ['that', 'those'],
   ['is', 'are'],
@@ -719,6 +722,12 @@ describe('pluralize', function () {
       BASIC_TESTS.concat(PLURAL_TESTS).forEach(function (test) {
         it('isPlural(' + test[1] + ')', function () {
           expect(pluralize.isPlural(test[1])).to.equal(true);
+        });
+      });
+
+      ['aegis', 'Aegis', 'AEGIS'].forEach(function (word) {
+        it('isPlural(' + word + ') is false', function () {
+          expect(pluralize.isPlural(word)).to.equal(false);
         });
       });
     });

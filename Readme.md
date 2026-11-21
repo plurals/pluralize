@@ -7,7 +7,7 @@
 ![File Size][filesize-url]
 [![CDNJS][cdnjs-image]][cdnjs-url]
 
-> Pluralize and singularize any word.
+> Pluralize and singularize English words.
 
 ## Installation
 
@@ -39,7 +39,7 @@ define(function (require, exports, module) {
 
 ## Why?
 
-This module uses a pre-defined list of rules, applied in order, to singularize or pluralize a given word. There are many cases where this is useful, such as any automation based on user input. For applications where the word(s) are known ahead of time, you can use a simple ternary (or function) which would be a much lighter alternative.
+This module uses a pre-defined list of English inflection rules, applied in order, to singularize or pluralize a given word. It does not detect the input language or include inflection rules for other languages. There are many cases where this is useful, such as any automation based on user input. For applications where the word(s) are known ahead of time, you can use a simple ternary (or function) which would be a much lighter alternative.
 
 ## Usage
 

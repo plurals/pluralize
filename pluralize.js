@@ -480,6 +480,8 @@
     'shambles',
     'shrimp',
     'software',
+    'specie',
+    'species',
     'staff',
     'swine',
     'tennis',
